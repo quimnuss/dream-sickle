@@ -9,3 +9,10 @@
 
 [node name="Character" parent="." instance=ExtResource("2_tcf2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 0, 0.551569)
+
+[node name="Welcome" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36912, 3.21731, -0.407122)
+modulate = Color(0.898039, 0.556863, 0.490196, 1)
+text = "Welcome
+Dreamers"
+font_size = 100
