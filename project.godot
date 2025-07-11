@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Just Get Started"
+config/name="Dream Sickles"
 run/main_scene="uid://bpxtixqpt75k7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
