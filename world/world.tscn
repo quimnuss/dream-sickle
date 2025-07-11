@@ -16,3 +16,6 @@ modulate = Color(0.898039, 0.556863, 0.490196, 1)
 text = "Welcome
 Dreamers"
 font_size = 100
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70199, 4.99532)
