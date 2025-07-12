@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 # — Movement parameters —
 @export var max_speed       := 6.0
