@@ -4,6 +4,7 @@ a ShovelJam submission done in 10 days with the just-get-started theme
 
 # Gameflow
 
+```mermaid
 flowchart TD
 	H(House) --> W{win condition?} -- yes --> Sunrise
 	W -- no --> prep("Prep drawer (night)")
@@ -17,3 +18,4 @@ flowchart TD
 	doors --> Shop --> loot
 	doors --> Alarm("Alarm timeout") --> H
 	loot --> doors
+```
