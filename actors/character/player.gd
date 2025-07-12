@@ -130,3 +130,8 @@ func rotate_skin(delta):
 		
 		# Smoothly rotate using lerp_angle
 		skin.rotation.y = lerp_angle(skin.rotation.y, target_angle, rotation_speed * delta)
+
+
+func _on_hit_box_body_entered(body: Node3D) -> void:
+	if body.is_in_group('enemies'):
+		body.hit()

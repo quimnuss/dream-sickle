@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=5 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://actors/character/player.gd" id="1_xslmj"]
 [ext_resource type="PackedScene" uid="uid://bstwlmnvrf8c7" path="res://actors/character/model/Player_model.blend" id="2_xslmj"]
@@ -6,6 +6,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
 height = 1.65133
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -18,3 +20,13 @@ script = ExtResource("1_xslmj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825936, 0)
 shape = SubResource("CapsuleShape3D_l72tn")
+
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, 0.832196)
+shape = SubResource("BoxShape3D_xslmj")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

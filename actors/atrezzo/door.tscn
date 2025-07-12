@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0ixsh05l7uxe"]
+
+[ext_resource type="Script" uid="uid://c4g1k36bppmp3" path="res://actors/atrezzo/door.gd" id="1_gkqo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y046l"]
+albedo_color = Color(1, 0.215686, 0.172549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkqo2"]
+material = SubResource("StandardMaterial3D_y046l")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sofx7"]
+points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gkqo2"]
+radius = 4.0
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_gkqo2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gkqo2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_sofx7")
+
+[node name="PlayerSensor" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSensor"]
+shape = SubResource("SphereShape3D_gkqo2")
+
+[connection signal="body_entered" from="PlayerSensor" to="." method="_on_player_sensor_body_entered"]
