@@ -20,18 +20,53 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 @onready var skin: Node3D = $Skin  # Assumes you have a Skin node as child
 @export var rotation_speed := 10.0
+var is_attack_pressed := false
+
 # Quality of life timers
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var was_on_floor := false
 
+# This enum lists all the possible states the character can be in.
+enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING, HIT}
+
+# This variable keeps track of the character's current state.
+var state: States = States.IDLE
+
 func _physics_process(delta):
 	get_input_3d()
 	update_timers(delta)
 	apply_gravity(delta)
-	handle_movement(delta)
-	handle_jump(delta)
+	
+	match state:
+		States.IDLE:
+			handle_movement(delta)
+			handle_jump(delta)
+			if is_attack_pressed:
+				state = States.ATTACKING
+			if velocity.length() > 0:
+				state = States.RUNNING
+		States.RUNNING:
+			handle_movement(delta)
+			handle_jump(delta)
+			if is_attack_pressed:
+				state = States.ATTACKING
+		States.ATTACKING:
+			pass
+		States.HIT:
+			pass
+		States.JUMPING:
+			handle_movement(delta)
+			handle_jump(delta)
+			if velocity.y > 0.0:
+				state = States.FALLING
+		States.FALLING:
+			handle_movement(delta)
+			handle_jump(delta)
+			pass
+	
 	rotate_skin(delta)
+	
 	move_and_slide()
 	
 	# Update floor state for next frame
@@ -44,7 +79,9 @@ func get_input_3d():
 	# Handle jump buffering
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer
-	
+		
+	is_attack_pressed = Input.is_action_just_pressed("attack")
+		
 	if camera:
 		# Get camera's forward and right directions (ignore Y component for ground movement)
 		var cam_forward = -camera.global_basis.z
