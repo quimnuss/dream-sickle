@@ -12,6 +12,7 @@ collision_layer = 2
 script = ExtResource("1_xslmj")
 
 [node name="Skin" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 

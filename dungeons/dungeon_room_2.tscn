@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxi1rx4agc66x"]
 
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://world/dungeoning/mesh_library.tres" id="1_spp4j"]
-[ext_resource type="Script" uid="uid://dudjhjfe2fnxe" path="res://dungeons/enemy_spawner.gd" id="2_3k5wm"]
+[ext_resource type="Script" path="res://dungeons/enemy_spawner.gd" id="2_3k5wm"]
 [ext_resource type="PackedScene" uid="uid://xywwgpjc3fuw" path="res://actors/enemies/slime/slime.tscn" id="3_2ay8y"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tsucx"]
