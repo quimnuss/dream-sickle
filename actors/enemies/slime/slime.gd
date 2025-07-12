@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 		look_at(look_target, Vector3.UP, true)
 
 func hit():
+	self.remove_from_group('enemies')
 	death.emit()
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, 'scale:y', 0.1, 0.3)

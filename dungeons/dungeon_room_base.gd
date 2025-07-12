@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func set_clear(new_is_clear : bool):
 	enemy_spawner.is_clear = new_is_clear
-	door_locker.is_clear = new_is_clear
+	door_locker._on_room_cleared()
 
 func _on_room_cleared():
 	set_clear(true)
