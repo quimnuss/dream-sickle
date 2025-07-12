@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cknr0d418iibx"]
+
+[ext_resource type="Script" uid="uid://lemv1cqr3f38" path="res://world/dungeoning/dungeon_layout.gd" id="1_aengs"]
+
+[node name="DungeonLayout" type="Node3D"]
+script = ExtResource("1_aengs")
