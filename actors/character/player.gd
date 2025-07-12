@@ -18,7 +18,7 @@ extends CharacterBody3D
 # internal state
 var input_dir: Vector3 = Vector3.ZERO
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
-@onready var skin: Node3D = $MeshInstance3D  # Assumes you have a Skin node as child
+@onready var skin: Node3D = $Skin  # Assumes you have a Skin node as child
 @export var rotation_speed := 10.0
 # Quality of life timers
 var coyote_timer := 0.0

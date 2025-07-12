@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpxtixqpt75k7"]
 
+[ext_resource type="Script" path="res://actors/character/camera_3d.gd" id="2_4717r"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://actors/character/player.tscn" id="2_tcf2h"]
-[ext_resource type="Script" path="res://code/camera_3d.gd" id="3_4717r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -37,7 +37,7 @@ font_size = 100
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 7, 5)
-script = ExtResource("3_4717r")
+script = ExtResource("2_4717r")
 player_path = NodePath("../Character")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
