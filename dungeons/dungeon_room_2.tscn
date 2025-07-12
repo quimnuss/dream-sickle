@@ -3,12 +3,8 @@
 [ext_resource type="Script" uid="uid://bmfedn5hm3c17" path="res://dungeons/door_locker.gd" id="1_2ay8y"]
 [ext_resource type="Script" uid="uid://bk6ei8nduxmcn" path="res://dungeons/dungeon_room_base.gd" id="1_f65rc"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://world/dungeoning/mesh_library.tres" id="1_spp4j"]
-<<<<<<< HEAD
-[ext_resource type="Script" path="res://dungeons/enemy_spawner.gd" id="2_3k5wm"]
-=======
 [ext_resource type="Script" uid="uid://dudjhjfe2fnxe" path="res://dungeons/enemy_spawner.gd" id="2_3k5wm"]
 [ext_resource type="PackedScene" uid="uid://b0ixsh05l7uxe" path="res://actors/atrezzo/door.tscn" id="2_f65rc"]
->>>>>>> 40ecffdc25f3056afdb3cb9a09c16642b8b2bf97
 [ext_resource type="PackedScene" uid="uid://xywwgpjc3fuw" path="res://actors/enemies/slime/slime.tscn" id="3_2ay8y"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_spp4j"]
