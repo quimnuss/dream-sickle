@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://or1gfdmtqjg3"]
+
+[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://world/house_room.gd" id="1_0tliu"]
+[ext_resource type="MeshLibrary" uid="uid://csf0h3ou8u6ad" path="res://world/Tilesets/main_tileset.tres" id="1_hk8qe"]
+[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="2_ii14e"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://actors/character/player.tscn" id="4_glcwq"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://actors/character/camera_3d.gd" id="5_3wmay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
+shader = ExtResource("2_ii14e")
+shader_parameter/Top_Color = Color(0.494118, 0.784314, 0.890196, 1)
+shader_parameter/Horizon_Color = Color(0.94902, 0.709804, 0.658824, 1)
+shader_parameter/Bottom_Color = Color(0.94902, 0.619608, 0.427451, 1)
+
+[sub_resource type="Sky" id="Sky_210xl"]
+sky_material = SubResource("ShaderMaterial_soh3a")
+
+[sub_resource type="Environment" id="Environment_w1t30"]
+background_mode = 2
+sky = SubResource("Sky_210xl")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hk8qe"]
+size = Vector3(2, 2, 2)
+
+[node name="HouseRoom" type="Node3D"]
+script = ExtResource("1_0tliu")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_hk8qe")
+data = {
+"cells": PackedInt32Array(65535, 0, 1, 0, 0, 0, 0, 65535, 0, 65535, 65535, 1, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 65534, 1, 65534, 65535, 1, 65534, 0, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 65534, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 0, 65533, 65533, 0, 65533, 65532, 0, 65535, 65533, 0, 65534, 65533, 1, 65532, 65533, 0, 65531, 65533, 0, 65530, 65533, 0, 65530, 65532, 0, 65530, 65531, 0, 65530, 65530, 0, 65531, 65530, 0, 65532, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 65535, 65531, 0, 65535, 65532, 0, 65534, 65532, 1, 65532, 65532, 0, 65531, 65532, 0, 65531, 65531, 0, 65532, 65531, 0, 65534, 65531, 1, 65533, 1, 0, 65533, 65531, 1, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65536, 65533, 0, 65537, 65533, 0, 65538, 65533, 0, 65536, 65532, 0, 65536, 65531, 0, 65536, 65530, 0, 65538, 65532, 0, 65537, 65532, 0, 65537, 65531, 0, 65537, 65530, 0, 131074, 65531, 0, 131074, 65530, 0, 131073, 65531, 0, 131073, 65530, 0, 131072, 65529, 0, 196607, 65528, 0, 196606, 65528, 0, 196605, 65528, 0, 196604, 65528, 0, 196603, 65528, 0, 196602, 65528, 0, 196601, 65528, 0, 196601, 65530, 0, 196601, 65529, 0, 196601, 65531, 0, 196601, 65532, 0, 196601, 65533, 0, 131071, 65529, 0, 131070, 65529, 0, 131069, 65529, 0, 131068, 65529, 0, 131067, 65529, 0, 131066, 65530, 0, 131066, 65531, 0, 131066, 65532, 0, 131066, 65533, 0, 131066, 65529, 0, 131067, 65532, 2, 131067, 65533, 2, 131067, 65530, 2, 131067, 65531, 2, 131068, 65533, 2, 131069, 65532, 2, 196604, 65533, 2, 196603, 65533, 2, 196603, 65532, 2, 196603, 65530, 2, 196603, 65531, 2, 196605, 65532, 2, 262141, 65532, 2, 262140, 65533, 2, 262139, 65533, 2, 262139, 65532, 2, 262139, 65531, 2, 262139, 65530, 2, 262140, 65532, 2, 262140, 65531, 2, 262140, 65530, 2, 262141, 65531, 2, 262141, 65530, 2, 196605, 65530, 2, 131069, 65530, 2, 131068, 65530, 2, 196604, 65530, 2)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_w1t30")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09293, 3.82868, -8.31153)
+shape = SubResource("BoxShape3D_hk8qe")
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19609, 2.50365, -1.56688)
+
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("4_glcwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
+script = ExtResource("5_3wmay")
+player_path = NodePath("../Character")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
