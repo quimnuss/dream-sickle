@@ -4,7 +4,7 @@ extends Camera3D
 @export var smoothing := 5.0  # set to 0 for no smoothing
 
 var player: Node3D
-var offset: Vector3
+var offset: Vector3 = Vector3(4.550153, 6.0, 4.4484)
 
 func _ready():
 	if not player_path:
@@ -17,7 +17,7 @@ func _ready():
 		return
 
 	# Calculate the initial offset from player → camera
-	offset = global_transform.origin - player.global_transform.origin
+	#offset = global_transform.origin - player.global_transform.origin
 
 func _physics_process(delta: float) -> void:
 	if not player:

@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://cknr0d418iibx"]
+[gd_scene load_steps=6 format=3 uid="uid://cknr0d418iibx"]
 
 [ext_resource type="Script" uid="uid://lemv1cqr3f38" path="res://world/dungeoning/dungeon_layout.gd" id="1_aengs"]
+[ext_resource type="PackedScene" uid="uid://ba4ahhg2befhr" path="res://dungeons/dungeon_start.tscn" id="2_1i78i"]
+[ext_resource type="PackedScene" uid="uid://b4qjy8tqa6ruf" path="res://actors/atrezzo/teleport_door.tscn" id="3_k4aeg"]
+[ext_resource type="PackedScene" uid="uid://prac2vrlm0hl" path="res://dungeons/dungeon_room_1.tscn" id="4_mjqqb"]
+[ext_resource type="PackedScene" uid="uid://cxi1rx4agc66x" path="res://dungeons/dungeon_room_2.tscn" id="5_jbdyk"]
 
 [node name="DungeonLayout" type="Node3D"]
 script = ExtResource("1_aengs")
+
+[node name="DungeonStart" parent="." instance=ExtResource("2_1i78i")]
+
+[node name="TeleportDoor" parent="DungeonStart" node_paths=PackedStringArray("destination") instance=ExtResource("3_k4aeg")]
+transform = Transform3D(0.0129674, 0, 0.999916, 0, 1, 0, -0.999916, 0, 0.0129674, -23.1332, 0.262102, 0)
+destination = NodePath("../../DungeonRoom1/Room1Entrance")
+
+[node name="Marker3D" type="Marker3D" parent="DungeonStart/TeleportDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205858, 1.0601, 1.58737)
+
+[node name="TeleportDoor2" parent="DungeonStart" node_paths=PackedStringArray("destination") instance=ExtResource("3_k4aeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.6846)
+destination = NodePath("../../DungeonRoom2/Room2Entrance")
+
+[node name="Marker3D" type="Marker3D" parent="DungeonStart/TeleportDoor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44189, 2.95828)
+
+[node name="DungeonRoom1" parent="." instance=ExtResource("4_mjqqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.5372, 0, 0)
+
+[node name="Room1Entrance" type="Marker3D" parent="DungeonRoom1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.359, 1.37332, -1.20235)
+
+[node name="TeleportDoor" parent="DungeonRoom1" node_paths=PackedStringArray("destination") instance=ExtResource("3_k4aeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5524, 0, 1.38417)
+destination = NodePath("../../DungeonStart/TeleportDoor/Marker3D")
+
+[node name="DungeonRoom2" parent="." instance=ExtResource("5_jbdyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.1109)
+
+[node name="Room2Entrance" type="Marker3D" parent="DungeonRoom2"]
+
+[node name="TeleportDoor" parent="DungeonRoom2" node_paths=PackedStringArray("destination") instance=ExtResource("3_k4aeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.8903)
+destination = NodePath("../../DungeonStart/TeleportDoor2/Marker3D")

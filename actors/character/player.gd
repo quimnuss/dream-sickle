@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 # — Movement parameters —
 @export var max_speed       := 6.0
@@ -112,7 +112,7 @@ func handle_movement(delta):
 		velocity.z = move_toward(velocity.z, 0, decel * delta)
 
 # ———————— JUMP ————————
-func handle_jump(delta):
+func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
 	var can_jump = is_on_floor() or coyote_timer > 0
 	var wants_to_jump = jump_buffer_timer > 0

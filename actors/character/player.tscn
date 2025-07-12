@@ -8,6 +8,7 @@ radius = 0.242452
 height = 1.65133
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_xslmj")
 
 [node name="Skin" type="Node3D" parent="."]
