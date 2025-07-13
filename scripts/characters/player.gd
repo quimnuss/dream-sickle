@@ -21,6 +21,8 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var skin: Node3D = $Skin  # Assumes you have a Skin node as child
 @export var rotation_speed := 10.0
 
+@onready var animation_player: AnimationPlayer = $Skin/Player_model/AnimationPlayer
+
 # Quality of life timers
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
@@ -50,6 +52,9 @@ func get_input_3d():
 	# Handle jump buffering
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer
+	
+	if Input.is_action_just_pressed("attack"):
+		animation_player.play("Test Animation")
 	
 	if camera:
 		# Get camera's forward and right directions (ignore Y component for ground movement)

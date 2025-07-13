@@ -57,6 +57,27 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
+[node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
+bones/2/position = Vector3(0.0930536, 0.34959, -3.11029e-08)
+bones/2/rotation = Quaternion(0.0268588, -0.0266127, -0.712494, 0.700659)
+bones/3/rotation = Quaternion(-0.0271132, -0.00632982, -0.00938977, 0.999568)
+bones/4/rotation = Quaternion(0.0146714, 0.00578897, 0.0246709, 0.999571)
+bones/5/position = Vector3(-0.104632, 0.349589, 1.36234e-08)
+bones/5/rotation = Quaternion(0.026859, 0.0266129, 0.712494, 0.700659)
+bones/6/rotation = Quaternion(-0.0271132, 0.00632982, 0.00938977, 0.999568)
+bones/7/rotation = Quaternion(0.0146714, -0.00578897, -0.0246709, 0.999571)
+bones/8/position = Vector3(0.00578918, 0.205182, 0.0417486)
+bones/9/position = Vector3(9.76656e-07, 0.212608, -0.122177)
+bones/9/rotation = Quaternion(-0.0754854, -0.703073, 0.0754851, 0.70306)
+bones/10/rotation = Quaternion(-0.0394427, 0.00165447, -0.0442101, 0.998242)
+bones/11/rotation = Quaternion(0.641536, 0.0364563, 0.0191726, 0.765986)
+bones/12/rotation = Quaternion(0.106622, 0.00812879, 0.0335055, 0.993702)
+bones/13/position = Vector3(-1.2902e-06, 0.216265, 0.127475)
+bones/13/rotation = Quaternion(0.0651802, -0.704096, -0.0651794, 0.704096)
+bones/14/rotation = Quaternion(-0.0394427, -0.00165444, 0.0442101, 0.998242)
+bones/15/rotation = Quaternion(0.641536, -0.0364563, -0.0191726, 0.765986)
+bones/16/rotation = Quaternion(0.106622, -0.0081288, -0.0335055, 0.993702)
+
 [node name="HitBox" type="Area3D" parent="Skin"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 2
@@ -104,3 +125,5 @@ draw_pass_1 = SubResource("QuadMesh_044m2")
 [connection signal="health_changed" from="Health" to="HealthLabel" method="_on_player_health_changed"]
 [connection signal="is_hit" from="Health" to="Effects" method="_on_health_is_hit"]
 [connection signal="area_entered" from="HurtBox" to="Health" method="_on_hurt_box_area_entered"]
+
+[editable path="Skin/Player_model"]
