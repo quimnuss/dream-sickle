@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://prac2vrlm0hl"]
 
-[ext_resource type="Script" path="res://dungeons/door_locker.gd" id="1_h70lt"]
+[ext_resource type="Script" uid="uid://bmfedn5hm3c17" path="res://dungeons/door_locker.gd" id="1_h70lt"]
 [ext_resource type="Script" path="res://dungeons/dungeon_room_base.gd" id="1_jke51"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://world/dungeoning/mesh_library.tres" id="1_s3kj2"]
 [ext_resource type="Script" uid="uid://dudjhjfe2fnxe" path="res://dungeons/enemy_spawner.gd" id="2_n441i"]

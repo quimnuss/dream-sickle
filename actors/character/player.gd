@@ -20,10 +20,16 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var camera: Camera3D = get_viewport().get_camera_3d()
 @onready var skin: Node3D = $Skin  # Assumes you have a Skin node as child
 @export var rotation_speed := 10.0
+
 # Quality of life timers
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var was_on_floor := false
+
+var respawn_position : Vector3
+
+func _ready():
+	respawn_position = global_position + Vector3(0,1,0)
 
 func _physics_process(delta):
 	get_input_3d()
@@ -131,7 +137,16 @@ func rotate_skin(delta):
 		# Smoothly rotate using lerp_angle
 		skin.rotation.y = lerp_angle(skin.rotation.y, target_angle, rotation_speed * delta)
 
+func reset():
+	if $Health:
+		$Health.reset()
+	self.scale.y = 1
+	self.global_position = respawn_position
 
-func _on_hit_box_body_entered(body: Node3D) -> void:
-	if body.is_in_group('enemies'):
-		body.hit()
+func die():
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, 'scale:y', 0.2, 1)
+	tween.tween_callback(reset)
+
+func _on_health_death() -> void:
+	die()

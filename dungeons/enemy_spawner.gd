@@ -22,7 +22,7 @@ func spawn():
 		var enemy = enemy_scene.instantiate()
 		self.add_child(enemy)
 		enemy.global_position += Vector3(2*randf(),2*randf(),2*randf())
-		enemy.death.connect(_on_enemy_death)
+		enemy.has_died.connect(_on_enemy_death)
 	is_spawning_finished = true
 
 func check_cleared():

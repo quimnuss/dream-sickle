@@ -1,33 +1,104 @@
-[gd_scene load_steps=5 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=14 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://actors/character/player.gd" id="1_xslmj"]
+[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://actors/components/health.gd" id="2_vr5lg"]
 [ext_resource type="PackedScene" uid="uid://bstwlmnvrf8c7" path="res://actors/character/model/Player_model.blend" id="2_xslmj"]
+[ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://actors/character/head_number.gd" id="3_cjdj6"]
+[ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://actors/components/effects.gd" id="5_eb1dh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
 height = 1.65133
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xslmj"]
+radius = 0.484315
+height = 2.27927
+
+[sub_resource type="Gradient" id="Gradient_7o6gm"]
+offsets = PackedFloat32Array(0.201413, 0.957597)
+colors = PackedColorArray(1, 0.458824, 0.305882, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y2cpt"]
+gradient = SubResource("Gradient_7o6gm")
+fill = 1
+fill_from = Vector2(0.5, 0.491453)
+fill_to = Vector2(0.897436, 0.196581)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ifa7"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_y2cpt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y7m1q"]
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 4.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_044m2"]
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_xslmj")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_vr5lg")
 
 [node name="Skin" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
+[node name="HitBox" type="Area3D" parent="Skin"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skin/HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, -0.567804)
+shape = SubResource("BoxShape3D_xslmj")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825936, 0)
 shape = SubResource("CapsuleShape3D_l72tn")
 
-[node name="HitBox" type="Area3D" parent="."]
+[node name="HurtBox" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 2
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, -0.567804)
-shape = SubResource("BoxShape3D_xslmj")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.713424, 0)
+shape = SubResource("CapsuleShape3D_xslmj")
 
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33088, 0)
+billboard = 1
+text = "3"
+script = ExtResource("3_cjdj6")
+
+[node name="Effects" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05591, 0)
+script = ExtResource("5_eb1dh")
+
+[node name="VFXImpact" type="Node3D" parent="Effects"]
+
+[node name="Flash" type="GPUParticles3D" parent="Effects/VFXImpact"]
+material_override = SubResource("StandardMaterial3D_0ifa7")
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_y7m1q")
+draw_pass_1 = SubResource("QuadMesh_044m2")
+
+[connection signal="death" from="Health" to="." method="_on_health_death"]
+[connection signal="health_changed" from="Health" to="HealthLabel" method="_on_player_health_changed"]
+[connection signal="is_hit" from="Health" to="Effects" method="_on_health_is_hit"]
+[connection signal="area_entered" from="HurtBox" to="Health" method="_on_hurt_box_area_entered"]
