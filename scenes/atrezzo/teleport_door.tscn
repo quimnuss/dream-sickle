@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qjy8tqa6ruf"]
+
+[ext_resource type="Script" uid="uid://b2gp43io1y0vm" path="res://scripts/atrezzo/teleport_door.gd" id="1_gkqo2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y046l"]
+points = PackedVector3Array(-0.5, -0.75, -0.125, -0.5, -0.75, 0.125, -0.5, 0.75, -0.125, 0.5, -0.75, -0.125, 0.5, -0.75, 0.125, -0.5, 0.75, 0.125, 0.5, 0.75, -0.125, 0.5, 0.75, 0.125)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkqo2"]
+size = Vector3(1, 1.5, 0.25)
+
+[node name="TeleportDoor" type="Node3D"]
+script = ExtResource("1_gkqo2")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="DoorTeleportSensor" type="Area3D" parent="StaticBody3D2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2/DoorTeleportSensor"]
+shape = SubResource("ConvexPolygonShape3D_y046l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_y046l")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_gkqo2")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_sensor_body_entered"]
+[connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_body_entered"]
