@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://xywwgpjc3fuw"]
 
-[ext_resource type="Script" uid="uid://b2rs5kueg7324" path="res://actors/enemies/slime/slime.gd" id="1_bsuyb"]
-[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://actors/components/health.gd" id="2_a5qju"]
-[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://actors/components/hit_box.gd" id="2_jhv1r"]
-[ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://actors/components/effects.gd" id="4_y2cpt"]
+[ext_resource type="Script" uid="uid://b2rs5kueg7324" path="res://scenes/enemies/slime/slime.gd" id="1_bsuyb"]
+[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://scenes/components/health.gd" id="2_a5qju"]
+[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scenes/components/hit_box.gd" id="2_jhv1r"]
+[ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scenes/components/effects.gd" id="4_y2cpt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhv1r"]
 albedo_color = Color(0.821911, 1.8771e-06, 5.77569e-07, 1)

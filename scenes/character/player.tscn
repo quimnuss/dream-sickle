@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://drggevhvr6isq"]
 
-[ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://actors/character/player.gd" id="1_xslmj"]
-[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://actors/components/health.gd" id="2_vr5lg"]
-[ext_resource type="PackedScene" uid="uid://bstwlmnvrf8c7" path="res://actors/character/model/Player_model.blend" id="2_xslmj"]
-[ext_resource type="Script" path="res://actors/character/head_number.gd" id="3_cjdj6"]
-[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://actors/components/hit_box.gd" id="4_eb1dh"]
-[ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://actors/components/effects.gd" id="5_eb1dh"]
+[ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
+[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://scenes/components/health.gd" id="2_vr5lg"]
+[ext_resource type="PackedScene" uid="uid://bstwlmnvrf8c7" path="res://assets/models/Player_model.blend" id="2_xslmj"]
+[ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://scripts/framework/head_number.gd" id="3_cjdj6"]
+[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scenes/components/hit_box.gd" id="4_eb1dh"]
+[ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scenes/components/effects.gd" id="5_eb1dh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
 

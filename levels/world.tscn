@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bpxtixqpt75k7"]
 
-[ext_resource type="Script" uid="uid://cm8mjornr1h0x" path="res://world/world.gd" id="1_mmdvd"]
-[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://actors/character/camera_3d.gd" id="2_4717r"]
-[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://actors/character/player.tscn" id="2_tcf2h"]
-[ext_resource type="PackedScene" uid="uid://cknr0d418iibx" path="res://world/dungeoning/dungeon_layout.tscn" id="3_4717r"]
-[ext_resource type="PackedScene" uid="uid://b4qjy8tqa6ruf" path="res://actors/atrezzo/teleport_door.tscn" id="4_h5o24"]
+[ext_resource type="Script" uid="uid://cm8mjornr1h0x" path="res://scripts/world/world.gd" id="1_712nc"]
+[ext_resource type="PackedScene" uid="uid://cknr0d418iibx" path="res://levels/dungeoning/dungeon_layout.tscn" id="2_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://b4qjy8tqa6ruf" path="res://scenes/atrezzo/teleport_door.tscn" id="3_vons5"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_legw5"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_687qm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,7 +22,7 @@ glow_enabled = true
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fn3g3"]
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_mmdvd")
+script = ExtResource("1_712nc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_h5o24")
@@ -38,10 +38,10 @@ text = "Welcome
 Dreamers"
 font_size = 100
 
-[node name="DungeonLayout" parent="." instance=ExtResource("3_4717r")]
+[node name="DungeonLayout" parent="." instance=ExtResource("2_i8ckm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73431, 0, 141.671)
 
-[node name="TeleportDoor" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("4_h5o24")]
+[node name="TeleportDoor" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("3_vons5")]
 transform = Transform3D(0.0242053, 0, 0.999707, 0, 1, 0, -0.999707, 0, 0.0242053, -5.79753, 2.78906, -22.882)
 destination = NodePath("../EntryMarker")
 
@@ -59,12 +59,12 @@ shape = SubResource("WorldBoundaryShape3D_fn3g3")
 [node name="PlayerAnchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44778, 2.50365, 145.641)
 
-[node name="Character" parent="PlayerAnchor" instance=ExtResource("2_tcf2h")]
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("4_legw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
-script = ExtResource("2_4717r")
+script = ExtResource("5_687qm")
 player_path = NodePath("../Character")
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

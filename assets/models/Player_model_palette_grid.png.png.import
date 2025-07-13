@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drrpcjtuyo6sk"
-path.s3tc="res://.godot/imported/Player_model_palette_grid.png.png-d1b6948b56b3eca4f818d6352d92b4e6.s3tc.ctex"
+path.s3tc="res://.godot/imported/Player_model_palette_grid.png.png-c1d3e042795afc806d05a49c171abbdd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://actors/character/model/Player_model_palette_grid.png.png"
-dest_files=["res://.godot/imported/Player_model_palette_grid.png.png-d1b6948b56b3eca4f818d6352d92b4e6.s3tc.ctex"]
+source_file="res://assets/models/Player_model_palette_grid.png.png"
+dest_files=["res://.godot/imported/Player_model_palette_grid.png.png-c1d3e042795afc806d05a49c171abbdd.s3tc.ctex"]
 
 [params]
 
