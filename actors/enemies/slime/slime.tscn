@@ -87,6 +87,8 @@ script = ExtResource("2_jhv1r")
 shape = SubResource("SphereShape3D_a5qju")
 
 [node name="HurtBox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("SphereShape3D_y2cpt")
@@ -105,6 +107,7 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_5pspo")
 draw_pass_1 = SubResource("QuadMesh_iuq6n")
 
+[connection signal="death" from="Health" to="." method="death"]
 [connection signal="is_hit" from="Health" to="Effects" method="_on_health_is_hit"]
 [connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]
 [connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]

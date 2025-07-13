@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=15 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://actors/character/player.gd" id="1_xslmj"]
 [ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://actors/components/health.gd" id="2_vr5lg"]
 [ext_resource type="PackedScene" uid="uid://bstwlmnvrf8c7" path="res://actors/character/model/Player_model.blend" id="2_xslmj"]
 [ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://actors/character/head_number.gd" id="3_cjdj6"]
+[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://actors/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://actors/components/effects.gd" id="5_eb1dh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
@@ -58,8 +59,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="HitBox" type="Area3D" parent="Skin"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-collision_layer = 0
-collision_mask = 4
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_eb1dh")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Skin/HitBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, -0.567804)
