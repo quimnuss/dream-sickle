@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=21 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://scenes/components/health.gd" id="2_vr5lg"]
@@ -6,6 +6,34 @@
 [ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://scripts/framework/head_number.gd" id="3_cjdj6"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scenes/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scenes/components/effects.gd" id="5_eb1dh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erpy8"]
+animation = &"Idle_v1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wmtbp"]
+animation = &"Test Animation"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5y66v"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uicah"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "state == States.JUMPING or state == States.ATTACKING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2qfr"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xub24"]
+states/End/position = Vector2(901, 100)
+states/Idle_v1/node = SubResource("AnimationNodeAnimation_erpy8")
+states/Idle_v1/position = Vector2(460, 100)
+states/Start/position = Vector2(310, 111)
+"states/Test Animation/node" = SubResource("AnimationNodeAnimation_wmtbp")
+"states/Test Animation/position" = Vector2(683, 100)
+transitions = ["Start", "Idle_v1", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle_v1", "Test Animation", SubResource("AnimationNodeStateMachineTransition_uicah"), "Test Animation", "Idle_v1", SubResource("AnimationNodeStateMachineTransition_g2qfr")]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
 
@@ -58,25 +86,37 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/2/position = Vector3(0.0930536, 0.34959, -3.11029e-08)
-bones/2/rotation = Quaternion(0.0268588, -0.0266127, -0.712494, 0.700659)
-bones/3/rotation = Quaternion(-0.0271132, -0.00632982, -0.00938977, 0.999568)
-bones/4/rotation = Quaternion(0.0146714, 0.00578897, 0.0246709, 0.999571)
-bones/5/position = Vector3(-0.104632, 0.349589, 1.36234e-08)
-bones/5/rotation = Quaternion(0.026859, 0.0266129, 0.712494, 0.700659)
-bones/6/rotation = Quaternion(-0.0271132, 0.00632982, 0.00938977, 0.999568)
-bones/7/rotation = Quaternion(0.0146714, -0.00578897, -0.0246709, 0.999571)
-bones/8/position = Vector3(0.00578918, 0.205182, 0.0417486)
-bones/9/position = Vector3(9.76656e-07, 0.212608, -0.122177)
-bones/9/rotation = Quaternion(-0.0754854, -0.703073, 0.0754851, 0.70306)
-bones/10/rotation = Quaternion(-0.0394427, 0.00165447, -0.0442101, 0.998242)
-bones/11/rotation = Quaternion(0.641536, 0.0364563, 0.0191726, 0.765986)
-bones/12/rotation = Quaternion(0.106622, 0.00812879, 0.0335055, 0.993702)
-bones/13/position = Vector3(-1.2902e-06, 0.216265, 0.127475)
-bones/13/rotation = Quaternion(0.0651802, -0.704096, -0.0651794, 0.704096)
-bones/14/rotation = Quaternion(-0.0394427, -0.00165444, 0.0442101, 0.998242)
-bones/15/rotation = Quaternion(0.641536, -0.0364563, -0.0191726, 0.765986)
-bones/16/rotation = Quaternion(0.106622, -0.0081288, -0.0335055, 0.993702)
+bones/0/position = Vector3(0.00066411, 0.606515, -0.0171032)
+bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
+bones/1/rotation = Quaternion(0.0111486, -0.000401224, 0.00860567, 0.999901)
+bones/1/scale = Vector3(0.999996, 0.988762, 0.999741)
+bones/2/position = Vector3(0.142826, 0.234746, 0.0169656)
+bones/2/rotation = Quaternion(-0.0169174, -0.00475109, -0.996165, 0.0857103)
+bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
+bones/4/rotation = Quaternion(0.175885, 0.135957, -0.0338267, 0.97439)
+bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
+bones/5/position = Vector3(-0.15552, 0.230036, 0.0154259)
+bones/5/rotation = Quaternion(-0.0179817, 0.00848164, 0.997525, 0.0674457)
+bones/6/rotation = Quaternion(0.0583951, 0.0375058, 0.0117454, 0.99752)
+bones/7/rotation = Quaternion(0.12192, -0.193506, 0.051353, 0.972139)
+bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
+bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
+bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
+bones/9/position = Vector3(-0.00239964, 0.140808, -0.0921196)
+bones/9/rotation = Quaternion(0.00834594, -0.705842, -0.00719111, 0.708284)
+bones/10/rotation = Quaternion(0.0156496, -0.00120035, 0.0368635, 0.999197)
+bones/11/rotation = Quaternion(0.657158, -0.043892, 0.14058, 0.739226)
+bones/12/rotation = Quaternion(0.0886802, 0.00986663, 0.0266326, 0.995655)
+bones/13/position = Vector3(-0.00239639, 0.13934, 0.0983808)
+bones/13/rotation = Quaternion(-0.00175292, -0.708315, 0.0028892, 0.705888)
+bones/14/rotation = Quaternion(0.0156495, 0.00120037, -0.0368635, 0.999197)
+bones/15/rotation = Quaternion(0.657158, 0.0438919, -0.14058, 0.739226)
+bones/16/rotation = Quaternion(0.0886802, -0.00986574, -0.0266325, 0.995655)
+
+[node name="AnimationTree" type="AnimationTree" parent="Skin/Player_model"]
+tree_root = SubResource("AnimationNodeStateMachine_xub24")
+advance_expression_base_node = NodePath("../../..")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" type="Area3D" parent="Skin"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -124,6 +164,9 @@ draw_pass_1 = SubResource("QuadMesh_044m2")
 [connection signal="death" from="Health" to="." method="_on_health_death"]
 [connection signal="health_changed" from="Health" to="HealthLabel" method="_on_player_health_changed"]
 [connection signal="is_hit" from="Health" to="Effects" method="_on_health_is_hit"]
+[connection signal="animation_changed" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
+[connection signal="animation_finished" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Skin/Player_model/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="Health" method="_on_hurt_box_area_entered"]
 
 [editable path="Skin/Player_model"]
