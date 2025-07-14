@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg68olkb743eh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xysn7"]
+albedo_color = Color(0, 0.223529, 0.529412, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uublo"]
+material = SubResource("StandardMaterial3D_xysn7")
+size = Vector3(0.5, 1.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xysn7"]
+points = PackedVector3Array(-0.25, -0.75, -0.25, -0.25, -0.75, 0.25, -0.25, 0.75, -0.25, 0.25, -0.75, -0.25, 0.25, -0.75, 0.25, -0.25, 0.75, 0.25, 0.25, 0.75, -0.25, 0.25, 0.75, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uublo"]
+albedo_color = Color(0.380392, 0.388235, 0.494118, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4dn1n"]
+material = SubResource("StandardMaterial3D_uublo")
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7d8qj"]
+points = PackedVector3Array(-0.5, -0.1, -0.5, -0.5, 0.1, -0.5, 0.5, -0.1, -0.5, -0.5, -0.1, 0.5, -0.5, 0.1, 0.5, 0.5, 0.1, -0.5, 0.5, -0.1, 0.5, 0.5, 0.1, 0.5)
+
+[node name="MeshLibrary" type="Node3D"]
+
+[node name="BlueBoxWall" type="Node3D" parent="."]
+
+[node name="BlueBoxWall" type="MeshInstance3D" parent="BlueBoxWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("BoxMesh_uublo")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BlueBoxWall/BlueBoxWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueBoxWall/BlueBoxWall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_xysn7")
+
+[node name="Bridge" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_4dn1n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bridge/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_7d8qj")

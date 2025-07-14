@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8emennot2mi8"]
+
+[ext_resource type="Script" uid="uid://y6gadfiwh8qr" path="res://scripts/world/dungeon_test_layout.gd" id="1_845s5"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="2_1vghp"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="3_ujs4p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ujs4p"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_4717r"]
+sky_material = SubResource("ProceduralSkyMaterial_ujs4p")
+
+[sub_resource type="Environment" id="Environment_d2q88"]
+background_mode = 2
+sky = SubResource("Sky_4717r")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="DungeonTestLayout" type="Node3D"]
+script = ExtResource("1_845s5")
+dungeon = "dungeon_room_1"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d2q88")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 7, 5.74839)
+script = ExtResource("2_1vghp")
+player_path = NodePath("../Character")
+
+[node name="Character" parent="." instance=ExtResource("3_ujs4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
