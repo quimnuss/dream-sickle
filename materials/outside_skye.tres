@@ -92,12 +92,13 @@ void sky() {
 
 }
 "
-graph_offset = Vector2(-661.852, -3.83548)
+graph_offset = Vector2(-1810.72, 168.814)
 mode = 3
 flags/use_half_res_pass = false
 flags/use_quarter_res_pass = false
 flags/disable_fog = false
 flags/use_debanding = false
+nodes/sky/0/position = Vector2(420, 200)
 nodes/sky/2/node = SubResource("VisualShaderNodeInput_rina6")
 nodes/sky/2/position = Vector2(-1680, 300)
 nodes/sky/3/node = SubResource("VisualShaderNodeVectorDecompose_4od6g")
