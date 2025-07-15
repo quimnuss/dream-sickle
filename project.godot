@@ -23,6 +23,10 @@ Progress="*res://scripts/progression/progress.gd"
 
 theme/custom_font="uid://bsrpt4j5ap7na"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/P C/Documents/GitHub/dream-sickle/records/R1.avi"
+
 [input]
 
 move_left={
