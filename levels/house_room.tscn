@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://or1gfdmtqjg3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_tmg3y"]
-[ext_resource type="MeshLibrary" uid="uid://csf0h3ou8u6ad" path="res://assets/world/Tilesets/main_tileset.tres" id="2_sp577"]
+[ext_resource type="MeshLibrary" uid="uid://csf0h3ou8u6ad" path="res://assets/world/tilesets/main_tileset.tres" id="2_sp577"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_wqkk1"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_jtxa5"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_tf34o"]

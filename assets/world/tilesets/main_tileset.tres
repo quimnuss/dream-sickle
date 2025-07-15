@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=20 format=4 uid="uid://csf0h3ou8u6ad"]
 
-[ext_resource type="Texture2D" uid="uid://6qdj23cypamg" path="res://materials/Game_pallet.png" id="1_64n85"]
+[ext_resource type="Texture2D" uid="uid://6qdj23cypamg" path="res://materials/game_pallet.png" id="1_64n85"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2175"]
 resource_name = "Material"

@@ -39,7 +39,7 @@ func _physics_process(delta):
 
 # ———————— INPUT ————————
 func get_input_3d():
-	var in2d = Input.get_vector("move_left", "move_right", "move_backwars", "move_forward")
+	var in2d = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 	
 	# Handle jump buffering
 	if Input.is_action_just_pressed("jump"):

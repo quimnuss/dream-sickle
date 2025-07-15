@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://vlb5o32lgibh"]
 
-[ext_resource type="Script" uid="uid://cflnlx7xcjg21" path="res://Code/Objects/camera_3d.gd" id="1_xha7h"]
-[ext_resource type="PackedScene" uid="uid://32be6b2rpn8f" path="res://Scenes/Characters/player.tscn" id="2_7xtvl"]
+[ext_resource type="Script" uid="uid://cflnlx7xcjg21" path="res://scripts/camera/simple_camera_3d.gd" id="1_qx0qf"]
+[ext_resource type="PackedScene" uid="uid://32be6b2rpn8f" path="res://scenes/character/simple_player.tscn" id="2_vl781"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xha7h"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -27,10 +27,10 @@ environment = SubResource("Environment_fhk88")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.750111, -0.103452, 0.65317, 0, 0.987688, 0.156434, -0.661312, -0.117343, 0.740876, 4.26804, 6.98447, 5.34829)
-script = ExtResource("1_xha7h")
+script = ExtResource("1_qx0qf")
 player_path = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_7xtvl")]
+[node name="Player" parent="." instance=ExtResource("2_vl781")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
