@@ -37,6 +37,7 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING}
 
 func _ready():
 	respawn_position = global_position + Vector3(0,1,0)
+	Progress.time_up.connect(die)
 
 func _physics_process(delta):
 	get_input_3d()
