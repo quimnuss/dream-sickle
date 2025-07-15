@@ -1,8 +1,22 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://diq7wrux1adn8"]
+[gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://diq7wrux1adn8"]
+
+[ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="1_4od6g"]
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_rina6"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
 op_type = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_n45oq"]
+parameter_name = "skye_cloudes"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_w6apw"]
+source = 5
+texture = ExtResource("1_4od6g")
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_4od6g"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rina6"]
 input_name = "sky_coords"
@@ -20,17 +34,17 @@ default_input_values = [0, 0.2, 1, 0.7, 2, 0.5]
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_kxdp1"]
 parameter_name = "Horizon_Color"
 default_value_enabled = true
-default_value = Color(0.94902, 0.709804, 0.658824, 1)
+default_value = Color(0.65098, 0.917647, 0.94902, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_y1g2n"]
 parameter_name = "Bottom_Color"
 default_value_enabled = true
-default_value = Color(0.94902, 0.619608, 0.427451, 1)
+default_value = Color(0.529412, 0.839216, 0.905882, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_8r80g"]
 parameter_name = "Top_Color"
 default_value_enabled = true
-default_value = Color(0.494118, 0.784314, 0.890196, 1)
+default_value = Color(0.529412, 0.839216, 0.905882, 1)
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4od6g"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
@@ -38,9 +52,10 @@ op_type = 5
 
 [resource]
 code = "shader_type sky;
-uniform vec4 Top_Color : source_color = vec4(0.494118, 0.784314, 0.890196, 1.000000);
-uniform vec4 Horizon_Color : source_color = vec4(0.949020, 0.709804, 0.658824, 1.000000);
-uniform vec4 Bottom_Color : source_color = vec4(0.949020, 0.619608, 0.427451, 1.000000);
+uniform vec4 Top_Color : source_color = vec4(0.529412, 0.839216, 0.905882, 1.000000);
+uniform vec4 Horizon_Color : source_color = vec4(0.650980, 0.917647, 0.949020, 1.000000);
+uniform sampler2D skye_cloudes;
+uniform vec4 Bottom_Color : source_color = vec4(0.529412, 0.839216, 0.905882, 1.000000);
 
 
 
@@ -51,6 +66,15 @@ void sky() {
 
 // ColorParameter:6
 	vec4 n_out6p0 = Horizon_Color;
+
+
+	vec4 n_out13p0;
+// Texture2D:13
+	n_out13p0 = texture(skye_cloudes, vec2(0.0));
+
+
+// VectorOp:14
+	vec4 n_out14p0 = n_out6p0 * n_out13p0;
 
 
 // Input:2
@@ -69,7 +93,7 @@ void sky() {
 
 
 // Mix:9
-	vec4 n_out9p0 = mix(n_out8p0, n_out6p0, vec4(n_out4p0));
+	vec4 n_out9p0 = mix(n_out8p0, n_out14p0, vec4(n_out4p0));
 
 
 // ColorParameter:7
@@ -92,22 +116,23 @@ void sky() {
 
 }
 "
-graph_offset = Vector2(-1149.36, -93.4507)
+graph_offset = Vector2(-740.946, 112.149)
 mode = 3
 flags/use_half_res_pass = false
 flags/use_quarter_res_pass = false
 flags/disable_fog = false
 flags/use_debanding = false
+nodes/sky/0/position = Vector2(420, 200)
 nodes/sky/2/node = SubResource("VisualShaderNodeInput_rina6")
 nodes/sky/2/position = Vector2(-1680, 300)
 nodes/sky/3/node = SubResource("VisualShaderNodeVectorDecompose_4od6g")
 nodes/sky/3/position = Vector2(-1400, 280)
 nodes/sky/4/node = SubResource("VisualShaderNodeSmoothStep_n45oq")
-nodes/sky/4/position = Vector2(-760, 640)
+nodes/sky/4/position = Vector2(-1020, 460)
 nodes/sky/5/node = SubResource("VisualShaderNodeSmoothStep_w6apw")
 nodes/sky/5/position = Vector2(-840, -60)
 nodes/sky/6/node = SubResource("VisualShaderNodeColorParameter_kxdp1")
-nodes/sky/6/position = Vector2(-760, 500)
+nodes/sky/6/position = Vector2(-860, 600)
 nodes/sky/7/node = SubResource("VisualShaderNodeColorParameter_y1g2n")
 nodes/sky/7/position = Vector2(-760, 120)
 nodes/sky/8/node = SubResource("VisualShaderNodeColorParameter_8r80g")
@@ -116,4 +141,10 @@ nodes/sky/9/node = SubResource("VisualShaderNodeMix_4od6g")
 nodes/sky/9/position = Vector2(-280, 420)
 nodes/sky/10/node = SubResource("VisualShaderNodeMix_rina6")
 nodes/sky/10/position = Vector2(-20, 200)
-nodes/sky/connections = PackedInt32Array(2, 0, 3, 0, 3, 1, 4, 2, 3, 1, 5, 2, 4, 0, 9, 2, 6, 0, 9, 1, 5, 0, 10, 2, 10, 0, 0, 0, 9, 0, 10, 0, 7, 0, 10, 1, 8, 0, 9, 0)
+nodes/sky/12/node = SubResource("VisualShaderNodeTexture2DParameter_n45oq")
+nodes/sky/12/position = Vector2(-1040, 800)
+nodes/sky/13/node = SubResource("VisualShaderNodeTexture_w6apw")
+nodes/sky/13/position = Vector2(-780, 820)
+nodes/sky/14/node = SubResource("VisualShaderNodeVectorOp_4od6g")
+nodes/sky/14/position = Vector2(-480, 600)
+nodes/sky/connections = PackedInt32Array(2, 0, 3, 0, 3, 1, 4, 2, 3, 1, 5, 2, 4, 0, 9, 2, 5, 0, 10, 2, 10, 0, 0, 0, 9, 0, 10, 0, 7, 0, 10, 1, 8, 0, 9, 0, 12, 0, 13, 2, 14, 0, 9, 1, 6, 0, 14, 0, 13, 0, 14, 1)
