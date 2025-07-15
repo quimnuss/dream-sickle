@@ -23,6 +23,7 @@ var input_dir: Vector3 = Vector3.ZERO
 
 @onready var animation_player: AnimationPlayer = $Skin/Player_model/AnimationPlayer
 @onready var animation_tree: AnimationTree = $Skin/Player_model/AnimationTree
+@onready var skeleton_3d: Skeleton3D = $Skin/Player_model/Armature_001/Skeleton3D
 
 # Quality of life timers
 var coyote_timer := 0.0

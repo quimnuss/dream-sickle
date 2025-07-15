@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpxtixqpt75k7"]
+[gd_scene load_steps=11 format=3 uid="uid://bpxtixqpt75k7"]
 
 [ext_resource type="Script" uid="uid://cm8mjornr1h0x" path="res://scripts/world/world.gd" id="1_712nc"]
 [ext_resource type="PackedScene" uid="uid://cknr0d418iibx" path="res://levels/dungeoning/dungeon_layout.tscn" id="2_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://b4qjy8tqa6ruf" path="res://scenes/atrezzo/teleport_door.tscn" id="3_vons5"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_legw5"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_687qm"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scripts/ui/UI.tscn" id="6_i8ckm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -66,5 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
 script = ExtResource("5_687qm")
 player_path = NodePath("../Character")
+
+[node name="UI" parent="." instance=ExtResource("6_i8ckm")]
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
