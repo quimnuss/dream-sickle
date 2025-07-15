@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://or1gfdmtqjg3"]
+[gd_scene load_steps=19 format=3 uid="uid://or1gfdmtqjg3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_tmg3y"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_sp577"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_jtxa5"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_sp577"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_tf34o"]
-[ext_resource type="Shader" uid="uid://bash4nnuwev1a" path="res://materials/ocean.tres" id="5_wqkk1"]
+[ext_resource type="Shader" uid="uid://cvqm1uotdr4js" path="res://materials/reflective_water.gdshader" id="5_wqkk1"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_argrr"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="7_luok5"]
 
@@ -25,9 +25,21 @@ background_mode = 2
 sky = SubResource("Sky_210xl")
 tonemap_mode = 2
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wqkk1"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jtxa5"]
+noise = SubResource("FastNoiseLite_wqkk1")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtxa5"]
 render_priority = 0
 shader = ExtResource("5_wqkk1")
+shader_parameter/tint_color = Color(0, 0.882173, 0.62138, 1)
+shader_parameter/tint_strength = 0.3
+shader_parameter/distortion_strength = 0.02
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_speed = 0.1
+shader_parameter/normal_map = SubResource("NoiseTexture2D_jtxa5")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sp577"]
 material = SubResource("ShaderMaterial_jtxa5")
@@ -58,6 +70,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 mesh = SubResource("PlaneMesh_sp577")
 
 [node name="Area3D" type="Area3D" parent="."]
