@@ -31,7 +31,7 @@ var was_on_floor := false
 
 var respawn_position : Vector3
 
-enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING, HIT}
+enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING}
 @export var state: States = States.IDLE
 
 func _ready():
@@ -40,37 +40,7 @@ func _ready():
 func _physics_process(delta):
 	get_input_3d()
 	update_timers(delta)
-
-	match state:
-		States.IDLE:
-			handle_movement(delta)
-			handle_jump(delta)
-			if velocity.length() > 0:
-				state = States.RUNNING
-			if Input.is_action_just_pressed('attack'):
-				state = States.ATTACKING
-		States.RUNNING:
-			handle_movement(delta)
-			handle_jump(delta)
-			if velocity.is_zero_approx():
-				state = States.IDLE
-		States.ATTACKING:
-			#print('attacking!!')
-			pass
-		States.HIT:
-			pass
-		States.JUMPING:
-			handle_movement(delta)
-			handle_jump(delta)
-			if velocity.y > 0.0:
-				state = States.FALLING
-		States.FALLING:
-			handle_movement(delta)
-			handle_jump(delta)
-			if is_on_floor():
-				state = States.IDLE
-			pass
-	
+	update_state(delta)	
 	apply_gravity(delta)
 	
 	rotate_skin(delta)
@@ -82,6 +52,34 @@ func _physics_process(delta):
 
 func travel(new_state : States):
 	state = new_state
+
+func update_state(delta):
+	match state:
+		States.IDLE:
+			handle_movement(delta)
+			handle_jump(delta)
+			if velocity.length() > 0:
+				state = States.RUNNING
+			if Input.is_action_just_pressed("attack"):
+				state = States.INTERACTING
+		States.RUNNING:
+			handle_movement(delta)
+			handle_jump(delta)
+			if velocity.is_zero_approx():
+				state = States.IDLE
+		States.JUMPING:
+			handle_movement(delta)
+			handle_jump(delta)
+			if velocity.y > 0.0:
+				state = States.FALLING
+		States.FALLING:
+			handle_movement(delta)
+			handle_jump(delta)
+			if is_on_floor():
+				state = States.IDLE
+		States.INTERACTING:
+			state = States.IDLE
+			pass
 
 # ———————— INPUT ————————
 func get_input_3d():
