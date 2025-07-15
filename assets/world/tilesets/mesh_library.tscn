@@ -1,18 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://2dqsppjn6sc4"]
+[gd_scene load_steps=7 format=3 uid="uid://2dqsppjn6sc4"]
 
 [ext_resource type="PackedScene" uid="uid://dt0aetjdw5qhw" path="res://assets/world/tilesets/2_block_1.blend" id="1_1gxgm"]
 [ext_resource type="PackedScene" uid="uid://bn2rklct0bs1i" path="res://assets/world/tilesets/2_block_2.blend" id="2_oil7b"]
 [ext_resource type="PackedScene" uid="uid://dmi4dw47xib57" path="res://assets/world/tilesets/2_block_3.blend" id="3_cg56g"]
+[ext_resource type="PackedScene" uid="uid://bmmna0xm7ypqc" path="res://assets/world/tilesets/2_smooth_block_1.blend" id="4_6lskf"]
+[ext_resource type="PackedScene" uid="uid://b1p500hkyo0s6" path="res://assets/world/tilesets/2_smooth_block_2.blend" id="5_6sbtu"]
+[ext_resource type="PackedScene" uid="uid://lgj0bb4ttf0d" path="res://assets/world/tilesets/2_smooth_block_3.blend" id="6_2xlcs"]
 
 [node name="Mesh_library" type="Node3D"]
 
 [node name="2_block_1" parent="." instance=ExtResource("1_1gxgm")]
 
 [node name="2_block_2" parent="." instance=ExtResource("2_oil7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="2_block_3" parent="." instance=ExtResource("3_cg56g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="2_smooth_block_1" parent="." instance=ExtResource("4_6lskf")]
+
+[node name="2_smooth_block_2" parent="." instance=ExtResource("5_6sbtu")]
+
+[node name="2_smooth_block_3" parent="." instance=ExtResource("6_2xlcs")]
 
 [node name="rocks" parent="."]
 _import_path = NodePath("")
