@@ -37,7 +37,7 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING}
 
 func _ready():
 	respawn_position = global_position + Vector3(0,1,0)
-	Progress.time_up.connect(die)
+	Progress.time_up.connect(_on_time_up)
 
 func _physics_process(delta):
 	get_input_3d()
@@ -64,7 +64,7 @@ func update_state(delta):
 			if state != States.JUMPING:
 				if velocity.length() > 0 and is_on_floor():
 					state = States.RUNNING
-				if Input.is_action_just_pressed("attack"):
+				if Input.is_action_just_pressed("interact"):
 					state = States.INTERACTING
 				if velocity.y < 0.0:
 					state = States.FALLING
@@ -196,8 +196,20 @@ func die():
 	tween.tween_property(self, 'scale:y', 0.2, 1)
 	tween.tween_callback(reset)
 
+func die_and_wake_up():
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, 'scale:y', 0.2, 1)
+	tween.tween_callback(reset)
+	tween.tween_callback(to_house)
+
 func _on_health_death() -> void:
 	die()
+
+func _on_time_up():
+	die_and_wake_up()
+
+func to_house():
+	get_tree().change_scene_to_file("res://levels/house_room_for_real.tscn")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	match anim_name:

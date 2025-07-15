@@ -7,7 +7,7 @@ extends Node3D
 var is_in_range : bool = false
 
 func _input(event: InputEvent) -> void:
-	if is_in_range and event.is_action_pressed("attack"):
+	if is_in_range and event.is_action_pressed("interact"):
 		get_tree().change_scene_to_packed(level)
 		
 
