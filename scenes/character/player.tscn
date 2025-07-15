@@ -150,20 +150,20 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.612577, -0.0185884)
+bones/0/position = Vector3(0.000664109, 0.623864, -0.0213539)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0947115, -0.000820647, 0.0105757, 0.995448)
-bones/1/scale = Vector3(0.99999, 0.975117, 0.997905)
-bones/2/position = Vector3(0.144938, 0.235149, 0.0119268)
-bones/2/rotation = Quaternion(-0.0191815, -0.0105666, -0.996527, 0.0803436)
+bones/1/rotation = Quaternion(-0.0048569, -0.000320612, 0.00822168, 0.999954)
+bones/1/scale = Vector3(1, 1.00912, 1.00005)
+bones/2/position = Vector3(0.139449, 0.231924, 0.0270233)
+bones/2/rotation = Quaternion(-0.0159389, 0.0442271, -0.993538, 0.103304)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0366336, -0.00647755, 0.00525135, 0.999294)
+bones/4/rotation = Quaternion(0.0248119, -0.0137671, 0.00307118, 0.999593)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.157185, 0.230186, 0.0116161)
-bones/5/rotation = Quaternion(-0.0200415, 0.0109434, 0.997722, 0.0634749)
+bones/5/position = Vector3(-0.151929, 0.227583, 0.0256555)
+bones/5/rotation = Quaternion(-0.0159197, -0.0359298, 0.99569, 0.0840025)
 bones/6/rotation = Quaternion(0.0583951, 0.0375058, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0178688, -0.00258054, -0.000590634, 0.999837)
+bones/7/rotation = Quaternion(-0.0244733, -0.0674235, 0.0315588, 0.996925)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -200,7 +200,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" type="Area3D" parent="Skin"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-collision_layer = 2
+collision_layer = 10
 collision_mask = 0
 script = ExtResource("4_eb1dh")
 
