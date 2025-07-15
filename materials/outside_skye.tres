@@ -20,17 +20,17 @@ default_input_values = [0, 0.2, 1, 0.7, 2, 0.5]
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_kxdp1"]
 parameter_name = "Horizon_Color"
 default_value_enabled = true
-default_value = Color(0.94902, 0.709804, 0.658824, 1)
+default_value = Color(0.65098, 0.917647, 0.94902, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_y1g2n"]
 parameter_name = "Bottom_Color"
 default_value_enabled = true
-default_value = Color(0.94902, 0.619608, 0.427451, 1)
+default_value = Color(0.70002, 0.735995, 0.511989, 1)
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_8r80g"]
 parameter_name = "Top_Color"
 default_value_enabled = true
-default_value = Color(0.494118, 0.784314, 0.890196, 1)
+default_value = Color(0.529412, 0.839216, 0.905882, 1)
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4od6g"]
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
@@ -38,9 +38,9 @@ op_type = 5
 
 [resource]
 code = "shader_type sky;
-uniform vec4 Top_Color : source_color = vec4(0.494118, 0.784314, 0.890196, 1.000000);
-uniform vec4 Horizon_Color : source_color = vec4(0.949020, 0.709804, 0.658824, 1.000000);
-uniform vec4 Bottom_Color : source_color = vec4(0.949020, 0.619608, 0.427451, 1.000000);
+uniform vec4 Top_Color : source_color = vec4(0.529412, 0.839216, 0.905882, 1.000000);
+uniform vec4 Horizon_Color : source_color = vec4(0.650980, 0.917647, 0.949020, 1.000000);
+uniform vec4 Bottom_Color : source_color = vec4(0.700020, 0.735995, 0.511989, 1.000000);
 
 
 
@@ -92,7 +92,7 @@ void sky() {
 
 }
 "
-graph_offset = Vector2(-1149.36, -93.4507)
+graph_offset = Vector2(-661.852, -3.83548)
 mode = 3
 flags/use_half_res_pass = false
 flags/use_quarter_res_pass = false
