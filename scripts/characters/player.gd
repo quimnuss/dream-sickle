@@ -55,23 +55,30 @@ func travel(new_state : States):
 	state = new_state
 
 func update_state(delta):
+
 	match state:
 		States.IDLE:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.length() > 0:
-				state = States.RUNNING
-			if Input.is_action_just_pressed("attack"):
-				state = States.INTERACTING
+			if state != States.JUMPING:
+				if velocity.length() > 0 and is_on_floor():
+					state = States.RUNNING
+				if Input.is_action_just_pressed("attack"):
+					state = States.INTERACTING
+				if velocity.y < 0.0:
+					state = States.FALLING
 		States.RUNNING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.is_zero_approx():
-				state = States.IDLE
+			if state != States.JUMPING:
+				if velocity.is_zero_approx() and is_on_floor():
+					state = States.IDLE
+				elif velocity.y < 0.0:
+					state = States.FALLING
 		States.JUMPING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.y > 0.0:
+			if velocity.y < 0.0:
 				state = States.FALLING
 		States.FALLING:
 			handle_movement(delta)
@@ -192,7 +199,6 @@ func _on_health_death() -> void:
 	die()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	print('animation tree animation', anim_name, 'finished')
 	match anim_name:
 		'Test Animation':
 			state = States.IDLE
