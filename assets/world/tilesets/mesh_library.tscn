@@ -1,17 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://2dqsppjn6sc4"]
+[gd_scene load_steps=2 format=3 uid="uid://2dqsppjn6sc4"]
 
-[ext_resource type="PackedScene" uid="uid://cqokx0mwpdrbo" path="res://assets/world/Tilesets/rocks.blend" id="1_hd2gq"]
-[ext_resource type="PackedScene" uid="uid://swbwcge2pcg5" path="res://assets/world/Tilesets/Grass.blend" id="1_qujox"]
-[ext_resource type="PackedScene" uid="uid://b4ff7bovr6rlv" path="res://assets/world/Tilesets/Road.blend" id="2_cu75r"]
+[ext_resource type="PackedScene" uid="uid://dt0aetjdw5qhw" path="res://assets/world/tilesets/2_block_1.blend" id="1_1gxgm"]
 
 [node name="Mesh_library" type="Node3D"]
 
-[node name="rocks" parent="." instance=ExtResource("1_hd2gq")]
+[node name="rocks" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
-[node name="Grass" parent="." instance=ExtResource("1_qujox")]
+[node name="Grass" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
-[node name="Road" parent="." instance=ExtResource("2_cu75r")]
+[node name="Road" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
-[editable path="rocks"]
-[editable path="Grass"]
-[editable path="Road"]
+[node name="2_block_1" parent="." instance=ExtResource("1_1gxgm")]
+
+[editable path="2_block_1"]
