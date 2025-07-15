@@ -1,4 +1,5 @@
 extends Node
+# TODO this does not need to be a singleton, since we don't wanna go down if we're home
 
 @export var base_time : int = 100
 @export var time_left : float = base_time :
