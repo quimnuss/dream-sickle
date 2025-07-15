@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://42tguq3fskn1"]
+
+[ext_resource type="FontFile" uid="uid://du1y5epbqx1go" path="res://assets/ui/fonts/14 Segment LED Regular.ttf" id="1_c4byt"]
+[ext_resource type="Script" uid="uid://cqi1oss1sfujq" path="res://scripts/ui/ui.gd" id="1_pi2vm"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pi2vm")
+
+[node name="AlarmAnchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -91.0
+offset_top = 32.0
+offset_right = -51.0
+offset_bottom = 72.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="AlarmAnchor"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -194.0
+offset_top = 48.0
+offset_right = -50.0
+offset_bottom = 88.0
+grow_horizontal = 0
+color = Color(0.117969, 0.346527, 0.965725, 1)
+
+[node name="AlarmText" type="RichTextLabel" parent="AlarmAnchor"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -263.0
+offset_right = 18.0
+offset_bottom = 138.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("1_c4byt")
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 60
+bbcode_enabled = true
+text = "01 00"
+horizontal_alignment = 1
+vertical_alignment = 1

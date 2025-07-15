@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://xpwagbbkxbx3"]
+
+[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
+[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
+[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_3xffa"]
+[ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_k1u2m"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_gvw1f"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_ew0sj"]
+[ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
+[ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_wjhgj"]
+[ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
+shader = ExtResource("3_3xffa")
+shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
+shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
+shader_parameter/skye_cloudes = ExtResource("4_k1u2m")
+shader_parameter/Bottom_Color = Color(0.537122, 0.767685, 0.682518, 1)
+
+[sub_resource type="Sky" id="Sky_210xl"]
+sky_material = SubResource("ShaderMaterial_soh3a")
+
+[sub_resource type="Environment" id="Environment_w1t30"]
+background_mode = 2
+sky = SubResource("Sky_210xl")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hk8qe"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
+
+[node name="HouseRoom" type="Node3D"]
+script = ExtResource("1_4o67w")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_trrfu")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 65535, 4, 0, 65534, 3, 0, 65533, 2, 0, 65532, 2, 65535, 65532, 3, 65535, 65533, 3, 65535, 65534, 4, 65535, 65535, 4, 65535, 0, 2, 0, 0, 2, 65534, 65530, 2, 65533, 65530, 2, 65533, 65529, 2, 65534, 65529, 2, 1, 65528, 2, 2, 65528, 2, 2, 65527, 2, 1, 65527, 2, 65535, 65525, 2, 65533, 65525, 2, 65533, 65524, 2, 65533, 65523, 2, 65534, 65523, 2, 65535, 65523, 2, 65535, 65524, 2, 65534, 65525, 2, 65534, 65524, 2, 13, 65519, 3, 13, 65520, 3, 14, 65520, 3, 14, 65519, 3, 15, 65519, 3, 15, 65520, 3, 15, 65521, 3, 14, 65521, 3, 13, 65521, 3, 2, 65517, 2, 1, 65517, 2, 1, 65516, 2, 1, 65515, 2, 2, 65515, 2, 3, 65515, 2, 3, 65516, 2, 2, 65516, 2, 3, 65517, 2, 65534, 65509, 2, 65535, 65509, 2, 0, 65509, 2, 1, 65509, 2, 1, 65508, 2, 0, 65508, 2, 65535, 65508, 2, 65534, 65508, 2, 65535, 65507, 2, 0, 65507, 2, 1, 65507, 2, 65534, 65507, 2, 65538, 65528, 2, 65538, 65527, 2, 65537, 65527, 2, 65537, 65528, 2, 131071, 65524, 2, 131071, 65525, 2, 131070, 65523, 2, 131069, 65524, 2, 131069, 65525, 2, 131070, 65525, 2, 131070, 65524, 2, 131071, 65523, 2, 131069, 65523, 2, 196607, 65524, 2, 196606, 65523, 2, 196606, 65524, 2, 196605, 65523, 2, 196605, 65524, 2, 196605, 65525, 2, 196606, 65525, 2, 196607, 65525, 2, 196607, 65523, 2, 65537, 65508, 2, 65537, 65509, 2, 131071, 65508, 2, 131070, 65509, 2, 131070, 65508, 2, 131070, 65507, 2, 131071, 65507, 2, 65536, 65507, 2, 65537, 65507, 2, 65536, 65509, 2, 131071, 65509, 2, 65536, 65508, 2, 65551, 65521, 3, 65550, 65521, 3, 65549, 65521, 3, 65549, 65520, 3, 65549, 65519, 3, 65550, 65519, 3, 65551, 65519, 3, 65550, 65520, 3, 65551, 65520, 3, 131085, 65520, 3, 131085, 65519, 3, 131087, 65519, 3, 131087, 65520, 3, 131087, 65521, 3, 131086, 65521, 3, 131086, 65520, 3, 131086, 65519, 3, 131085, 65521, 3, 196622, 65521, 3, 196623, 65521, 3, 196623, 65519, 3, 196623, 65520, 3, 196621, 65519, 3, 196621, 65521, 3, 196621, 65520, 3, 196622, 65519, 3, 196622, 65520, 3, 65539, 0, 131073, 65539, 1, 131073, 65540, 0, 1310721, 65540, 1, 1310721, 65537, 0, 1310721, 65537, 65535, 1310721, 65536, 65535, 1310721, 65538, 65535, 1310721, 65538, 0, 1310721, 65537, 1, 1310721, 65538, 1, 1310721, 131071, 65535, 1310721, 131071, 65534, 1310721, 131071, 65533, 1310721, 65536, 65533, 1310721, 65537, 65533, 1310721, 65538, 65533, 1310721, 65538, 65534, 131073, 65539, 65534, 131073, 65539, 65535, 1310721, 65540, 65535, 1310721, 65536, 0, 1310721, 131071, 0, 1310721, 131070, 0, 1310721, 131069, 0, 1310721, 131068, 0, 1310721, 131067, 65535, 1310721, 131066, 65535, 1310721, 131065, 65535, 1310721, 131068, 65535, 1310721, 131069, 65535, 1310721, 131070, 65535, 1310721, 65537, 65534, 131073, 65536, 65534, 131073, 65540, 65534, 131073, 65541, 65534, 131073, 65541, 65535, 131073, 65541, 0, 131073, 65541, 1, 131073, 65541, 2, 131073, 65541, 3, 131073, 65541, 4, 131073, 65541, 65533, 131073, 65542, 65533, 131073, 65542, 65534, 131073, 65542, 65535, 131073, 65542, 0, 131073, 65542, 1, 131073, 65542, 2, 131073, 65542, 3, 131073, 65543, 65534, 131073, 65543, 65533, 131073, 65543, 65532, 131073, 65543, 65535, 131073, 65543, 0, 131073, 65543, 1, 131073, 65543, 2, 131073, 65543, 3, 131073, 65543, 4, 131073, 65544, 1, 131073, 65544, 0, 131073, 65544, 65535, 131073, 65544, 65534, 131073, 65544, 65533, 131073, 65544, 65532, 131073, 65542, 65532, 131073, 65541, 65532, 131073, 65540, 65532, 131073, 65539, 65532, 131073, 65539, 65533, 131073, 65540, 65533, 131073, 65539, 3, 131073, 65539, 4, 131073, 65538, 4, 131073, 65538, 3, 131073, 65537, 2, 131073, 65538, 2, 131073, 65539, 2, 131073, 65540, 2, 131073, 65540, 3, 131073, 65540, 4, 131073)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_w1t30")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09293, 3.82868, -8.31153)
+shape = SubResource("BoxShape3D_hk8qe")
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19609, 2.50365, -1.56688)
+
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("5_gvw1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
+script = ExtResource("6_ew0sj")
+player_path = NodePath("../Character")
+
+[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("7_8l8db")
+respawn_point = NodePath("../PlayerAnchor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_3wmay")
+
+[node name="TestRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5004, 1.23639, 0)
+script = ExtResource("8_wjhgj")
+dungeon = "dungeon_room_1"
+
+[node name="Bed" parent="." instance=ExtResource("9_trrfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91107, 1.43176, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

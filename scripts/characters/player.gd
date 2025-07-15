@@ -23,6 +23,7 @@ var input_dir: Vector3 = Vector3.ZERO
 
 @onready var animation_player: AnimationPlayer = $Skin/Player_model/AnimationPlayer
 @onready var animation_tree: AnimationTree = $Skin/Player_model/AnimationTree
+@onready var skeleton_3d: Skeleton3D = $Skin/Player_model/Armature_001/Skeleton3D
 
 # Quality of life timers
 var coyote_timer := 0.0
@@ -36,6 +37,7 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING}
 
 func _ready():
 	respawn_position = global_position + Vector3(0,1,0)
+	Progress.time_up.connect(_on_time_up)
 
 func _physics_process(delta):
 	get_input_3d()
@@ -54,23 +56,30 @@ func travel(new_state : States):
 	state = new_state
 
 func update_state(delta):
+
 	match state:
 		States.IDLE:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.length() > 0:
-				state = States.RUNNING
-			if Input.is_action_just_pressed("attack"):
-				state = States.INTERACTING
+			if state != States.JUMPING:
+				if velocity.length() > 0 and is_on_floor():
+					state = States.RUNNING
+				if Input.is_action_just_pressed("interact"):
+					state = States.INTERACTING
+				if velocity.y < 0.0:
+					state = States.FALLING
 		States.RUNNING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.is_zero_approx():
-				state = States.IDLE
+			if state != States.JUMPING:
+				if velocity.is_zero_approx() and is_on_floor():
+					state = States.IDLE
+				elif velocity.y < 0.0:
+					state = States.FALLING
 		States.JUMPING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.y > 0.0:
+			if velocity.y < 0.0:
 				state = States.FALLING
 		States.FALLING:
 			handle_movement(delta)
@@ -187,11 +196,22 @@ func die():
 	tween.tween_property(self, 'scale:y', 0.2, 1)
 	tween.tween_callback(reset)
 
+func die_and_wake_up():
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, 'scale:y', 0.2, 1)
+	tween.tween_callback(reset)
+	tween.tween_callback(to_house)
+
 func _on_health_death() -> void:
 	die()
 
+func _on_time_up():
+	die_and_wake_up()
+
+func to_house():
+	get_tree().change_scene_to_file("res://levels/house_room_for_real.tscn")
+
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	print('animation tree animation', anim_name, 'finished')
 	match anim_name:
 		'Test Animation':
 			state = States.IDLE
