@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=37 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://scenes/components/health.gd" id="2_vr5lg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://scripts/framework/head_number.gd" id="3_cjdj6"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scenes/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scenes/components/effects.gd" id="5_eb1dh"]
+[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erpy8"]
 animation = &"Idle_v1"
@@ -137,6 +138,14 @@ scale_max = 4.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_044m2"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmtbp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5y66v"]
+material = SubResource("StandardMaterial3D_wmtbp")
+radius = 0.1
+height = 0.2
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_xslmj")
@@ -150,20 +159,20 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.636333, -0.0244089)
+bones/0/position = Vector3(0.00066411, 0.605882, -0.016948)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(-0.00883544, -0.000300559, 0.0081259, 0.999928)
-bones/1/scale = Vector3(1.00001, 1.06671, 1.00011)
-bones/2/position = Vector3(0.138572, 0.228806, 0.0313031)
-bones/2/rotation = Quaternion(-0.0176394, 0.100263, -0.987606, 0.119464)
+bones/1/rotation = Quaternion(0.0767901, -0.000730899, 0.0101581, 0.996995)
+bones/1/scale = Vector3(0.99999, 0.975802, 0.998288)
+bones/2/position = Vector3(0.145576, 0.235727, 0.00974946)
+bones/2/rotation = Quaternion(-0.0188543, -0.0229185, -0.996585, 0.0770569)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0867446, -0.000501881, 0.00701812, 0.996206)
+bones/4/rotation = Quaternion(-0.0157506, -0.00895963, 0.00451209, 0.999826)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.1506, 0.224058, 0.0310694)
-bones/5/rotation = Quaternion(-0.0165781, -0.0995529, 0.989578, 0.102713)
+bones/5/position = Vector3(-0.157774, 0.230675, 0.00963728)
+bones/5/rotation = Quaternion(-0.0198798, 0.0225463, 0.997715, 0.0605127)
 bones/6/rotation = Quaternion(0.0583951, 0.0375058, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0876174, -0.0556753, 0.0129796, 0.994512)
+bones/7/rotation = Quaternion(-0.00365698, 0.00803275, -0.00324698, 0.999956)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -240,6 +249,14 @@ lifetime = 0.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_y7m1q")
 draw_pass_1 = SubResource("QuadMesh_044m2")
+
+[node name="FloorDetector" type="RayCast3D" parent="."]
+target_position = Vector3(0, -20, 0)
+script = ExtResource("7_wmtbp")
+
+[node name="Marker" type="MeshInstance3D" parent="FloorDetector"]
+mesh = SubResource("SphereMesh_5y66v")
+skeleton = NodePath("../..")
 
 [connection signal="death" from="Health" to="." method="_on_health_death"]
 [connection signal="health_changed" from="Health" to="HealthLabel" method="_on_player_health_changed"]
