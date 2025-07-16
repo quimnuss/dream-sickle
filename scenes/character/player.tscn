@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://scripts/framework/head_number.gd" id="3_cjdj6"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scenes/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scenes/components/effects.gd" id="5_eb1dh"]
-[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+[ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erpy8"]
 animation = &"Idle_v1"

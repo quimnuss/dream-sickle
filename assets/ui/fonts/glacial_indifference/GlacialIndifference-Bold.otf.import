@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bsrpt4j5ap7na"
+uid="uid://bn4ltra8krxw2"
 path="res://.godot/imported/GlacialIndifference-Bold.otf-fcdd3d75e6b34c70f66fb049cfd9041c.fontdata"
 
 [deps]
@@ -26,7 +26,7 @@ subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
-fallbacks=[Resource("res://assets/ui/fonts/montserrat.otf")]
+fallbacks=[]
 Compress=null
 compress=true
 preload=[]

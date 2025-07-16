@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://b42mgd7bj0dv0"]
+
+[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_8mcin"]
+[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="2_gka5p"]
+[ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="3_geiqh"]
+[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="4_kfbak"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="6_xfwai"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="7_6jyu5"]
+[ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="8_xpl6o"]
+[ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="9_eim1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
+shader = ExtResource("2_gka5p")
+shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
+shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
+shader_parameter/skye_cloudes = ExtResource("3_geiqh")
+shader_parameter/Bottom_Color = Color(0.537122, 0.767685, 0.682518, 1)
+
+[sub_resource type="Sky" id="Sky_210xl"]
+sky_material = SubResource("ShaderMaterial_soh3a")
+
+[sub_resource type="Environment" id="Environment_w1t30"]
+background_mode = 2
+sky = SubResource("Sky_210xl")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hk8qe"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
+
+[node name="HouseRoom2" type="Node3D"]
+script = ExtResource("1_8mcin")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_w1t30")
+
+[node name="GridMap" type="GridMap" parent="Environment"]
+mesh_library = ExtResource("4_kfbak")
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51999, 5.98206, -57.1781)
+shape = SubResource("BoxShape3D_hk8qe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07457, -1.53043, 2.70073)
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0438521, 2.11653, -1.56688)
+
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("6_xfwai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
+script = ExtResource("7_6jyu5")
+player_path = NodePath("../Character")
+
+[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("8_xpl6o")
+respawn_point = NodePath("../PlayerAnchor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_3wmay")
+
+[node name="TestRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5004, 1.23639, 0)
+script = ExtResource("9_eim1e")
+dungeon = "dungeon_room_1"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
