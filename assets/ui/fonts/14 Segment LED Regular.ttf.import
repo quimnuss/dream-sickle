@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://du1y5epbqx1go"
+uid="uid://c5j88v50gv3ql"
 path="res://.godot/imported/14 Segment LED Regular.ttf-c7ef520e5b2eea7b354ffd7b73810b49.fontdata"
 
 [deps]
@@ -26,7 +26,7 @@ subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
-fallbacks=[Resource("res://assets/ui/fonts/montserrat.otf")]
+fallbacks=[]
 Compress=null
 compress=true
 preload=[]
