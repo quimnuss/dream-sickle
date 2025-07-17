@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://i7uy3481b80v"]
+
+[ext_resource type="Script" uid="uid://c1ga37ae2353b" path="res://scripts/atrezzo/pickup_text.gd" id="1_nbfb5"]
+
+[node name="PickupText" type="Label3D"]
+billboard = 1
+modulate = Color(0.188235, 0.972549, 0.27451, 1)
+text = "+10"
+font_size = 80
+script = ExtResource("1_nbfb5")

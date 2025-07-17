@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://42tguq3fskn1"]
 
-[ext_resource type="FontFile" uid="uid://du1y5epbqx1go" path="res://assets/ui/fonts/14 Segment LED Regular.ttf" id="1_c4byt"]
+[ext_resource type="FontFile" uid="uid://c5j88v50gv3ql" path="res://assets/ui/fonts/14SegmentLEDRegular.ttf" id="1_c4byt"]
 [ext_resource type="Script" uid="uid://cqi1oss1sfujq" path="res://scripts/ui/ui.gd" id="1_pi2vm"]
 
 [node name="UI" type="Control"]

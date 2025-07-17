@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c5j88v50gv3ql"
-path="res://.godot/imported/14 Segment LED Regular.ttf-c7ef520e5b2eea7b354ffd7b73810b49.fontdata"
+path="res://.godot/imported/14SegmentLEDRegular.ttf-a195b898100a0f6c1bb12b7ff8921c0c.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/fonts/14 Segment LED Regular.ttf"
-dest_files=["res://.godot/imported/14 Segment LED Regular.ttf-c7ef520e5b2eea7b354ffd7b73810b49.fontdata"]
+source_file="res://assets/ui/fonts/14SegmentLEDRegular.ttf"
+dest_files=["res://.godot/imported/14SegmentLEDRegular.ttf-a195b898100a0f6c1bb12b7ff8921c0c.fontdata"]
 
 [params]
 
@@ -26,7 +26,7 @@ subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
-fallbacks=[]
+fallbacks=[Resource("res://assets/ui/fonts/montserrat.otf")]
 Compress=null
 compress=true
 preload=[]
