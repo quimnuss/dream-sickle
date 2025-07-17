@@ -38,7 +38,7 @@ var elapsed : float = 0
 
 var respawn_position : Vector3
 
-enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING, ROLL}
+enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING, ROLL, WALLSLIDING}
 var states_names = {
 	States.IDLE : 'idle',
 	States.RUNNING : 'running',
@@ -46,6 +46,7 @@ var states_names = {
 	States.FALLING : 'falling',
 	States.INTERACTING : 'interacting',
 	States.ROLL : 'roll',
+	States.WALLSLIDING : 'wallsliding',
 }
 @export var state: States = States.IDLE
 
@@ -110,7 +111,20 @@ func update_state(delta):
 			handle_jump(delta)
 			if Input.is_action_just_pressed("roll"):
 				travel(States.ROLL)
+			elif is_on_wall_only():
+				travel(States.WALLSLIDING)
 			elif velocity.y < 0.0:
+				travel(States.FALLING)
+		States.WALLSLIDING:
+			var wall_normal := get_wall_normal()
+			if Input.is_action_just_pressed("jump"):
+				travel(States.JUMPING)
+			#moving away
+			if input_dir.angle_to(wall_normal) > PI/4:
+				velocity = current_speed * wall_normal + jump_velocity * Vector3.UP
+
+			#handle_jump(delta)
+			if not is_on_wall_only():
 				travel(States.FALLING)
 		States.FALLING:
 			handle_movement(delta)
@@ -175,6 +189,9 @@ func update_timers(delta):
 
 # ———————— GRAVITY ————————
 func apply_gravity(delta):
+	if is_on_wall_only():
+		velocity.y = 0
+		return
 	var gravity_multiplier = 1.0
 	
 	if is_on_floor():
@@ -216,7 +233,7 @@ func handle_movement(delta):
 # ———————— JUMP ————————
 func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
-	var can_jump = is_on_floor() or coyote_timer > 0
+	var can_jump = is_on_floor() or is_on_wall_only() or coyote_timer > 0
 	var wants_to_jump = jump_buffer_timer > 0
 	
 	if can_jump and wants_to_jump:
