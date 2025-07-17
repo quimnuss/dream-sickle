@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpxtixqpt75k7"]
+[gd_scene load_steps=13 format=3 uid="uid://bpxtixqpt75k7"]
 
 [ext_resource type="Script" uid="uid://cm8mjornr1h0x" path="res://scripts/world/world.gd" id="1_712nc"]
 [ext_resource type="PackedScene" uid="uid://cknr0d418iibx" path="res://levels/dungeoning/dungeon_layout.tscn" id="2_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://b4qjy8tqa6ruf" path="res://scenes/atrezzo/teleport_door.tscn" id="3_vons5"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_legw5"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_687qm"]
-[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scripts/ui/UI.tscn" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="7_vons5"]
+[ext_resource type="PackedScene" uid="uid://i7uy3481b80v" path="res://scenes/atrezzo/pickup_text.tscn" id="8_legw5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tcf2h"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -69,5 +71,17 @@ script = ExtResource("5_687qm")
 player_path = NodePath("../Character")
 
 [node name="UI" parent="." instance=ExtResource("6_i8ckm")]
+
+[node name="Pickup" parent="." instance=ExtResource("7_vons5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.23046, 1.6586, 141.047)
+
+[node name="Pickup2" parent="." instance=ExtResource("7_vons5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7627, 1.6586, 141.047)
+
+[node name="Pickup3" parent="." instance=ExtResource("7_vons5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.23046, 1.6586, 133.828)
+
+[node name="PickupText" parent="." instance=ExtResource("8_legw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00451, 1.03624, 144.389)
 
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]

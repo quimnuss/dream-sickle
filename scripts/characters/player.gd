@@ -1,9 +1,12 @@
 class_name Player extends CharacterBody3D
 
 # — Movement parameters —
-@export var max_speed       := 6.0
-@export var accel           := 20.0
-@export var decel           := 16.0
+@export var max_speed       := 16.0
+var current_max_speed		:= max_speed
+@export var current_speed : float = 0
+@export var roll_max_speed_delta := 10.0
+@export var accel           := 4.0
+@export var decel           := 160.0
 # — Jump & gravity —
 @export var gravity         := 20.0
 @export var jump_velocity   := 10.0
@@ -24,15 +27,27 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var animation_player: AnimationPlayer = $Skin/Player_model/AnimationPlayer
 @onready var animation_tree: AnimationTree = $Skin/Player_model/AnimationTree
 @onready var skeleton_3d: Skeleton3D = $Skin/Player_model/Armature_001/Skeleton3D
+@onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+@export var debug_state := false
 
 # Quality of life timers
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var was_on_floor := false
+var elapsed : float = 0
+var jump_count : int = 0
 
 var respawn_position : Vector3
 
-enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING}
+enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING, ROLL}
+var states_names = {
+	States.IDLE : 'idle',
+	States.RUNNING : 'running',
+	States.JUMPING : 'jumping',
+	States.FALLING : 'falling',
+	States.INTERACTING : 'interacting',
+	States.ROLL : 'roll',
+}
 @export var state: States = States.IDLE
 
 func _ready():
@@ -53,41 +68,70 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
+	prints('from', states_names[state],' --> ', states_names[new_state])
+	if new_state == States.ROLL:
+		current_max_speed = max_speed + roll_max_speed_delta
+		# a bit hacky :P roll instantly puts the player to max_speed plus some
+		current_speed = max_speed + 2
+		var horizontal_velocity := Vector3(velocity.x, 0, velocity.z)
+		var target_velocity := horizontal_velocity.normalized()*current_speed
+		velocity.x = target_velocity.x
+		velocity.z = target_velocity.z
+		state_machine.travel("Roll_v1")
+		elapsed = 0
+
 	state = new_state
 
 func update_state(delta):
-
+	if debug_state:
+		print(state_machine.get_current_node())
+	#prints('         us ', states_names[state])
 	match state:
 		States.IDLE:
+			current_max_speed = max_speed
 			handle_movement(delta)
 			handle_jump(delta)
 			if state != States.JUMPING:
 				if velocity.length() > 0 and is_on_floor():
-					state = States.RUNNING
+					travel(States.RUNNING)
 				if Input.is_action_just_pressed("interact"):
-					state = States.INTERACTING
+					travel(States.INTERACTING)
 				if velocity.y < 0.0:
-					state = States.FALLING
+					travel(States.FALLING)
 		States.RUNNING:
 			handle_movement(delta)
 			handle_jump(delta)
 			if state != States.JUMPING:
 				if velocity.is_zero_approx() and is_on_floor():
-					state = States.IDLE
+					travel(States.IDLE)
 				elif velocity.y < 0.0:
-					state = States.FALLING
+					travel(States.FALLING)
 		States.JUMPING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if velocity.y < 0.0:
-				state = States.FALLING
+			if Input.is_action_just_pressed("roll"):
+				travel(States.ROLL)
+			elif velocity.y < 0.0:
+				travel(States.FALLING)
 		States.FALLING:
 			handle_movement(delta)
 			handle_jump(delta)
-			if is_on_floor():
-				state = States.IDLE
+			if Input.is_action_just_pressed("roll"):
+				travel(States.ROLL)
+			elif is_on_floor():
+				travel(States.IDLE)
 		States.INTERACTING:
-			state = States.IDLE
+			travel(States.IDLE)
+			pass
+		States.ROLL:
+			elapsed += delta
+			handle_movement(delta)
+			handle_jump(delta)
+			if elapsed > 0.5:
+				if is_on_floor():
+					travel(States.IDLE)
+				elif velocity.y < 0.0:
+					travel(States.FALLING)
 			pass
 
 # ———————— INPUT ————————
@@ -152,28 +196,35 @@ func apply_gravity(delta):
 	if velocity.y < -max_fall_speed:
 		velocity.y = -max_fall_speed
 
+
 # ———————— MOVEMENT ————————
 func handle_movement(delta):
+	current_speed = (velocity*Vector3(1,0,1)).length()
 	if input_dir != Vector3.ZERO:
+		current_speed = move_toward(current_speed, current_max_speed, accel * delta)
 		# Accelerate towards input direction
-		var target_velocity = input_dir * max_speed
-		velocity.x = move_toward(velocity.x, target_velocity.x, accel * delta)
-		velocity.z = move_toward(velocity.z, target_velocity.z, accel * delta)
+		var target_velocity := input_dir * current_speed
+		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
+		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
 	else:
+		current_speed = move_toward(current_speed, 0, decel * delta)
 		# Decelerate when no input
-		velocity.x = move_toward(velocity.x, 0, decel * delta)
-		velocity.z = move_toward(velocity.z, 0, decel * delta)
+		var target_velocity := input_dir * current_speed
+		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
+		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
+
 
 # ———————— JUMP ————————
 func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
-	var can_jump = is_on_floor() or coyote_timer > 0
+	var can_jump = is_on_floor() or coyote_timer > 0 or jump_count == 1
 	var wants_to_jump = jump_buffer_timer > 0
 	
 	if can_jump and wants_to_jump:
 		velocity.y = jump_velocity
 		jump_buffer_timer = 0  # Consume the buffered jump
 		coyote_timer = 0       # Consume coyote time
+		jump_count = 1 if jump_count == 0 else 0
 		travel(States.JUMPING)
 
 # ———————— ROTATION ————————
@@ -214,4 +265,4 @@ func to_house():
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		'Test Animation':
-			state = States.IDLE
+			travel(States.IDLE)

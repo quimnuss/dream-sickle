@@ -30,7 +30,6 @@ func check_cleared():
 	if num_enemies == 0 and is_spawning_finished:
 		is_clear = true
 		room_cleared.emit()
-	prints('num_enemies', num_enemies)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_action"):
