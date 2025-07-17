@@ -217,7 +217,7 @@ func handle_movement(delta):
 # ———————— JUMP ————————
 func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
-	var can_jump = is_on_floor() or coyote_timer > 0
+	var can_jump = is_on_floor() or coyote_timer > 0 or jump_count == 1
 	var wants_to_jump = jump_buffer_timer > 0
 	
 	if can_jump and wants_to_jump:
