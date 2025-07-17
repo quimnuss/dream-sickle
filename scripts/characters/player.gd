@@ -35,6 +35,7 @@ var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var was_on_floor := false
 var elapsed : float = 0
+var jump_count : int = 0
 
 var respawn_position : Vector3
 
@@ -223,6 +224,7 @@ func handle_jump(_delta):
 		velocity.y = jump_velocity
 		jump_buffer_timer = 0  # Consume the buffered jump
 		coyote_timer = 0       # Consume coyote time
+		jump_count = 1 if jump_count == 0 else 0
 		travel(States.JUMPING)
 
 # ———————— ROTATION ————————
