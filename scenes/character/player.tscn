@@ -1,12 +1,13 @@
-[gd_scene load_steps=45 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=40 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
-[ext_resource type="Script" uid="uid://c2pj8qx7pegtm" path="res://scripts/components/health.gd" id="2_vr5lg"]
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
-[ext_resource type="Script" uid="uid://bhr4g07sniut8" path="res://scripts/framework/head_number.gd" id="3_cjdj6"]
-[ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
 [ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
+radius = 0.242452
+height = 1.65133
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_erpy8"]
 animation = &"Idle_v1"
@@ -139,16 +140,6 @@ states/Start/position = Vector2(310, 111)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj")]
 graph_offset = Vector2(-70.939, -13)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xslmj"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
-radius = 0.242452
-height = 1.65133
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xslmj"]
-radius = 0.484315
-height = 2.27927
-
 [sub_resource type="Gradient" id="Gradient_7o6gm"]
 offsets = PackedFloat32Array(0.201413, 0.957597)
 colors = PackedColorArray(1, 0.458824, 0.305882, 1, 0, 0, 0, 0)
@@ -189,8 +180,9 @@ height = 0.2
 collision_layer = 2
 script = ExtResource("1_xslmj")
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("2_vr5lg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825936, 0)
+shape = SubResource("CapsuleShape3D_l72tn")
 
 [node name="Skin" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -198,20 +190,20 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.000664109, 0.624394, -0.0214837)
+bones/0/position = Vector3(0.00066411, 0.605294, -0.016804)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0347825, -0.0667648, 0.0294553, 0.996727)
-bones/1/scale = Vector3(1, 1.01168, 1.00006)
-bones/2/position = Vector3(0.13938, 0.231817, 0.0272647)
-bones/2/rotation = Quaternion(-0.0159573, 0.0460811, -0.993392, 0.103893)
+bones/1/rotation = Quaternion(0.0795644, -0.0677079, 0.0274536, 0.994149)
+bones/1/scale = Vector3(0.999994, 0.980212, 0.999411)
+bones/2/position = Vector3(0.14321, 0.234943, 0.0159096)
+bones/2/rotation = Quaternion(-0.0171378, -0.00795433, -0.996257, 0.0843489)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(0.0228453, -0.0135344, 0.0031412, 0.999642)
+bones/4/rotation = Quaternion(0.0221323, -0.01345, 0.00316657, 0.99966)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.151846, 0.227487, 0.0259178)
-bones/5/rotation = Quaternion(-0.0158926, -0.0376425, 0.995579, 0.0845693)
+bones/5/position = Vector3(-0.155893, 0.230185, 0.0144291)
+bones/5/rotation = Quaternion(-0.018253, 0.0112642, 0.997575, 0.0662181)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0259928, -0.0672194, 0.0312319, 0.996911)
+bones/7/rotation = Quaternion(-0.00176201, -0.0232753, 0.0120309, 0.999655)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -246,34 +238,6 @@ tree_root = SubResource("AnimationNodeStateMachine_xub24")
 advance_expression_base_node = NodePath("../../..")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="HitBox" type="Area3D" parent="Skin"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-collision_layer = 10
-collision_mask = 0
-script = ExtResource("4_eb1dh")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Skin/HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, -0.567804)
-shape = SubResource("BoxShape3D_xslmj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825936, 0)
-shape = SubResource("CapsuleShape3D_l72tn")
-
-[node name="HurtBox" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.713424, 0)
-shape = SubResource("CapsuleShape3D_xslmj")
-
-[node name="HealthLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33088, 0)
-billboard = 1
-text = "3"
-script = ExtResource("3_cjdj6")
-
 [node name="Effects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05591, 0)
 script = ExtResource("5_eb1dh")
@@ -297,12 +261,8 @@ script = ExtResource("7_wmtbp")
 mesh = SubResource("SphereMesh_5y66v")
 skeleton = NodePath("../..")
 
-[connection signal="death" from="Health" to="." method="_on_health_death"]
-[connection signal="health_changed" from="Health" to="HealthLabel" method="_on_player_health_changed"]
-[connection signal="is_hit" from="Health" to="Effects" method="_on_health_is_hit"]
 [connection signal="animation_changed" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Skin/Player_model/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="area_entered" from="HurtBox" to="Health" method="_on_hurt_box_area_entered"]
 
 [editable path="Skin/Player_model"]
