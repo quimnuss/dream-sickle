@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d20vyoi1aiunm"]
+[gd_scene load_steps=16 format=3 uid="uid://d20vyoi1aiunm"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_7wc4m"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_268cf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_irfsc"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
+[ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_sagrc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("3_fg07l")
@@ -61,7 +62,7 @@ shape = SubResource("BoxShape3D_hk8qe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19609, 2.50365, -1.56688)
 
 [node name="Character" parent="PlayerAnchor" instance=ExtResource("5_lppbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
+transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, -18.8226, -4.32111, 19.706)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
@@ -85,6 +86,9 @@ dungeon = "test_playground"
 
 [node name="Bed" parent="." instance=ExtResource("9_x5whj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91107, 1.99693, 0)
+
+[node name="level_tutorial_test" parent="." instance=ExtResource("10_sagrc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2266, -5.27111, 19.0449)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
