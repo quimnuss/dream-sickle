@@ -50,7 +50,7 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
 
-[node name="HouseRoom2" type="Node3D"]
+[node name="HouseRoom3" type="Node3D"]
 script = ExtResource("1_tmg3y")
 
 [node name="Environment" type="Node3D" parent="."]
