@@ -73,6 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
 script = ExtResource("6_ew0sj")
 player_path = NodePath("../Character")
+offset = Vector3(2.7, 3.6, 2.7)
 
 [node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)

@@ -4,7 +4,7 @@ extends Camera3D
 @export var smoothing := 5.0  # set to 0 for no smoothing
 
 var player: Node3D
-var offset: Vector3 = Vector3(4.550153, 6.0, 4.4484)
+@export var offset: Vector3 = Vector3(4.5, 6.0, 4.5)
 
 func _ready():
 	if not player_path:
