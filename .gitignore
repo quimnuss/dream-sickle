@@ -15,3 +15,11 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 assets/models/Player_model.blend1
+
+# exports
+build/linux
+build/windows
+build/html
+!build/linux/.gitkeep
+!build/windows/.gitkeep
+!build/html/.gitkeep

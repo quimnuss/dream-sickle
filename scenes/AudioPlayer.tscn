@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ewr85d0k60su"]
+[gd_scene load_steps=5 format=3 uid="uid://blbbf863dbn52"]
 
 [ext_resource type="AudioStream" uid="uid://btx4tl5dqdumg" path="res://assets/audio/dream_sickle_vive_track.mp3" id="1_hs2ye"]
-[ext_resource type="AudioStream" uid="uid://dwnllfbix0ln7" path="res://assets/audio/hollow_knight_city_of_tears.ogg" id="2_og8rt"]
-[ext_resource type="Script" uid="uid://bm716jwmg67em" path="res://scripts/framework/audio_stream_player.gd" id="3_nn5wq"]
+[ext_resource type="AudioStream" uid="uid://b3q0i46xb6xdu" path="res://assets/audio/title_screen.ogg" id="1_og8rt"]
+[ext_resource type="Script" path="res://scripts/framework/audio_stream_player.gd" id="3_nn5wq"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3qxq0"]
 clip_count = 2
 clip_0/name = &"DreamSickleVive"
-clip_0/stream = ExtResource("1_hs2ye")
+clip_0/stream = ExtResource("1_og8rt")
 clip_0/auto_advance = 1
 clip_0/next_clip = 1
 clip_1/name = &"HollowKnight"
-clip_1/stream = ExtResource("2_og8rt")
+clip_1/stream = ExtResource("1_hs2ye")
 clip_1/auto_advance = 1
 clip_1/next_clip = 0
 _transitions = {
