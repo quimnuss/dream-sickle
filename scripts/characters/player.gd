@@ -77,7 +77,7 @@ func travel(new_state : States):
 		var target_velocity := horizontal_velocity.normalized()*current_speed
 		velocity.x = target_velocity.x
 		velocity.z = target_velocity.z
-		state_machine.travel("Roll_v1")
+		state_machine.travel("Roll")
 		elapsed = 0
 
 	state = new_state
