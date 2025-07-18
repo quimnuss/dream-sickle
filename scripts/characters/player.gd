@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
 # — Movement parameters —
-@export var max_speed       := 16.0
+@export var max_speed       := 10.0
 var current_max_speed		:= max_speed
 @export var current_speed : float = 0
 @export var roll_max_speed_delta := 10.0
