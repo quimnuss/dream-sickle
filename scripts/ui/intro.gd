@@ -17,13 +17,11 @@ func _ready() -> void:
 
 func next_text():
 	text_label.visible_ratio = 0
-	text_label.set_text("I wish the day would [fade start=3][i]just start[/i][/fade]")
+	text_label.set_text("I wish the day would [fade start=3][i]just start[/i][/fade][pulse].[/pulse]")
 
 func hide_everything():
 	text_label.queue_free()
 	front_color_rect.queue_free()
 	
-
-
 func _on_skip_button_pressed() -> void:
 	self.queue_free()
