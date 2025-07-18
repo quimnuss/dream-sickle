@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://xpwagbbkxbx3"]
+[gd_scene load_steps=28 format=3 uid="uid://xpwagbbkxbx3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bh0mhtcdn7fn4" path="res://assets/world/models/house_model/carpet.blend" id="13_w4r0u"]
 [ext_resource type="PackedScene" uid="uid://b6y6wiyxht87h" path="res://assets/world/models/house_model/dresser.blend" id="14_vrnav"]
 [ext_resource type="PackedScene" uid="uid://cn1r1cw26fjat" path="res://assets/world/models/house_model/room.blend" id="15_thm64"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="16_bb3j3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("3_3xffa")
@@ -174,6 +175,8 @@ debug_color = Color(0.779042, 0.287459, 0.825109, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81492, 1.49742, -1.84953)
 shape = SubResource("BoxShape3D_w4r0u")
 debug_color = Color(0.779042, 0.287459, 0.825109, 0.42)
+
+[node name="UI" parent="." instance=ExtResource("16_bb3j3")]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

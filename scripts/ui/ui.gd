@@ -2,6 +2,7 @@ extends Control
 
 @onready var alarm_text: RichTextLabel = $AlarmAnchor/AlarmText
 @onready var alarm_anchor: Control = $AlarmAnchor
+@onready var menu_container: VBoxContainer = $UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer
 
 var last_time : float = Progress.base_time
 
@@ -21,3 +22,7 @@ func _on_time_left_updated(new_time : float):
 	
 	last_time = new_time
 		
+
+
+func _on_hamburger_button_pressed() -> void:
+	menu_container.visible = not menu_container.visible
