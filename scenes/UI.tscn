@@ -71,18 +71,26 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -56.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
 grow_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="UpperRightAnchor"]
-layout_mode = 0
-offset_right = 40.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
 offset_bottom = 40.0
+grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xpksx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UpperRightAnchor/PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="HamburgerButton" type="Button" parent="UpperRightAnchor/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -90,23 +98,33 @@ icon = ExtResource("3_75u2n")
 flat = true
 
 [node name="MenuContainer" type="VBoxContainer" parent="UpperRightAnchor/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VSlider" type="VSlider" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
-custom_minimum_size = Vector2(0, 100)
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-value = 100.0
+size_flags_vertical = 4
 
-[node name="Button2" type="TextureButton" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
+[node name="VolumeSlider" type="VSlider" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 1
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MuteButton" type="TextureButton" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
+layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("4_3wlde")
 texture_pressed = ExtResource("5_xpksx")
 stretch_mode = 3
 
-[node name="Button3" type="Button" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
+[node name="ExitButton" type="Button" parent="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer"]
 layout_mode = 2
 icon = ExtResource("6_3wlde")
 flat = true
 
 [connection signal="pressed" from="UpperRightAnchor/PanelContainer/VBoxContainer/HamburgerButton" to="." method="_on_hamburger_button_pressed"]
+[connection signal="value_changed" from="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer/MuteButton" to="." method="_on_mute_button_toggled"]
+[connection signal="pressed" from="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer/ExitButton" to="." method="_on_exit_button_pressed"]
