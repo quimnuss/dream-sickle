@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://xpwagbbkxbx3"]
+[gd_scene load_steps=21 format=3 uid="uid://bombser7l7rk0"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_ew0sj"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_wjhgj"]
-[ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
-[ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
+[ext_resource type="PackedScene" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
+[ext_resource type="PackedScene" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
 [ext_resource type="PackedScene" uid="uid://u1n7tckf83xq" path="res://assets/world/models/house_model/table.blend" id="11_wjhgj"]
 [ext_resource type="PackedScene" uid="uid://k2stqo7r61g7" path="res://assets/world/models/house_model/teddy.blend" id="12_bb3j3"]
 [ext_resource type="PackedScene" uid="uid://bh0mhtcdn7fn4" path="res://assets/world/models/house_model/carpet.blend" id="13_w4r0u"]
@@ -18,10 +18,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("3_3xffa")
-shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
-shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
+shader_parameter/Top_Color = Color(0.074644, 0.218426, 0.247036, 1)
+shader_parameter/Horizon_Color = Color(0.047408, 0.184391, 0.19917, 1)
 shader_parameter/skye_cloudes = ExtResource("4_k1u2m")
-shader_parameter/Bottom_Color = Color(0.537122, 0.767685, 0.682518, 1)
+shader_parameter/Bottom_Color = Color(0.0875642, 0.172635, 0.142843, 1)
 
 [sub_resource type="Sky" id="Sky_210xl"]
 sky_material = SubResource("ShaderMaterial_soh3a")
@@ -50,6 +50,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.205117, 0.205117, 0.205117, 1)
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]

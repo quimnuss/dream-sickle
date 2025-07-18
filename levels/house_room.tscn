@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_jtxa5"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_sp577"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_tf34o"]
-[ext_resource type="Shader" path="res://materials/reflective_water.gdshader" id="5_wqkk1"]
+[ext_resource type="Shader" uid="uid://cvqm1uotdr4js" path="res://materials/reflective_water.gdshader" id="5_wqkk1"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_argrr"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="7_luok5"]
 
@@ -50,7 +50,7 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
 
-[node name="HouseRoom2" type="Node3D"]
+[node name="HouseRoom3" type="Node3D"]
 script = ExtResource("1_tmg3y")
 
 [node name="Environment" type="Node3D" parent="."]
