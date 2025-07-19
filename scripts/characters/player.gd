@@ -6,7 +6,7 @@ var current_max_speed		:= max_speed
 @export var current_speed : float = 0
 @export var roll_max_speed_delta := 10.0
 @export var accel           := 4.0
-@export var decel           := 8.0
+@export var decel           := 12.0
 # — Jump & gravity —
 @export var gravity         := 20.0
 @export var jump_velocity   := 10.0
@@ -208,19 +208,25 @@ func apply_gravity(delta):
 # ———————— MOVEMENT ————————
 func handle_movement(delta):
 	current_speed = (velocity*Vector3(1,0,1)).length()
-	if input_dir != Vector3.ZERO:
+	if input_dir != Vector3.ZERO and input_dir.angle_to(velocity) < 2*PI/3:
 		current_speed = move_toward(current_speed, current_max_speed, accel * delta)
 		# Accelerate towards input direction
 		var target_velocity := input_dir * current_speed
 		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
 		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
+	elif input_dir.angle_to(velocity) >= 2*PI/3:
+		var target_velocity := input_dir * current_speed
+
+		velocity.x = move_toward(velocity.x, target_velocity.x, 2 * decel * delta)
+		velocity.z = move_toward(velocity.z, target_velocity.z, 2 * decel * delta)
+		
+		current_speed = (velocity*Vector3(1,0,1)).length()
 	else:
-		# with deceleration # doesnt work because there's no directional momentum 
-		# velocity.x = move_toward(velocity.x, 0, accel * delta)
-		#velocity.z = move_toward(velocity.z, 0, accel * delta)
+		velocity.x = move_toward(velocity.x, 0, decel * delta)
+		velocity.z = move_toward(velocity.z, 0, decel * delta)
 		# without deceleration
-		velocity.x = 0
-		velocity.z = 0
+		#velocity.x = 0
+		#velocity.z = 0
 		
 		current_speed = (velocity*Vector3(1,0,1)).length()
 
