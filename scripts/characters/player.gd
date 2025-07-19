@@ -58,19 +58,21 @@ func _ready():
 func _physics_process(delta):
 	get_input_3d()
 	update_timers(delta)
-	update_state(delta)	
+	update_state(delta)
 	apply_gravity(delta)
 	
 	rotate_skin(delta)
 	
 	move_and_slide()
+	
+	animation_tree.set("parameters/RunBlendSpace1D/blend_position", clamp(0.25 + 0.75 * current_speed / max_speed, 0.0, 1.0))
 	Progress.speed_changed.emit(current_speed)
 	
 	# Update floor state for next frame
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
-	#prints('from', states_names[state],' --> ', states_names[new_state])
+	prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
 		# a bit hacky :P roll instantly puts the player to max_speed plus some

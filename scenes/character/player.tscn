@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=58 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
@@ -38,6 +38,33 @@ animation = &"Roll_v1"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5y66v"]
 animation = &"Run_v1"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7r6u0"]
+animation = &"Idle_v2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5n5u"]
+animation = &"Run_v1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ba010"]
+animation = &"Run_v1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jb4us"]
+animation = &"Idle_v2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ux0ro"]
+animation = &"Run_v1"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_vhx6d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_7r6u0")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_e5n5u")
+blend_point_1/pos = 0.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_ba010")
+blend_point_2/pos = 1.0
+blend_point_3/node = SubResource("AnimationNodeAnimation_jb4us")
+blend_point_3/pos = 0.0
+blend_point_4/node = SubResource("AnimationNodeAnimation_ux0ro")
+blend_point_4/pos = -1.0
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5y66v"]
 advance_mode = 2
 
@@ -54,7 +81,7 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xub24"]
 xfade_time = 0.2
 advance_mode = 2
-advance_expression = "state == States.RUNNING"
+advance_expression = "state == States.RUNNING and false"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_erpy8"]
 xfade_time = 0.2
@@ -121,13 +148,42 @@ advance_expression = "state == States.ROLL"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_okkwj"]
 xfade_time = 0.1
 advance_mode = 2
-advance_expression = "state == States.RUNNING"
+advance_expression = "state == States.RUNNING and false"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p86hl"]
 xfade_time = 0.1
 switch_mode = 2
 advance_mode = 2
+advance_expression = "state == States.RUNNING or state == States.IDLE and false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_71sfj"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
 advance_expression = "state == States.RUNNING or state == States.IDLE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o0173"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "state != States.RUNNING and state != States.JUMPING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8sb7f"]
+advance_mode = 2
+advance_expression = "state == States.FALLING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8w16m"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "state == States.RUNNING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j01l2"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "state == States.RUNNING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2w14l"]
+advance_mode = 2
+advance_expression = "state == States.JUMPING"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xub24"]
 states/End/position = Vector2(901, 100)
@@ -146,9 +202,11 @@ states/Jump_lift/position = Vector2(715, 190)
 states/Roll/node = SubResource("AnimationNodeAnimation_vreni")
 states/Roll/position = Vector2(703.061, 409)
 states/Run/node = SubResource("AnimationNodeAnimation_5y66v")
-states/Run/position = Vector2(470, 229)
+states/Run/position = Vector2(131, 265)
+states/RunBlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_vhx6d")
+states/RunBlendSpace1D/position = Vector2(326.061, 468)
 states/Start/position = Vector2(310, 111)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_p86hl")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_p86hl"), "Roll", "RunBlendSpace1D", SubResource("AnimationNodeStateMachineTransition_71sfj"), "RunBlendSpace1D", "Idle", SubResource("AnimationNodeStateMachineTransition_o0173"), "RunBlendSpace1D", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_8sb7f"), "Jump_fall", "RunBlendSpace1D", SubResource("AnimationNodeStateMachineTransition_8w16m"), "Idle", "RunBlendSpace1D", SubResource("AnimationNodeStateMachineTransition_j01l2"), "RunBlendSpace1D", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_2w14l")]
 graph_offset = Vector2(-143.939, -5)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5y66v"]
@@ -217,47 +275,48 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.62846, -0.02248)
-bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
+bones/0/position = Vector3(0.000985013, 0.695241, 0.051443)
+bones/0/rotation = Quaternion(0.153068, 0.010424, 0.00312556, 0.988156)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0604819, -0.0672666, 0.0282895, 0.995498)
-bones/1/scale = Vector3(0.999996, 1.00424, 0.99852)
-bones/2/position = Vector3(0.141271, 0.231655, 0.0236363)
-bones/2/rotation = Quaternion(-0.0193404, 0.0514334, -0.993468, 0.100006)
-bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0707819, -0.00240843, 0.00645643, 0.997468)
-bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.153361, 0.226722, 0.0234082)
-bones/5/rotation = Quaternion(-0.0191426, -0.0516752, 0.994992, 0.0833888)
-bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0588666, -0.0332168, 0.00707938, 0.997688)
-bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
-bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
+bones/1/rotation = Quaternion(-0.00188909, -0.000335565, 0.00829304, 0.999964)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(0.202756, 0.193571, -0.0166852)
+bones/2/rotation = Quaternion(-0.0674737, -0.520618, -0.849747, -0.0483255)
+bones/3/rotation = Quaternion(0.464932, 0.094094, -0.256858, 0.842026)
+bones/4/rotation = Quaternion(-0.000320145, 0.347873, -0.155055, 0.924631)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.149633, 0.218591, 0.0194812)
+bones/5/rotation = Quaternion(-0.0175606, -0.536278, 0.838547, 0.0945379)
+bones/6/rotation = Quaternion(0.483067, 0.119654, -0.0623107, 0.865128)
+bones/7/rotation = Quaternion(0.0784998, -0.138845, 0.0216019, 0.986962)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(0.00162856, 0.667776, 0.0299812)
+bones/8/rotation = Quaternion(-0.698296, -0.097481, 0.70408, 0.0845653)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(-0.00239964, 0.140808, -0.0921196)
-bones/9/rotation = Quaternion(0.0355862, -0.702672, 0.0193687, 0.710359)
+bones/9/position = Vector3(-0.0221096, 0.0680159, -0.0859024)
+bones/9/rotation = Quaternion(-0.140362, -0.63634, 0.0983668, 0.752126)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.0624342, -0.0012784, 0.0375306, 0.997342)
+bones/10/rotation = Quaternion(-0.607815, -0.0876928, -0.0236857, 0.788867)
 bones/10/scale = Vector3(1, 1, 1)
-bones/11/rotation = Quaternion(0.697077, -0.0515447, 0.137582, 0.701782)
-bones/12/rotation = Quaternion(0.0733289, 0.0102719, 0.0264236, 0.996905)
-bones/13/position = Vector3(-0.00239639, 0.139341, 0.0983808)
-bones/13/rotation = Quaternion(0.0196181, -0.698497, 0.0239291, 0.714944)
+bones/11/rotation = Quaternion(0.601795, 0.197794, -0.146691, 0.759739)
+bones/12/rotation = Quaternion(0.180283, -0.0411136, -0.0124779, 0.982676)
+bones/13/position = Vector3(-0.0523458, 0.116635, 0.079276)
+bones/13/rotation = Quaternion(0.576564, -0.41565, 0.634842, 0.302961)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(-0.0537656, -0.00115732, -0.0406849, 0.997724)
+bones/14/rotation = Quaternion(-0.608024, 0.106737, -0.14052, 0.77406)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.645718, 0.243535, 0.104903, 0.716055)
-bones/16/rotation = Quaternion(0.0829826, -0.316516, -0.00906473, 0.944907)
-bones/17/position = Vector3(0.164211, 0.0254461, -0.0344741)
-bones/17/rotation = Quaternion(-0.0599564, 0.70456, 0.70456, -0.0599564)
-bones/18/position = Vector3(-0.162704, 0.0241966, -0.0300952)
-bones/18/rotation = Quaternion(0.491151, 0.503837, 0.504614, 0.500284)
-bones/19/position = Vector3(0.109387, 0.34134, 0.156988)
+bones/15/rotation = Quaternion(0.681971, 0.182869, 0.237917, 0.666986)
+bones/16/rotation = Quaternion(0.265147, -0.260658, 0.0601806, 0.926355)
+bones/17/position = Vector3(0.171697, 0.477856, -0.330502)
+bones/17/rotation = Quaternion(-0.0664022, 0.666899, 0.739981, -0.0571346)
+bones/18/position = Vector3(-0.0360113, 0.325934, 0.330983)
+bones/18/rotation = Quaternion(0.358779, 0.309188, 0.641891, 0.603039)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(0.111469, 0.280652, 0.133275)
 bones/19/rotation = Quaternion(-0.0321057, 0.706378, 0.706378, -0.0321057)
 bones/19/scale = Vector3(1, 1, 1)
-bones/20/position = Vector3(-0.109387, 0.34134, 0.156988)
-bones/20/rotation = Quaternion(0.0321057, 0.706378, 0.706378, 0.0321057)
+bones/20/position = Vector3(0.0165737, 0.794254, 0.804298)
+bones/20/rotation = Quaternion(0.0303173, 0.668669, 0.742336, 0.0300098)
 bones/20/scale = Vector3(1, 1, 1)
 
 [node name="Object" parent="Skin/Player_model/Armature_001/Skeleton3D" index="2"]
@@ -267,6 +326,7 @@ surface_material_override/0 = ExtResource("4_erpy8")
 tree_root = SubResource("AnimationNodeStateMachine_xub24")
 advance_expression_base_node = NodePath("../../..")
 anim_player = NodePath("../AnimationPlayer")
+parameters/RunBlendSpace1D/blend_position = -0.0729232
 
 [node name="PlayerSfx" type="AudioStreamPlayer" parent="Skin"]
 
