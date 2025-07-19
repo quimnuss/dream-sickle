@@ -237,8 +237,6 @@ func rotate_skin(delta):
 		skin.rotation.y = lerp_angle(skin.rotation.y, target_angle, rotation_speed * delta)
 
 func reset():
-	if $Health:
-		$Health.reset()
 	self.scale.y = 1
 	self.global_position = respawn_position
 
@@ -252,9 +250,6 @@ func die_and_wake_up():
 	tween.tween_property(self, 'scale:y', 0.2, 1)
 	tween.tween_callback(reset)
 	tween.tween_callback(to_house)
-
-func _on_health_death() -> void:
-	die()
 
 func _on_time_up():
 	die_and_wake_up()

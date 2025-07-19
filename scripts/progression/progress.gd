@@ -13,5 +13,20 @@ extends Node
 signal time_left_changed(time_left_value : float)
 signal time_up
 
+signal back_in_house
+signal entered_the_dungeon
+
+var is_in_house : bool = false
+
+func in_house():
+	back_in_house.emit()
+	time_left = base_time
+	is_in_house = true
+
+func to_dungeon():
+	entered_the_dungeon.emit()
+	is_in_house = false
+
 func _physics_process(delta: float) -> void:
-	time_left -= delta
+	if not is_in_house:
+		time_left -= delta

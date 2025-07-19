@@ -8,6 +8,7 @@ var is_in_range : bool = false
 
 func _input(event: InputEvent) -> void:
 	if is_in_range and event.is_action_pressed("interact"):
+		Progress.to_dungeon()
 		get_tree().change_scene_to_packed(level)
 		
 
