@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://d20vyoi1aiunm"]
+[gd_scene load_steps=16 format=3 uid="uid://d20vyoi1aiunm"]
 
-[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_7wc4m"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_268cf"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_fg07l"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_csoab"]
@@ -10,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
 [ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_sagrc"]
-[ext_resource type="PackedScene" uid="uid://8dh7fi6fjl12" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
+[ext_resource type="PackedScene" uid="uid://bvijgj1661rqm" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("3_fg07l")
@@ -33,7 +32,6 @@ size = Vector3(2, 2, 2)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
 
 [node name="HouseRoom" type="Node3D"]
-script = ExtResource("1_7wc4m")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_268cf")
