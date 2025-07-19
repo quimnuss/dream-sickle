@@ -11,5 +11,8 @@ func _ready():
 		path = 'res://levels/' + dungeon + '.tscn'
 	else:
 		path = 'res://levels/dungeons/' + dungeon + '.tscn'
-	var dungeon_scene = load(path).instantiate()
-	add_child(dungeon_scene)
+
+func _on_door_teleport_sensor_body_entered(body: Node3D) -> void:
+	if body is Player:
+		get_tree().change_scene_to_file(path)
+		
