@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=43 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
+[ext_resource type="Material" uid="uid://bji2gaxfha0qt" path="res://materials/player_material.tres" id="4_erpy8"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
 [ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
@@ -197,26 +198,26 @@ collision_mask = 0
 script = ExtResource("4_eb1dh")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Skin/HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02879, -0.567804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745436, 1.02879, -0.567804)
 shape = SubResource("BoxShape3D_xslmj")
 
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.000664109, 0.62149, -0.0207722)
+bones/0/position = Vector3(0.00066411, 0.635272, -0.0241491)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0779167, -0.0676695, 0.0275257, 0.99428)
-bones/1/scale = Vector3(0.999991, 0.980144, 0.997916)
-bones/2/position = Vector3(0.143092, 0.233454, 0.0179664)
-bones/2/rotation = Quaternion(-0.0195648, 0.020092, -0.9956, 0.0894051)
+bones/1/rotation = Quaternion(0.0400592, -0.0668593, 0.0292124, 0.99653)
+bones/1/scale = Vector3(1.00001, 1.04692, 0.999589)
+bones/2/position = Vector3(0.139088, 0.229289, 0.0299581)
+bones/2/rotation = Quaternion(-0.0180759, 0.0909074, -0.988974, 0.1155)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0570189, -0.00404998, 0.00597131, 0.998347)
+bones/4/rotation = Quaternion(-0.0840606, -0.000822657, 0.00692374, 0.996436)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.155328, 0.228593, 0.0175619)
-bones/5/rotation = Quaternion(-0.0199542, -0.0191317, 0.997002, 0.0722734)
+bones/5/position = Vector3(-0.150947, 0.224285, 0.030236)
+bones/5/rotation = Quaternion(-0.0170089, -0.0941156, 0.990354, 0.100256)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0399489, -0.0190767, 0.00353889, 0.999013)
+bones/7/rotation = Quaternion(-0.08023, -0.0491925, 0.0110803, 0.9955)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -245,6 +246,9 @@ bones/19/scale = Vector3(1, 1, 1)
 bones/20/position = Vector3(-0.109387, 0.34134, 0.156988)
 bones/20/rotation = Quaternion(0.0321057, 0.706378, 0.706378, 0.0321057)
 bones/20/scale = Vector3(1, 1, 1)
+
+[node name="Object" parent="Skin/Player_model/Armature_001/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_erpy8")
 
 [node name="AnimationTree" type="AnimationTree" parent="Skin/Player_model"]
 tree_root = SubResource("AnimationNodeStateMachine_xub24")

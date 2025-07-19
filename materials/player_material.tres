@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bji2gaxfha0qt"]
+
+[ext_resource type="Shader" uid="uid://baj6svk7q500o" path="res://materials/player.gdshader" id="1_yh180"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yh180")
+shader_parameter/albedo_color = Color(1, 0.8, 0.4, 1)
+shader_parameter/light_direction = Vector3(-0.5, -1, -0.3)
+shader_parameter/shading_steps = 3
