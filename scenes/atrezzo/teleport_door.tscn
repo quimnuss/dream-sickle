@@ -31,5 +31,5 @@ disabled = true
 mesh = SubResource("BoxMesh_gkqo2")
 skeleton = NodePath("../..")
 
-[connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_sensor_body_entered"]
 [connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_body_entered"]
+[connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_sensor_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://u6c3k3ancifs"]
 
-[ext_resource type="Script" uid="uid://cpuogbmpdvuqv" path="res://scripts/level_world.gd" id="1_l66kg"]
+[ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_l66kg"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_62vx3"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="3_b54s3"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_002qq"]
@@ -39,7 +39,7 @@ shadow_enabled = true
 environment = SubResource("Environment_w1t30")
 
 [node name="PlayerAnchor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2855, 2.50365, 19.0335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89398, 0)
 
 [node name="Character" parent="PlayerAnchor" instance=ExtResource("4_002qq")]
 transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, 0, 0, 0)

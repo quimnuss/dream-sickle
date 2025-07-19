@@ -27,13 +27,13 @@ signal game_won
 var is_in_house : bool = true
 
 func in_house():
+	is_in_house = true
 	back_in_house.emit()
 	time_left = base_time
-	is_in_house = true
 
 func to_dungeon():
-	entered_the_dungeon.emit()
 	is_in_house = false
+	entered_the_dungeon.emit()
 
 func win():
 	is_game_won = true
