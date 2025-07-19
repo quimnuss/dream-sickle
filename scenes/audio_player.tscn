@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://blbbf863dbn52"]
+
+[ext_resource type="Script" uid="uid://bcs7m1gnewxq8" path="res://scripts/framework/audio_player.gd" id="1_qbjj0"]
+[ext_resource type="AudioStream" uid="uid://bia5n75xnsixu" path="res://assets/audio/main_body.ogg" id="2_mfaxx"]
+[ext_resource type="AudioStream" uid="uid://bhoex12lpvilb" path="res://assets/audio/main_melody_1.ogg" id="3_tk4cp"]
+[ext_resource type="AudioStream" uid="uid://difdi2m3at3v7" path="res://assets/audio/main_melody_2.ogg" id="4_50w30"]
+[ext_resource type="Script" uid="uid://bm716jwmg67em" path="res://scripts/framework/audio_stream_player.gd" id="4_y6xvh"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mrh1j"]
+streams_count = 2
+stream_0/stream = ExtResource("3_tk4cp")
+stream_1/stream = ExtResource("4_50w30")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_wiaen"]
+stream_count = 2
+stream_0/stream = ExtResource("2_mfaxx")
+stream_0/volume = 0.0
+stream_1/stream = SubResource("AudioStreamRandomizer_mrh1j")
+stream_1/volume = 0.0
+
+[node name="AudioPlayer" type="Node"]
+script = ExtResource("1_qbjj0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamSynchronized_wiaen")
+autoplay = true
+script = ExtResource("4_y6xvh")
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
