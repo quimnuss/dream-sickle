@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://or1gfdmtqjg3"]
+[gd_scene load_steps=18 format=3 uid="uid://or1gfdmtqjg3"]
 
-[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_tmg3y"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_sp577"]
-[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_wqkk1"]
+[ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_wqkk1"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_jtxa5"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_sp577"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_tf34o"]
@@ -11,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="7_luok5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
-shader = ExtResource("3_wqkk1")
+shader = ExtResource("2_wqkk1")
 shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
 shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
 shader_parameter/skye_cloudes = ExtResource("4_sp577")
@@ -51,7 +50,6 @@ size = Vector3(2, 2, 2)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
 
 [node name="HouseRoom3" type="Node3D"]
-script = ExtResource("1_tmg3y")
 
 [node name="Environment" type="Node3D" parent="."]
 

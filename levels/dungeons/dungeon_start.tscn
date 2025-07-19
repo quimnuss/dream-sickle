@@ -18,11 +18,11 @@ radial_velocity_min = -2.23517e-05
 radial_velocity_max = 2.99998
 damping_max = 10.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsucx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnf3m"]
 albedo_color = Color(1, 0.631373, 0.317647, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_a2dqy"]
-material = SubResource("StandardMaterial3D_tsucx")
+material = SubResource("StandardMaterial3D_qnf3m")
 radius = 0.25
 height = 0.5
 

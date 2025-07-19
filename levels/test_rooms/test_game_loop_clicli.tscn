@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5c0ynrtcfn8a"]
+[gd_scene load_steps=14 format=3 uid="uid://b5c0ynrtcfn8a"]
 
+[ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_6kybb"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_hld5u"]
-[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_lmwuo"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_dglhf"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_uluka"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_u0if8"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_raoiu"]
+[ext_resource type="PackedScene" uid="uid://dfyirglm0cvn5" path="res://scenes/wake_up_goal.tscn" id="8_x2xyv"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="9_qsnef"]
 [ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_2tv8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
-shader = ExtResource("3_lmwuo")
+shader = ExtResource("2_6kybb")
 shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
 shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
 shader_parameter/skye_cloudes = ExtResource("4_dglhf")
@@ -66,5 +68,13 @@ shape = SubResource("WorldBoundaryShape3D_3wmay")
 
 [node name="level_tutorial_test" parent="." instance=ExtResource("10_2tv8k")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2266, -5.27111, 19.0449)
+
+[node name="WakeUpGoal" parent="." instance=ExtResource("8_x2xyv")]
+transform = Transform3D(0.89766, -0.0529269, 0.4375, 0, 0.992762, 0.1201, -0.44069, -0.107809, 0.891162, -55.6824, -1.00895, -143.348)
+
+[node name="WakeUpGoal2" parent="." instance=ExtResource("8_x2xyv")]
+transform = Transform3D(0.89766, -0.0529269, 0.4375, 0, 0.992762, 0.1201, -0.44069, -0.107809, 0.891162, -25.1342, 0.201536, -13.1484)
+
+[node name="UI" parent="." instance=ExtResource("9_qsnef")]
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

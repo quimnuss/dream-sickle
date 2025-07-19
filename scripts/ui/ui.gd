@@ -1,3 +1,4 @@
+class_name UI
 extends Control
 
 @onready var alarm_text: RichTextLabel = $AlarmAnchor/AlarmText
@@ -10,6 +11,7 @@ var last_time : float = Progress.base_time
 
 func _ready():
 	Progress.time_left_changed.connect(_on_time_left_updated)
+	alarm_anchor.visible = not Progress.is_in_house
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('exit'):
@@ -18,6 +20,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			_on_hamburger_button_pressed()
 			exit_button.grab_focus()
+
+func toggle_alarm(new_visible : bool):
+	alarm_anchor.visible = new_visible
 
 func _on_time_left_updated(new_time : float):
 	if new_time < 10:
