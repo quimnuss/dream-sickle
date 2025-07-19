@@ -30,8 +30,11 @@ size = Vector3(8.13477, 0.913818, 10.1487)
 [node name="room2" parent="." instance=ExtResource("1_6s1xw")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.13163, 1.99216, -0.563526)
 
+[node name="room3" parent="." instance=ExtResource("1_6s1xw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.497084, -0.0539216, 0, 0.0539216, 0.497084, 4.13163, 4.8622, -0.563526)
+
 [node name="Bed" parent="." instance=ExtResource("2_f2bl1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.6484, 2.02537, 0.937793)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.44453, 2.02537, 0.937793)
 debug_dungeon = "test_game_loop_clicli"
 go_to_debug_scene = true
 
@@ -51,7 +54,7 @@ transform = Transform3D(0.220472, 0, -0.333755, 0.0530965, 0.394906, 0.0350746, 
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.51272, 1.94533, -0.74188)
 
 [node name="dresser" parent="." instance=ExtResource("6_spjco")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.97343, 2.00154, -0.090237)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.66159, 2.00154, -0.090237)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="dresser"]
 

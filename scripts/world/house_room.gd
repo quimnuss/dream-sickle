@@ -6,6 +6,7 @@ extends Node3D
 
 func _ready():
 	Progress.in_house()
+	ui.toggle_alarm(false)
 	if Progress.is_game_won:
 		game_is_won_setup()
 

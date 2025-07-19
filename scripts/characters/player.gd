@@ -6,7 +6,7 @@ var current_max_speed		:= max_speed
 @export var current_speed : float = 0
 @export var roll_max_speed_delta := 10.0
 @export var accel           := 4.0
-@export var decel           := 8.0
+@export var decel           := 12.0
 # — Jump & gravity —
 @export var gravity         := 20.0
 @export var jump_velocity   := 10.0
@@ -28,6 +28,7 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $Skin/Player_model/AnimationTree
 @onready var skeleton_3d: Skeleton3D = $Skin/Player_model/Armature_001/Skeleton3D
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+@onready var general_player_sfx: AudioStreamPlayer = $GeneralPlayerSfx
 @export var debug_state := false
 
 # Quality of life timers
@@ -57,19 +58,21 @@ func _ready():
 func _physics_process(delta):
 	get_input_3d()
 	update_timers(delta)
-	update_state(delta)	
+	update_state(delta)
 	apply_gravity(delta)
 	
 	rotate_skin(delta)
 	
 	move_and_slide()
+	
+	animation_tree.set("parameters/RunBlendSpace1D/blend_position", clamp(0.25 + 0.75 * current_speed / max_speed, 0.0, 1.0))
 	Progress.speed_changed.emit(current_speed)
 	
 	# Update floor state for next frame
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
-	prints('from', states_names[state],' --> ', states_names[new_state])
+	#prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
 		# a bit hacky :P roll instantly puts the player to max_speed plus some
@@ -124,6 +127,7 @@ func update_state(delta):
 			if Input.is_action_just_pressed("roll"):
 				travel(States.ROLL)
 			elif is_on_floor():
+				general_player_sfx.play()
 				travel(States.IDLE)
 		States.INTERACTING:
 			travel(States.IDLE)
@@ -187,10 +191,11 @@ func apply_gravity(delta):
 			gravity_multiplier = ground_gravity_multiplier
 	else:
 		# Variable jump height - fall faster when jump released early
-		if velocity.y > 0 and not Input.is_action_pressed("jump"):
-			gravity_multiplier = jump_release_multiplier
-		# Fall faster than jumping up
-		elif velocity.y < 0:
+		#if velocity.y > 0 and not Input.is_action_pressed("jump"):
+			#gravity_multiplier = jump_release_multiplier
+		## Fall faster than jumping up
+		#el
+		if velocity.y < 0:
 			gravity_multiplier = fall_gravity_multiplier
 	
 	velocity.y -= gravity * gravity_multiplier * delta
@@ -203,19 +208,25 @@ func apply_gravity(delta):
 # ———————— MOVEMENT ————————
 func handle_movement(delta):
 	current_speed = (velocity*Vector3(1,0,1)).length()
-	if input_dir != Vector3.ZERO:
+	if input_dir != Vector3.ZERO and input_dir.angle_to(velocity) < 2*PI/3:
 		current_speed = move_toward(current_speed, current_max_speed, accel * delta)
 		# Accelerate towards input direction
 		var target_velocity := input_dir * current_speed
 		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
 		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
+	elif input_dir.angle_to(velocity) >= 2*PI/3:
+		var target_velocity := input_dir * current_speed
+
+		velocity.x = move_toward(velocity.x, target_velocity.x, 2 * decel * delta)
+		velocity.z = move_toward(velocity.z, target_velocity.z, 2 * decel * delta)
+		
+		current_speed = (velocity*Vector3(1,0,1)).length()
 	else:
-		# with deceleration # doesnt work because there's no directional momentum 
-		# velocity.x = move_toward(velocity.x, 0, accel * delta)
-		#velocity.z = move_toward(velocity.z, 0, accel * delta)
+		velocity.x = move_toward(velocity.x, 0, decel * delta)
+		velocity.z = move_toward(velocity.z, 0, decel * delta)
 		# without deceleration
-		velocity.x = 0
-		velocity.z = 0
+		#velocity.x = 0
+		#velocity.z = 0
 		
 		current_speed = (velocity*Vector3(1,0,1)).length()
 

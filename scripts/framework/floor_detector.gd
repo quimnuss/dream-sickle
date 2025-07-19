@@ -4,7 +4,7 @@ var collision_point : Vector3
 @onready var marker: MeshInstance3D = $Marker
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if self.is_colliding():
 		marker.visible = true
 		collision_point = self.get_collision_point()
