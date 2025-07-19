@@ -1,6 +1,5 @@
 [gd_scene load_steps=16 format=3 uid="uid://d20vyoi1aiunm"]
 
-[ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_7wc4m"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_268cf"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_fg07l"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_csoab"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
 [ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_sagrc"]
+[ext_resource type="PackedScene" uid="uid://bvijgj1661rqm" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("3_fg07l")
@@ -32,7 +32,6 @@ size = Vector3(2, 2, 2)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
 
 [node name="HouseRoom" type="Node3D"]
-script = ExtResource("1_7wc4m")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_268cf")
@@ -89,6 +88,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91107, 1.99693, 0)
 
 [node name="level_tutorial_test" parent="." instance=ExtResource("10_sagrc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2266, -5.27111, 19.0449)
+
+[node name="grass_tufts" parent="." instance=ExtResource("11_colnj")]
+transform = Transform3D(-0.52243, -0.0117681, 0.227658, -0.0107883, 0.569879, 0.00470118, -0.227706, 0, -0.522542, -30.6123, -1.65622, 24.8446)
+
+[node name="grass_tufts2" parent="." instance=ExtResource("11_colnj")]
+transform = Transform3D(0.282659, 0, 0.246432, 0, 0.375, 0, -0.246432, 0, 0.282659, -21.7858, -1.65622, 22.4727)
+
+[node name="grass_tufts3" parent="." instance=ExtResource("11_colnj")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -24.6256, -1.65622, 17.6614)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
