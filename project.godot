@@ -13,6 +13,9 @@ config_version=5
 config/name="Dream Sickle"
 run/main_scene="uid://xpwagbbkxbx3"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.215997, 0.179132, 1, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://bo6gt0hiasfnu"
 config/icon="res://icon.svg"
 
 [autoload]

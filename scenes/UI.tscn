@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://42tguq3fskn1"]
+[gd_scene load_steps=20 format=3 uid="uid://42tguq3fskn1"]
 
 [ext_resource type="FontFile" uid="uid://c5j88v50gv3ql" path="res://assets/ui/fonts/14SegmentLEDRegular.ttf" id="1_c4byt"]
 [ext_resource type="Script" uid="uid://cqi1oss1sfujq" path="res://scripts/ui/ui.gd" id="1_pi2vm"]
@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://bo1dtb875qdgs" path="res://assets/ui/sound-on.png" id="4_3wlde"]
 [ext_resource type="Texture2D" uid="uid://c6rrpmb5k30ph" path="res://assets/ui/sound-off.png" id="5_xpksx"]
 [ext_resource type="Texture2D" uid="uid://d0h13fk7h7kv7" path="res://assets/ui/close.png" id="6_3wlde"]
+[ext_resource type="Texture2D" uid="uid://6hl5xkerfydw" path="res://assets/ui/images/ui_portrait_worried1.png" id="7_24e4x"]
+[ext_resource type="Script" uid="uid://bdpj23gq8k7ro" path="res://scripts/ui/portrait_anchor.gd" id="7_mhjpf"]
+[ext_resource type="Texture2D" uid="uid://bg2t84pbjlt5b" path="res://assets/ui/images/ui_portrait_worried2.png" id="8_ukj8e"]
+[ext_resource type="Texture2D" uid="uid://bb5e4qpjemoa6" path="res://assets/ui/images/ui_portrait_worried_sheet.png" id="9_ukj8e"]
+[ext_resource type="Texture2D" uid="uid://6p2oh0i207rt" path="res://assets/ui/images/ui_portrait_normal1.png" id="11_s2m3y"]
+[ext_resource type="Texture2D" uid="uid://di0lkpagh64ax" path="res://assets/ui/images/ui_portrait_normal2.png" id="12_4dthu"]
+[ext_resource type="Texture2D" uid="uid://2m08mtlsg71y" path="res://assets/ui/images/ui_portrait_panic1.png" id="13_hu0pd"]
+[ext_resource type="Texture2D" uid="uid://covtp1cljg5ep" path="res://assets/ui/images/ui_portrait_panic2.png" id="14_o5ifv"]
+[ext_resource type="Texture2D" uid="uid://c4772gbmp1dnt" path="res://assets/ui/images/ui_portrait_stressed1.png" id="15_s2vcx"]
+[ext_resource type="Texture2D" uid="uid://bgjdq27ksixvc" path="res://assets/ui/images/ui_portrait_stressed2.png" id="16_38m54"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpksx"]
 bg_color = Color(0.329412, 0.6, 0.917647, 1)
@@ -13,6 +23,59 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_w7enk"]
+frames = 2
+frame_0/texture = ExtResource("7_24e4x")
+frame_1/texture = ExtResource("8_ukj8e")
+frame_1/duration = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3f0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_s2m3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4dthu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_hu0pd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o5ifv")
+}],
+"loop": true,
+"name": &"panic",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_s2vcx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_38m54")
+}],
+"loop": true,
+"name": &"stressed",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_24e4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ukj8e")
+}],
+"loop": true,
+"name": &"worried",
+"speed": 5.0
+}]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -124,6 +187,52 @@ unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("6_3wlde")
 flat = true
+
+[node name="LowerLeftAnchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="PortraitAnchor" type="Control" parent="LowerLeftAnchor"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_mhjpf")
+
+[node name="TextureRect" type="TextureRect" parent="LowerLeftAnchor/PortraitAnchor"]
+visible = false
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -210.0
+offset_right = 220.0
+offset_bottom = -50.0
+grow_vertical = 0
+texture = SubResource("AnimatedTexture_w7enk")
+expand_mode = 1
+
+[node name="Portrait" type="Sprite2D" parent="LowerLeftAnchor/PortraitAnchor"]
+visible = false
+position = Vector2(165, -91)
+scale = Vector2(0.4325, 0.4325)
+texture = ExtResource("9_ukj8e")
+hframes = 2
+region_rect = Rect2(0, 0, 400, 400)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LowerLeftAnchor/PortraitAnchor"]
+position = Vector2(147, -90)
+scale = Vector2(0.405, 0.405)
+sprite_frames = SubResource("SpriteFrames_h3f0y")
+animation = &"worried"
+autoplay = "default"
+frame_progress = 0.0551879
 
 [connection signal="pressed" from="UpperRightAnchor/PanelContainer/VBoxContainer/HamburgerButton" to="." method="_on_hamburger_button_pressed"]
 [connection signal="value_changed" from="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
