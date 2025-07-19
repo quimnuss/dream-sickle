@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://42tguq3fskn1"]
+[gd_scene load_steps=19 format=3 uid="uid://42tguq3fskn1"]
 
 [ext_resource type="FontFile" uid="uid://c5j88v50gv3ql" path="res://assets/ui/fonts/14SegmentLEDRegular.ttf" id="1_c4byt"]
 [ext_resource type="Script" uid="uid://cqi1oss1sfujq" path="res://scripts/ui/ui.gd" id="1_pi2vm"]
+[ext_resource type="Texture2D" uid="uid://c7bke02njfm2b" path="res://assets/ui/images/ui_clock.png" id="2_mhjpf"]
 [ext_resource type="Texture2D" uid="uid://bb2hry3gihmxo" path="res://assets/ui/burger.png" id="3_75u2n"]
 [ext_resource type="Texture2D" uid="uid://bo1dtb875qdgs" path="res://assets/ui/sound-on.png" id="4_3wlde"]
 [ext_resource type="Texture2D" uid="uid://c6rrpmb5k30ph" path="res://assets/ui/sound-off.png" id="5_xpksx"]
@@ -79,31 +80,67 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pi2vm")
 
-[node name="AlarmAnchor" type="Control" parent="."]
-visible = false
+[node name="UITopAnchor" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-offset_left = -91.0
-offset_top = 32.0
-offset_right = -51.0
-offset_bottom = 72.0
-grow_horizontal = 0
+grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="AlarmAnchor"]
+[node name="SpeedAnchor" type="Control" parent="UITopAnchor"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpeedLabel" type="Label" parent="UITopAnchor/SpeedAnchor"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 43.0
+offset_top = 31.0
+offset_right = 98.0
+offset_bottom = 55.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Speed 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AlarmAnchor" type="Control" parent="UITopAnchor"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -194.0
+offset_left = -107.0
+offset_top = 30.0
+offset_right = -67.0
+offset_bottom = 70.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="UITopAnchor/AlarmAnchor"]
+layout_mode = 0
+offset_left = -211.0
+offset_top = 9.0
+offset_right = 40.0
+offset_bottom = 114.0
+texture = ExtResource("2_mhjpf")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="UITopAnchor/AlarmAnchor"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -204.0
 offset_top = 48.0
-offset_right = -50.0
+offset_right = -40.0
 offset_bottom = 88.0
 grow_horizontal = 0
-color = Color(0.117969, 0.346527, 0.965725, 1)
+color = Color(0.796046, 0.0498869, 0.171909, 1)
 
-[node name="AlarmText" type="RichTextLabel" parent="AlarmAnchor"]
+[node name="AlarmText" type="RichTextLabel" parent="UITopAnchor/AlarmAnchor"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -112,6 +149,7 @@ offset_left = -263.0
 offset_right = 18.0
 offset_bottom = 138.0
 grow_horizontal = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_c4byt")
 theme_override_font_sizes/bold_italics_font_size = 60
 theme_override_font_sizes/italics_font_size = 60
@@ -119,7 +157,7 @@ theme_override_font_sizes/mono_font_size = 60
 theme_override_font_sizes/normal_font_size = 60
 theme_override_font_sizes/bold_font_size = 60
 bbcode_enabled = true
-text = "01 00"
+text = "01x00"
 horizontal_alignment = 1
 vertical_alignment = 1
 

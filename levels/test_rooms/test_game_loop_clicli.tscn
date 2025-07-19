@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5c0ynrtcfn8a"]
+[gd_scene load_steps=15 format=3 uid="uid://dy6dayu8ykasr"]
 
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_6kybb"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_hld5u"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_uluka"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_u0if8"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_raoiu"]
-[ext_resource type="PackedScene" uid="uid://dfyirglm0cvn5" path="res://scenes/wake_up_goal.tscn" id="8_x2xyv"]
+[ext_resource type="PackedScene" path="res://scenes/wake_up_goal.tscn" id="8_x2xyv"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="9_qsnef"]
 [ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_2tv8k"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="10_8vcal"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("2_6kybb")
@@ -76,5 +77,8 @@ transform = Transform3D(0.89766, -0.0529269, 0.4375, 0, 0.992762, 0.1201, -0.440
 transform = Transform3D(0.89766, -0.0529269, 0.4375, 0, 0.992762, 0.1201, -0.44069, -0.107809, 0.891162, -25.1342, 0.201536, -13.1484)
 
 [node name="UI" parent="." instance=ExtResource("9_qsnef")]
+
+[node name="Pickup" parent="." instance=ExtResource("10_8vcal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4149, -0.778865, -3.65215)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

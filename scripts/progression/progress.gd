@@ -17,6 +17,8 @@ var level : int = 0
 signal time_left_changed(time_left_value : float)
 signal time_up
 
+signal speed_changed(speed_value : float)
+
 signal back_in_house
 signal entered_the_dungeon
 
