@@ -23,6 +23,10 @@ config/icon="res://icon.svg"
 Progress="*res://scripts/progression/progress.gd"
 AudioPlayer="*res://scenes/AudioPlayer.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/P C/Documents/GitHub/dream-sickle/records/R1.avi"

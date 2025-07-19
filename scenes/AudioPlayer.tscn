@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://btx4tl5dqdumg" path="res://assets/audio/dream_sickle_vive_track.mp3" id="1_hs2ye"]
 [ext_resource type="Script" uid="uid://bcs7m1gnewxq8" path="res://scripts/framework/audio_player.gd" id="1_nn5wq"]
 [ext_resource type="AudioStream" uid="uid://b3q0i46xb6xdu" path="res://assets/audio/title_screen.ogg" id="1_og8rt"]
-[ext_resource type="Script" path="res://scripts/framework/audio_stream_player.gd" id="3_nn5wq"]
+[ext_resource type="Script" uid="uid://bm716jwmg67em" path="res://scripts/framework/audio_stream_player.gd" id="3_nn5wq"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3qxq0"]
 clip_count = 2
