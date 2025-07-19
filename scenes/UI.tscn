@@ -80,6 +80,7 @@ grow_vertical = 2
 script = ExtResource("1_pi2vm")
 
 [node name="AlarmAnchor" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -197,7 +198,7 @@ offset_bottom = 40.0
 script = ExtResource("7_mhjpf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LowerLeftAnchor/PortraitAnchor"]
-position = Vector2(147, -90)
+position = Vector2(119, -73)
 scale = Vector2(0.405, 0.405)
 sprite_frames = SubResource("SpriteFrames_h3f0y")
 animation = &"worried"

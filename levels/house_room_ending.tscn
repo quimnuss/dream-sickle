@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://brsw8ojw0fm6i"]
 
-[ext_resource type="Script" uid="uid://da7ogxshvntsy" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
+[ext_resource type="Script" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_3k01w"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_uy00c"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_yv5tl"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_p4d2t"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="7_amycg"]
 [ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_flc58"]
-[ext_resource type="Script" uid="uid://c8plasod13qpb" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
+[ext_resource type="Script" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="15_1wucs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]

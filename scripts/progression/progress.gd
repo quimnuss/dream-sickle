@@ -22,7 +22,7 @@ signal entered_the_dungeon
 
 signal game_won
 
-var is_in_house : bool = false
+var is_in_house : bool = true
 
 func in_house():
 	back_in_house.emit()
