@@ -40,7 +40,7 @@ var jump_count : int = 0
 
 var respawn_position : Vector3
 
-enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING, ROLL}
+enum States {IDLE, RUNNING, JUMPING, FALLING, INTERACTING, ROLL, LEDGE}
 var states_names = {
 	States.IDLE : 'idle',
 	States.RUNNING : 'running',
@@ -48,6 +48,7 @@ var states_names = {
 	States.FALLING : 'falling',
 	States.INTERACTING : 'interacting',
 	States.ROLL : 'roll',
+	States.LEDGE: 'ledge'
 }
 @export var state: States = States.IDLE
 
@@ -57,14 +58,18 @@ func _ready():
 
 func _physics_process(delta):
 	get_input_3d()
+	ledge_detect()
 	update_timers(delta)
 	update_state(delta)
-	apply_gravity(delta)
+	var foo := velocity.y
+	if state != States.LEDGE:
+		apply_gravity(delta)
+		foo = velocity.y	
+		rotate_skin(delta)
 	
-	rotate_skin(delta)
 	
 	move_and_slide()
-	
+	foo = velocity.y
 	animation_tree.set("parameters/RunBlendSpace1D/blend_position", clamp(0.25 + 0.75 * current_speed / max_speed, 0.0, 1.0))
 	Progress.speed_changed.emit(current_speed)
 	
@@ -72,7 +77,7 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
-	#prints('from', states_names[state],' --> ', states_names[new_state])
+	prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
 		# a bit hacky :P roll instantly puts the player to max_speed plus some
@@ -83,6 +88,11 @@ func travel(new_state : States):
 		velocity.z = target_velocity.z
 		state_machine.travel("Roll")
 		elapsed = 0
+	elif new_state == States.LEDGE:
+		state_machine.travel("LedgeGrab")
+	
+	if state == States.LEDGE:
+		anti_coyote_ledge = 3
 
 	state = new_state
 
@@ -90,6 +100,7 @@ func update_state(delta):
 	if debug_state:
 		print(state_machine.get_current_node())
 	#prints('         us ', states_names[state])
+	
 	match state:
 		States.IDLE:
 			current_max_speed = max_speed
@@ -117,10 +128,15 @@ func update_state(delta):
 		States.JUMPING:
 			handle_movement(delta)
 			handle_jump(delta)
+			prints('jumping_velocity', velocity.y)
 			if Input.is_action_just_pressed("roll"):
 				travel(States.ROLL)
-			elif velocity.y < 0.0:
+			elif velocity.y < -0.5:
 				travel(States.FALLING)
+		States.LEDGE:
+			jump_count = 1
+			velocity = Vector3.ZERO
+			handle_jump(delta)
 		States.FALLING:
 			handle_movement(delta)
 			handle_jump(delta)
@@ -129,6 +145,8 @@ func update_state(delta):
 			elif is_on_floor():
 				general_player_sfx.play()
 				travel(States.IDLE)
+			elif is_ledge_possible:
+				travel(States.LEDGE)
 		States.INTERACTING:
 			travel(States.IDLE)
 		States.ROLL:
@@ -166,6 +184,36 @@ func get_input_3d():
 		# Fallback to world space if no camera
 		input_dir = Vector3(in2d.x, 0, in2d.y)
 
+@onready var ledge_sensor_wall: RayCast3D = %LedgeSensorWall
+@onready var ledge_sensor: Node3D = $LedgeSensor
+@onready var ledge_sensor_head: RayCast3D = $LedgeSensor/LedgeSensorHead
+@onready var ledge_grab_mesh: MeshInstance3D = $LedgeGrabPoint
+var is_ledge_possible : bool = false
+# offset between the hands and the player body
+const ledge_animation_offset := Vector3(0, 0.8, -0.2)
+var ledge_grab_point : Vector3
+var anti_coyote_ledge : float = 0
+
+func ledge_detect():
+	if state != States.FALLING or anti_coyote_ledge > 0:
+		ledge_sensor_head.enabled = false
+		ledge_sensor_wall.enabled = false
+		is_ledge_possible = false
+		return
+	ledge_sensor_head.enabled = true
+	ledge_sensor_wall.enabled = true
+	await get_tree().process_frame
+	var offset := Vector3(0, 3, -0.1)
+	var hit_point_wall := ledge_sensor_wall.get_collision_point()
+	if ledge_sensor_wall.is_colliding(): # move the secondraycast perpendicular to the first and shoot down
+		ledge_sensor.global_position = hit_point_wall + offset
+		if ledge_sensor_head.is_colliding():
+			var hit_point_ledge := ledge_sensor_head.get_collision_point()
+			ledge_grab_point = hit_point_ledge - ledge_animation_offset
+			ledge_grab_mesh.global_position = ledge_grab_point
+			is_ledge_possible = true
+		
+
 # ———————— TIMERS ————————
 func update_timers(delta):
 	# Coyote time - can jump for short time after leaving ground
@@ -180,6 +228,9 @@ func update_timers(delta):
 	# Jump buffer timer
 	if jump_buffer_timer > 0:
 		jump_buffer_timer -= delta
+	
+	if anti_coyote_ledge > 0:
+		anti_coyote_ledge -= delta
 
 # ———————— GRAVITY ————————
 func apply_gravity(delta):
@@ -236,7 +287,7 @@ func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
 	var can_jump = is_on_floor() or coyote_timer > 0 or jump_count == 1
 	var wants_to_jump = jump_buffer_timer > 0
-	
+
 	if can_jump and wants_to_jump:
 		velocity.y = jump_velocity
 		jump_buffer_timer = 0  # Consume the buffered jump
