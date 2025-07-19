@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Material" uid="uid://bji2gaxfha0qt" path="res://materials/player_material.tres" id="4_erpy8"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
-[ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
@@ -210,20 +210,20 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.628917, -0.0225921)
+bones/0/position = Vector3(0.00066411, 0.603513, -0.0163677)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.05926, -0.06724, 0.0283438, 0.995572)
-bones/1/scale = Vector3(0.999996, 1.00637, 0.998573)
-bones/2/position = Vector3(0.141141, 0.231524, 0.0240387)
-bones/2/rotation = Quaternion(-0.019294, 0.0537424, -0.993261, 0.100853)
+bones/1/rotation = Quaternion(0.0974625, -0.0681728, 0.0266936, 0.992543)
+bones/1/scale = Vector3(0.999992, 0.977318, 0.998985)
+bones/2/position = Vector3(0.144657, 0.235526, 0.0120356)
+bones/2/rotation = Quaternion(-0.0180614, -0.0180623, -0.996488, 0.0797503)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0716576, -0.00230391, 0.00648728, 0.997406)
+bones/4/rotation = Quaternion(0.00946329, -0.0119501, 0.00361719, 0.999877)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.15322, 0.226587, 0.0238265)
-bones/5/rotation = Quaternion(-0.019051, -0.0541502, 0.994786, 0.0843003)
+bones/5/position = Vector3(-0.157209, 0.230623, 0.0109646)
+bones/5/rotation = Quaternion(-0.0192734, 0.0197152, 0.997681, 0.0622306)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0601673, -0.0341892, 0.0073229, 0.997576)
+bones/7/rotation = Quaternion(-9.04692e-05, 0.00395078, -0.000722313, 0.999992)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -253,19 +253,7 @@ bones/20/position = Vector3(-0.109387, 0.34134, 0.156988)
 bones/20/rotation = Quaternion(0.0321057, 0.706378, 0.706378, 0.0321057)
 bones/20/scale = Vector3(1, 1, 1)
 
-[node name="Clothing" parent="Skin/Player_model/Armature_001/Skeleton3D" index="0"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Face" parent="Skin/Player_model/Armature_001/Skeleton3D" index="1"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
 [node name="Object" parent="Skin/Player_model/Armature_001/Skeleton3D" index="2"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Hair-1" parent="Skin/Player_model/Armature_001/Skeleton3D" index="3"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Hair-2" parent="Skin/Player_model/Armature_001/Skeleton3D" index="4"]
 surface_material_override/0 = ExtResource("4_erpy8")
 
 [node name="AnimationTree" type="AnimationTree" parent="Skin/Player_model"]
