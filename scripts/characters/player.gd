@@ -6,7 +6,7 @@ var current_max_speed		:= max_speed
 @export var current_speed : float = 0
 @export var roll_max_speed_delta := 10.0
 @export var accel           := 4.0
-@export var decel           := 160.0
+@export var decel           := 8.0
 # — Jump & gravity —
 @export var gravity         := 20.0
 @export var jump_velocity   := 10.0
@@ -63,6 +63,7 @@ func _physics_process(delta):
 	rotate_skin(delta)
 	
 	move_and_slide()
+	Progress.speed_changed.emit(current_speed)
 	
 	# Update floor state for next frame
 	was_on_floor = is_on_floor()
@@ -92,11 +93,13 @@ func update_state(delta):
 			handle_movement(delta)
 			handle_jump(delta)
 			if state != States.JUMPING:
-				if velocity.length() > 0 and is_on_floor():
+				if Input.is_action_just_pressed("roll"):
+					travel(States.ROLL)
+				elif velocity.length() > 0 and is_on_floor():
 					travel(States.RUNNING)
-				if Input.is_action_just_pressed("interact"):
+				elif Input.is_action_just_pressed("interact"):
 					travel(States.INTERACTING)
-				if velocity.y < 0.0:
+				elif velocity.y < 0.0:
 					travel(States.FALLING)
 		States.RUNNING:
 			handle_movement(delta)
@@ -104,6 +107,8 @@ func update_state(delta):
 			if state != States.JUMPING:
 				if velocity.is_zero_approx() and is_on_floor():
 					travel(States.IDLE)
+				elif Input.is_action_just_pressed("roll"):
+					travel(States.ROLL)
 				elif velocity.y < 0.0:
 					travel(States.FALLING)
 		States.JUMPING:
@@ -122,7 +127,6 @@ func update_state(delta):
 				travel(States.IDLE)
 		States.INTERACTING:
 			travel(States.IDLE)
-			pass
 		States.ROLL:
 			elapsed += delta
 			handle_movement(delta)
@@ -132,7 +136,6 @@ func update_state(delta):
 					travel(States.IDLE)
 				elif velocity.y < 0.0:
 					travel(States.FALLING)
-			pass
 
 # ———————— INPUT ————————
 func get_input_3d():
@@ -207,11 +210,14 @@ func handle_movement(delta):
 		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
 		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
 	else:
-		current_speed = move_toward(current_speed, 0, decel * delta)
-		# Decelerate when no input
-		var target_velocity := input_dir * current_speed
-		velocity.x = target_velocity.x #move_toward(velocity.x, target_velocity.x, accel * delta)
-		velocity.z = target_velocity.z #move_toward(velocity.z, target_velocity.z, accel * delta)
+		# with deceleration # doesnt work because there's no directional momentum 
+		# velocity.x = move_toward(velocity.x, 0, accel * delta)
+		#velocity.z = move_toward(velocity.z, 0, accel * delta)
+		# without deceleration
+		velocity.x = 0
+		velocity.z = 0
+		
+		current_speed = (velocity*Vector3(1,0,1)).length()
 
 
 # ———————— JUMP ————————

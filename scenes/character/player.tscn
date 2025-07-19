@@ -1,11 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=44 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Material" uid="uid://bji2gaxfha0qt" path="res://materials/player_material.tres" id="4_erpy8"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
-[ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
@@ -107,7 +107,7 @@ advance_mode = 2
 xfade_time = 0.1
 switch_mode = 2
 advance_mode = 2
-advance_expression = "state != States.ROLL"
+advance_expression = "state != States.ROLL and state != States.RUNNING and state != States.IDLE"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x06ku"]
 advance_mode = 2
@@ -121,6 +121,12 @@ advance_expression = "state == States.ROLL"
 xfade_time = 0.1
 advance_mode = 2
 advance_expression = "state == States.RUNNING"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p86hl"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+advance_expression = "state == States.RUNNING or state == States.IDLE"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xub24"]
 states/End/position = Vector2(901, 100)
@@ -137,12 +143,12 @@ states/Jump_fall/position = Vector2(623, 276)
 states/Jump_lift/node = SubResource("AnimationNodeAnimation_xub24")
 states/Jump_lift/position = Vector2(715, 190)
 states/Roll/node = SubResource("AnimationNodeAnimation_vreni")
-states/Roll/position = Vector2(689.061, 406)
+states/Roll/position = Vector2(703.061, 409)
 states/Run/node = SubResource("AnimationNodeAnimation_5y66v")
 states/Run/position = Vector2(470, 229)
 states/Start/position = Vector2(310, 111)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj")]
-graph_offset = Vector2(-70.939, -13)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_p86hl")]
+graph_offset = Vector2(-143.939, -5)
 
 [sub_resource type="Gradient" id="Gradient_7o6gm"]
 offsets = PackedFloat32Array(0.201413, 0.957597)
@@ -204,20 +210,20 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.633912, -0.0238159)
+bones/0/position = Vector3(0.00066411, 0.603513, -0.0163677)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.04473, -0.0669464, 0.0289988, 0.996332)
-bones/1/scale = Vector3(1, 1.03604, 0.999316)
-bones/2/position = Vector3(0.139566, 0.229825, 0.0286126)
-bones/2/rotation = Quaternion(-0.0184393, 0.0822037, -0.990142, 0.111902)
+bones/1/rotation = Quaternion(0.0974625, -0.0681728, 0.0266936, 0.992543)
+bones/1/scale = Vector3(0.999992, 0.977318, 0.998985)
+bones/2/position = Vector3(0.144657, 0.235526, 0.0120356)
+bones/2/rotation = Quaternion(-0.0180614, -0.0180623, -0.996488, 0.0797503)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0812421, -0.00115941, 0.00682463, 0.99667)
+bones/4/rotation = Quaternion(0.00946329, -0.0119501, 0.00361719, 0.999877)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.151449, 0.224816, 0.0288728)
-bones/5/rotation = Quaternion(-0.0175309, -0.085222, 0.991517, 0.0965618)
+bones/5/position = Vector3(-0.157209, 0.230623, 0.0109646)
+bones/5/rotation = Quaternion(-0.0192734, 0.0197152, 0.997681, 0.0622306)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0754063, -0.0455846, 0.0101767, 0.996058)
+bones/7/rotation = Quaternion(-9.04692e-05, 0.00395078, -0.000722313, 0.999992)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -247,19 +253,7 @@ bones/20/position = Vector3(-0.109387, 0.34134, 0.156988)
 bones/20/rotation = Quaternion(0.0321057, 0.706378, 0.706378, 0.0321057)
 bones/20/scale = Vector3(1, 1, 1)
 
-[node name="Clothing" parent="Skin/Player_model/Armature_001/Skeleton3D" index="0"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Face" parent="Skin/Player_model/Armature_001/Skeleton3D" index="1"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
 [node name="Object" parent="Skin/Player_model/Armature_001/Skeleton3D" index="2"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Hair-1" parent="Skin/Player_model/Armature_001/Skeleton3D" index="3"]
-surface_material_override/0 = ExtResource("4_erpy8")
-
-[node name="Hair-2" parent="Skin/Player_model/Armature_001/Skeleton3D" index="4"]
 surface_material_override/0 = ExtResource("4_erpy8")
 
 [node name="AnimationTree" type="AnimationTree" parent="Skin/Player_model"]
