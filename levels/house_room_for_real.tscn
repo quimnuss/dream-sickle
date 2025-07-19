@@ -1,17 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://xpwagbbkxbx3"]
+[gd_scene load_steps=15 format=3 uid="uid://xpwagbbkxbx3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
+[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_3xffa"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_k1u2m"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_gvw1f"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
-[ext_resource type="PackedScene" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
-[ext_resource type="PackedScene" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
-[ext_resource type="PackedScene" uid="uid://u1n7tckf83xq" path="res://assets/world/models/house_model/table.blend" id="11_wjhgj"]
-[ext_resource type="PackedScene" uid="uid://k2stqo7r61g7" path="res://assets/world/models/house_model/teddy.blend" id="12_bb3j3"]
-[ext_resource type="PackedScene" uid="uid://bh0mhtcdn7fn4" path="res://assets/world/models/house_model/carpet.blend" id="13_w4r0u"]
-[ext_resource type="PackedScene" uid="uid://b6y6wiyxht87h" path="res://assets/world/models/house_model/dresser.blend" id="14_vrnav"]
-[ext_resource type="PackedScene" uid="uid://cn1r1cw26fjat" path="res://assets/world/models/house_model/room.blend" id="15_thm64"]
+[ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_3xffa"]
+[ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="16_bb3j3"]
 [ext_resource type="PackedScene" uid="uid://b6ma3vj8q45kp" path="res://scenes/intro.tscn" id="17_w4r0u"]
 
@@ -30,55 +26,25 @@ background_mode = 2
 sky = SubResource("Sky_210xl")
 tonemap_mode = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hk8qe"]
-size = Vector3(2, 2, 2)
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_wjhgj"]
-radius = 1.11182
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6ug08"]
-size = Vector3(1, 3.13916, 1.93188)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wjhgj"]
-size = Vector3(1.49121, 6.76953, 10.1487)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bb3j3"]
-size = Vector3(8.24707, 5.17944, 1.59082)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vrnav"]
-size = Vector3(8.24707, 5.17944, 1.59082)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_w4r0u"]
-size = Vector3(8.13477, 0.913818, 10.1487)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjhgj"]
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
 
 [node name="HouseRoom" type="Node3D"]
 script = ExtResource("1_4o67w")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_trrfu")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
 light_color = Color(0.205117, 0.205117, 0.205117, 1)
 light_energy = 0.1
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_w1t30")
-
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.09293, 3.82868, -8.31153)
-shape = SubResource("BoxShape3D_hk8qe")
 
 [node name="PlayerAnchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00733, 2.50365, -1.56688)
@@ -87,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00733, 2.50365, -1.56688)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
-transform = Transform3D(0.866025, -0.25, 0.433013, 1.11895e-08, 0.866025, 0.5, -0.5, -0.433013, 0.75, 1, 2, 4)
+transform = Transform3D(0.891815, -0.195817, 0.407827, 0, 0.901471, 0.432839, -0.452402, -0.386012, 0.803945, 0.829713, 1.34768, 4.02396)
 
 [node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
@@ -99,88 +65,28 @@ respawn_point = NodePath("../PlayerAnchor")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")
 
-[node name="Cloud" parent="." instance=ExtResource("10_3xffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15563, 0.63058, -14.149)
+[node name="Clouds" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.69094, -7.64857)
 
-[node name="RoomAnchor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
+[node name="Cloud" parent="Clouds" instance=ExtResource("10_3xffa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84437, 4.63058, -14.149)
 
-[node name="room2" parent="RoomAnchor" instance=ExtResource("15_thm64")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.13163, 1.99216, -0.563526)
+[node name="Cloud2" parent="Clouds" instance=ExtResource("10_3xffa")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 3.84437, 8.1752, -20.8531)
+speed_multiplier = 0.5
 
-[node name="ROOM" parent="RoomAnchor/room2" index="0"]
-transform = Transform3D(0.0280987, 0, 4.67998, 0, 4.056, 0, -9.42696, 0, 0.0139495, -0.703453, 2.49017, -1.07698)
+[node name="Cloud3" parent="Clouds" instance=ExtResource("10_3xffa")]
+transform = Transform3D(-0.72213, 0, 0.0644484, 0, 0.725, 0, -0.0644484, 0, -0.72213, -7.21231, 7.43401, -14.149)
+speed_multiplier = 0.6
 
-[node name="Bed" parent="RoomAnchor" instance=ExtResource("9_trrfu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.6484, 1.42537, 1.93779)
+[node name="Cloud4" parent="Clouds" instance=ExtResource("10_3xffa")]
+transform = Transform3D(0.765, 0, 1.33757e-07, 0, 0.765, 0, -1.33757e-07, 0, 0.765, 10.0034, 7.43401, -17.77)
+speed_multiplier = 0.8
 
-[node name="table" parent="RoomAnchor" instance=ExtResource("11_wjhgj")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.56458, 1.30961, -1.80286)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor/table"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/table/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99848, -0.205993)
-shape = SubResource("CylinderShape3D_wjhgj")
-
-[node name="teddy" parent="RoomAnchor" instance=ExtResource("12_bb3j3")]
-transform = Transform3D(0.220472, 0, -0.333755, 0.0530965, 0.394906, 0.0350746, 0.329504, -0.0636354, 0.217664, 3.10022, 2.08497, -0.747538)
-
-[node name="carpet" parent="RoomAnchor" instance=ExtResource("13_w4r0u")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.51272, 1.34533, -0.24188)
-
-[node name="dresser" parent="RoomAnchor" instance=ExtResource("14_vrnav")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.97343, 1.40154, -0.090237)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor/dresser"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/dresser/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06958, -0.15775)
-shape = SubResource("BoxShape3D_6ug08")
-
-[node name="room" parent="RoomAnchor" instance=ExtResource("15_thm64")]
-visible = false
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor"]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02349, 3.42434, -1.91938)
-shape = SubResource("BoxShape3D_wjhgj")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65061, 3.42434, -1.91938)
-shape = SubResource("BoxShape3D_wjhgj")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81492, 3.42434, 3.04528)
-shape = SubResource("BoxShape3D_bb3j3")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81492, 3.42434, -2.84428)
-shape = SubResource("BoxShape3D_vrnav")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81492, 5.12796, -1.84953)
-shape = SubResource("BoxShape3D_w4r0u")
-debug_color = Color(0.779042, 0.287459, 0.825109, 0.42)
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81492, 1.49742, -1.84953)
-shape = SubResource("BoxShape3D_w4r0u")
-debug_color = Color(0.779042, 0.287459, 0.825109, 0.42)
+[node name="RoomAnchor" parent="." instance=ExtResource("8_3xffa")]
 
 [node name="UI" parent="." instance=ExtResource("16_bb3j3")]
 
 [node name="Intro" parent="." instance=ExtResource("17_w4r0u")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-visible = false
-flip_faces = true
-size = Vector3(100, 100, 100)
-material = SubResource("StandardMaterial3D_wjhgj")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
-
-[editable path="RoomAnchor/room2"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://brsw8ojw0fm6i"]
+
+[ext_resource type="Script" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
+[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_3k01w"]
+[ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_uy00c"]
+[ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_yv5tl"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_dlvab"]
+[ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_p4d2t"]
+[ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="7_amycg"]
+[ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_flc58"]
+[ext_resource type="Script" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="15_1wucs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
+shader = ExtResource("3_uy00c")
+shader_parameter/Top_Color = Color(0.074644, 0.218426, 0.247036, 1)
+shader_parameter/Horizon_Color = Color(0.047408, 0.184391, 0.19917, 1)
+shader_parameter/skye_cloudes = ExtResource("4_yv5tl")
+shader_parameter/Bottom_Color = Color(0.0875642, 0.172635, 0.142843, 1)
+
+[sub_resource type="Sky" id="Sky_210xl"]
+sky_material = SubResource("ShaderMaterial_soh3a")
+
+[sub_resource type="Environment" id="Environment_w1t30"]
+background_mode = 2
+sky = SubResource("Sky_210xl")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5a77u"]
+radius = 0.833008
+
+[node name="HouseRoom" type="Node3D"]
+script = ExtResource("1_bxhyf")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_3k01w")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.205117, 0.205117, 0.205117, 1)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_w1t30")
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00733, 2.50365, -1.56688)
+
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("5_dlvab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
+transform = Transform3D(0.962938, -0.1324, 0.234992, 0, 0.871232, 0.490872, -0.269724, -0.472679, 0.838942, 0.507532, 2.04807, 3.85469)
+
+[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("6_p4d2t")
+respawn_point = NodePath("../PlayerAnchor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_3wmay")
+
+[node name="Clouds" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.69094, -7.64857)
+
+[node name="Cloud" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84437, 4.63058, -14.149)
+
+[node name="Cloud2" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 3.84437, 8.1752, -20.8531)
+speed_multiplier = 0.5
+
+[node name="Cloud3" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.72213, 0, 0.0644484, 0, 0.725, 0, -0.0644484, 0, -0.72213, -7.21231, 7.43401, -14.149)
+speed_multiplier = 0.6
+
+[node name="Cloud4" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(0.765, 0, 1.33757e-07, 0, 0.765, 0, -1.33757e-07, 0, 0.765, 10.0034, 7.43401, -17.77)
+speed_multiplier = 0.8
+
+[node name="RoomAnchor" parent="." instance=ExtResource("8_flc58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
+
+[node name="EndGame" type="Node3D" parent="RoomAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3427, 3.2866, -2.27873)
+script = ExtResource("14_qq1kk")
+
+[node name="Label3D" type="Label3D" parent="RoomAnchor/EndGame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103742, 0)
+visible = false
+billboard = 1
+text = "F"
+font_size = 60
+
+[node name="Interactable" type="Area3D" parent="RoomAnchor/EndGame"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/EndGame/Interactable"]
+shape = SubResource("CylinderShape3D_5a77u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RoomAnchor/EndGame"]
+root_node = NodePath("../../..")
+
+[node name="UI" parent="." instance=ExtResource("15_1wucs")]
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+[connection signal="area_entered" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_entered"]
+[connection signal="area_exited" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_exited"]

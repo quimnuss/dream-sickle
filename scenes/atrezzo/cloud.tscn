@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bammk1yn3818b"]
+[gd_scene load_steps=3 format=3 uid="uid://bammk1yn3818b"]
 
+[ext_resource type="Script" uid="uid://cu0ympu3y0hpo" path="res://scripts/atrezzo/cloud.gd" id="1_ai6nt"]
 [ext_resource type="PackedScene" uid="uid://bnj2ont3l6epd" path="res://assets/world/models/cloud1.blend" id="1_mqlun"]
 
 [node name="Cloud" type="Node3D"]
+script = ExtResource("1_ai6nt")
 
 [node name="cloud1" parent="." instance=ExtResource("1_mqlun")]
 transform = Transform3D(0.735009, 0, -0.678057, 0, 1, 0, 0.678057, 0, 0.735009, -0.120251, 0, -0.208104)

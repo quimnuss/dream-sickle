@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Material" uid="uid://bji2gaxfha0qt" path="res://materials/player_material.tres" id="4_erpy8"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
-[ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
@@ -204,20 +204,20 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.635272, -0.0241491)
+bones/0/position = Vector3(0.00066411, 0.60782, -0.0174231)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0400592, -0.0668593, 0.0292124, 0.99653)
-bones/1/scale = Vector3(1.00001, 1.04692, 0.999589)
-bones/2/position = Vector3(0.139088, 0.229289, 0.0299581)
-bones/2/rotation = Quaternion(-0.0180759, 0.0909074, -0.988974, 0.1155)
+bones/1/rotation = Quaternion(0.104825, -0.0683787, 0.0263882, 0.991786)
+bones/1/scale = Vector3(0.99999, 0.975703, 0.99813)
+bones/2/position = Vector3(0.145452, 0.235609, 0.0101863)
+bones/2/rotation = Quaternion(-0.0189169, -0.0213033, -0.996589, 0.0774519)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(-0.0840606, -0.000822657, 0.00692374, 0.996436)
+bones/4/rotation = Quaternion(-0.0228495, -0.00811641, 0.0047636, 0.999695)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.150947, 0.224285, 0.030236)
-bones/5/rotation = Quaternion(-0.0170089, -0.0941156, 0.990354, 0.100256)
+bones/5/position = Vector3(-0.157669, 0.230585, 0.00999913)
+bones/5/rotation = Quaternion(-0.0199162, 0.0211042, 0.997725, 0.0608494)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.08023, -0.0491925, 0.0110803, 0.9955)
+bones/7/rotation = Quaternion(-0.00740074, 0.00523722, -0.00254736, 0.999956)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
