@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://drggevhvr6isq"]
+[gd_scene load_steps=46 format=3 uid="uid://drggevhvr6isq"]
 
 [ext_resource type="Script" uid="uid://nodd6pq7enhf" path="res://scripts/characters/player.gd" id="1_xslmj"]
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Material" uid="uid://bji2gaxfha0qt" path="res://materials/player_material.tres" id="4_erpy8"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
+[ext_resource type="AudioStream" uid="uid://cjhyx3pqjif61" path="res://assets/audio/jump_ground.wav" id="5_wmtbp"]
 [ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
@@ -150,6 +151,12 @@ states/Start/position = Vector2(310, 111)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5y66v"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_uicah"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_g2qfr"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_xub24"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_erpy8"), "Idle", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_iinkm"), "Jump_lift", "Jump_air", SubResource("AnimationNodeStateMachineTransition_vreni"), "Jump_air", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_7r6u0"), "Jump_fall", "Idle", SubResource("AnimationNodeStateMachineTransition_e5n5u"), "Run", "Jump_lift", SubResource("AnimationNodeStateMachineTransition_wmtbp"), "Idle", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_ba010"), "Run", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_jb4us"), "Jump_air", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_ux0ro"), "Jump_dive", "Roll", SubResource("AnimationNodeStateMachineTransition_vhx6d"), "Roll", "Jump_fall", SubResource("AnimationNodeStateMachineTransition_2smwq"), "Jump_lift", "Jump_dive", SubResource("AnimationNodeStateMachineTransition_x06ku"), "Jump_fall", "Roll", SubResource("AnimationNodeStateMachineTransition_pygui"), "Jump_fall", "Run", SubResource("AnimationNodeStateMachineTransition_okkwj"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_p86hl")]
 graph_offset = Vector2(-143.939, -5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5y66v"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("5_wmtbp")
+
 [sub_resource type="Gradient" id="Gradient_7o6gm"]
 offsets = PackedFloat32Array(0.201413, 0.957597)
 colors = PackedColorArray(1, 0.458824, 0.305882, 1, 0, 0, 0, 0)
@@ -210,20 +217,20 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.00066411, 0.603513, -0.0163677)
+bones/0/position = Vector3(0.00066411, 0.62846, -0.02248)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0974625, -0.0681728, 0.0266936, 0.992543)
-bones/1/scale = Vector3(0.999992, 0.977318, 0.998985)
-bones/2/position = Vector3(0.144657, 0.235526, 0.0120356)
-bones/2/rotation = Quaternion(-0.0180614, -0.0180623, -0.996488, 0.0797503)
+bones/1/rotation = Quaternion(0.0604819, -0.0672666, 0.0282895, 0.995498)
+bones/1/scale = Vector3(0.999996, 1.00424, 0.99852)
+bones/2/position = Vector3(0.141271, 0.231655, 0.0236363)
+bones/2/rotation = Quaternion(-0.0193404, 0.0514334, -0.993468, 0.100006)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(0.00946329, -0.0119501, 0.00361719, 0.999877)
+bones/4/rotation = Quaternion(-0.0707819, -0.00240843, 0.00645643, 0.997468)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.157209, 0.230623, 0.0109646)
-bones/5/rotation = Quaternion(-0.0192734, 0.0197152, 0.997681, 0.0622306)
+bones/5/position = Vector3(-0.153361, 0.226722, 0.0234082)
+bones/5/rotation = Quaternion(-0.0191426, -0.0516752, 0.994992, 0.0833888)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-9.04692e-05, 0.00395078, -0.000722313, 0.999992)
+bones/7/rotation = Quaternion(-0.0588666, -0.0332168, 0.00707938, 0.997688)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -260,6 +267,11 @@ surface_material_override/0 = ExtResource("4_erpy8")
 tree_root = SubResource("AnimationNodeStateMachine_xub24")
 advance_expression_base_node = NodePath("../../..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="PlayerSfx" type="AudioStreamPlayer" parent="Skin"]
+
+[node name="GeneralPlayerSfx" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5y66v")
 
 [node name="Effects" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05591, 0)

@@ -28,6 +28,7 @@ var input_dir: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $Skin/Player_model/AnimationTree
 @onready var skeleton_3d: Skeleton3D = $Skin/Player_model/Armature_001/Skeleton3D
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+@onready var general_player_sfx: AudioStreamPlayer = $GeneralPlayerSfx
 @export var debug_state := false
 
 # Quality of life timers
@@ -69,7 +70,7 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
-	prints('from', states_names[state],' --> ', states_names[new_state])
+	#prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
 		# a bit hacky :P roll instantly puts the player to max_speed plus some
@@ -124,6 +125,7 @@ func update_state(delta):
 			if Input.is_action_just_pressed("roll"):
 				travel(States.ROLL)
 			elif is_on_floor():
+				general_player_sfx.play()
 				travel(States.IDLE)
 		States.INTERACTING:
 			travel(States.IDLE)
