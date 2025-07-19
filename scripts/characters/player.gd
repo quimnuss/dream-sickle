@@ -191,10 +191,11 @@ func apply_gravity(delta):
 			gravity_multiplier = ground_gravity_multiplier
 	else:
 		# Variable jump height - fall faster when jump released early
-		if velocity.y > 0 and not Input.is_action_pressed("jump"):
-			gravity_multiplier = jump_release_multiplier
-		# Fall faster than jumping up
-		elif velocity.y < 0:
+		#if velocity.y > 0 and not Input.is_action_pressed("jump"):
+			#gravity_multiplier = jump_release_multiplier
+		## Fall faster than jumping up
+		#el
+		if velocity.y < 0:
 			gravity_multiplier = fall_gravity_multiplier
 	
 	velocity.y -= gravity * gravity_multiplier * delta
