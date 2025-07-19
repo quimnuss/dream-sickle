@@ -72,7 +72,7 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor()
 
 func travel(new_state : States):
-	prints('from', states_names[state],' --> ', states_names[new_state])
+	#prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
 		# a bit hacky :P roll instantly puts the player to max_speed plus some
