@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var label_3d: Label3D = $Label3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var is_in_range : bool = false
@@ -8,7 +9,7 @@ var is_in_range : bool = false
 
 func _input(event: InputEvent) -> void:
 	if is_in_range and event.is_action_pressed("interact"):
-		pass
+		animation_player.play("end_flyby")
 		
 		
 

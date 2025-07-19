@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://brsw8ojw0fm6i"]
+[gd_scene load_steps=21 format=3 uid="uid://w0lxr0ogg6eo"]
 
 [ext_resource type="Script" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_3k01w"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_dlvab"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_p4d2t"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="7_amycg"]
-[ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_flc58"]
-[ext_resource type="Script" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
+[ext_resource type="PackedScene" path="res://scenes/room_anchor.tscn" id="8_flc58"]
+[ext_resource type="StyleBox" uid="uid://cv8mqiakuppxd" path="res://assets/ui/credit_style.tres" id="11_5a77u"]
+[ext_resource type="Texture2D" uid="uid://bo6gt0hiasfnu" path="res://assets/ui/title.png" id="12_ww2gf"]
+[ext_resource type="Script" uid="uid://c8plasod13qpb" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="15_1wucs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
@@ -31,7 +33,117 @@ tonemap_mode = 2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5a77u"]
 radius = 0.833008
 
-[node name="HouseRoom" type="Node3D"]
+[sub_resource type="Animation" id="Animation_flc58"]
+resource_name = "end_flyby"
+length = 6.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnchor/Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.507532, 2.04807, 3.85469), Vector3(-0.43824, 1.22721, 0.799911), Vector3(-0.298801, 0.992573, -2.23669), Vector3(5.62605, 0.979995, -7.22578), Vector3(8.44379, 1.2563, -14.1757), Vector3(4.65652, 1.50338, -21.0202), Vector3(0.114504, 1.81909, -23.8941)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnchor/Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.51309, 0.273106, 0), Vector3(-0.124754, 0.102937, 0), Vector3(-0.0374878, -0.141409, 0), Vector3(0.0105087, -0.193769, 0), Vector3(0.027962, 0.626536, 0), Vector3(0.0366887, 1.21558, 0), Vector3(0.0585053, 1.44684, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Credits:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_5a77u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnchor/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.507532, 2.04807, 3.85469)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnchor/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.51309, 0.273106, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Credits:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww2gf"]
+_data = {
+&"RESET": SubResource("Animation_5a77u"),
+&"end_flyby": SubResource("Animation_flc58")
+}
+
+[node name="HouseRoom2" type="Node3D"]
 script = ExtResource("1_bxhyf")
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -86,6 +198,38 @@ speed_multiplier = 0.6
 transform = Transform3D(0.765, 0, 1.33757e-07, 0, 0.765, 0, -1.33757e-07, 0, 0.765, 10.0034, 7.43401, -17.77)
 speed_multiplier = 0.8
 
+[node name="Cloud5" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(0.588261, 0, 0.0452643, 0, 0.59, 0, -0.0452643, 0, 0.588261, -17.8358, 4.63058, -14.149)
+speed_multiplier = 1.085
+
+[node name="Cloud6" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.404371, 0, 0.577502, 0, 0.705, 0, -0.577502, 0, -0.404371, -21.9764, 8.1752, -20.8531)
+speed_multiplier = 0.425
+
+[node name="Cloud7" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.665, 0, -5.81361e-08, 0, 0.665, 0, 5.81361e-08, 0, -0.665, -28.8925, 7.43401, -14.149)
+speed_multiplier = 0.68
+
+[node name="Cloud8" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.985, 0, -8.61114e-08, 0, 0.985, 0, 8.61114e-08, 0, -0.985, -11.6768, 7.43401, -17.77)
+speed_multiplier = 0.855
+
+[node name="Cloud9" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6763, 4.63058, -18.948)
+speed_multiplier = 0.945
+
+[node name="Cloud10" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, -38.6763, 8.1752, -10.6374)
+speed_multiplier = 0.575
+
+[node name="Cloud11" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(-0.72213, 0, 0.0644484, 0, 0.725, 0, -0.0644484, 0, -0.72213, -58.3286, 7.43401, -14.149)
+speed_multiplier = 0.43
+
+[node name="Cloud12" parent="Clouds" instance=ExtResource("7_amycg")]
+transform = Transform3D(0.765, 0, 1.33757e-07, 0, 0.765, 0, -1.33757e-07, 0, 0.765, -42.8939, 7.43401, -17.77)
+speed_multiplier = 0.855
+
 [node name="RoomAnchor" parent="." instance=ExtResource("8_flc58")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
 
@@ -109,8 +253,175 @@ shape = SubResource("CylinderShape3D_5a77u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RoomAnchor/EndGame"]
 root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ww2gf")
+}
 
 [node name="UI" parent="." instance=ExtResource("15_1wucs")]
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsNames" type="Control" parent="Credits"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditsClicli" type="RichTextLabel" parent="Credits/CreditsNames"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = 111.0
+offset_right = -49.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("11_5a77u")
+bbcode_enabled = true
+text = "[color=tomato]Programming[/color]
+Clicli"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsSnacks" type="RichTextLabel" parent="Credits/CreditsNames"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = 92.0
+offset_right = -219.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("11_5a77u")
+bbcode_enabled = true
+text = "[color=tomato]Modeling[/color]
+Snacks"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsKetao" type="RichTextLabel" parent="Credits/CreditsNames"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = 99.0
+offset_right = 138.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("11_5a77u")
+bbcode_enabled = true
+text = "[color=tomato]Level Design[/color]
+Keta O"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsAiden" type="RichTextLabel" parent="Credits/CreditsNames"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 170.0
+offset_top = 95.0
+offset_right = 305.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 5
+theme_override_styles/normal = ExtResource("11_5a77u")
+bbcode_enabled = true
+text = "[color=tomato]Music[/color]
+Aiden Rose Creative"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameJam" type="RichTextLabel" parent="Credits/CreditsNames"]
+layout_mode = 0
+offset_left = -252.0
+offset_top = 161.0
+offset_right = 294.0
+offset_bottom = 352.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 30
+theme_override_font_sizes/mono_font_size = 30
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "Made in [color=tomato][wave]10 days[/wave][/color]
+for the [color=Deepskyblue]ShovelGameJam[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Credits/CreditsNames"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -333.0
+offset_top = -299.0
+offset_right = 279.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("12_ww2gf")
+
+[node name="Control" type="Control" parent="Credits"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Rested" type="RichTextLabel" parent="Credits/Control"]
+layout_mode = 0
+offset_left = -296.0
+offset_top = -123.0
+offset_right = 250.0
+offset_bottom = 68.0
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "You woke up rested "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="area_entered" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_entered"]
