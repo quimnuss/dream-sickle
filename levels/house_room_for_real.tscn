@@ -1,15 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://xpwagbbkxbx3"]
+[gd_scene load_steps=27 format=3 uid="uid://xpwagbbkxbx3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
-[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_3xffa"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_k1u2m"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_gvw1f"]
-[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_ew0sj"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
-[ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_wjhgj"]
-[ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
-[ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
+[ext_resource type="PackedScene" path="res://scenes/atrezzo/bed.tscn" id="9_trrfu"]
+[ext_resource type="PackedScene" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
 [ext_resource type="PackedScene" uid="uid://u1n7tckf83xq" path="res://assets/world/models/house_model/table.blend" id="11_wjhgj"]
 [ext_resource type="PackedScene" uid="uid://k2stqo7r61g7" path="res://assets/world/models/house_model/teddy.blend" id="12_bb3j3"]
 [ext_resource type="PackedScene" uid="uid://bh0mhtcdn7fn4" path="res://assets/world/models/house_model/carpet.blend" id="13_w4r0u"]
@@ -56,20 +53,18 @@ size = Vector3(8.24707, 5.17944, 1.59082)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w4r0u"]
 size = Vector3(8.13477, 0.913818, 10.1487)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjhgj"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="HouseRoom" type="Node3D"]
 script = ExtResource("1_4o67w")
-
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_trrfu")
-data = {
-"cells": PackedInt32Array(0, 65535, 4, 0, 65534, 3, 0, 65533, 2, 0, 65532, 2, 65535, 65532, 3, 65535, 65533, 3, 65535, 65534, 4, 65535, 65535, 4, 65535, 0, 2, 0, 0, 2, 65534, 65530, 2, 65533, 65530, 2, 65533, 65529, 2, 65534, 65529, 2, 1, 65528, 2, 2, 65528, 2, 2, 65527, 2, 1, 65527, 2, 65535, 65525, 2, 65533, 65525, 2, 65533, 65524, 2, 65533, 65523, 2, 65534, 65523, 2, 65535, 65523, 2, 65535, 65524, 2, 65534, 65525, 2, 65534, 65524, 2, 13, 65519, 3, 13, 65520, 3, 14, 65520, 3, 14, 65519, 3, 15, 65519, 3, 15, 65520, 3, 15, 65521, 3, 14, 65521, 3, 13, 65521, 3, 2, 65517, 2, 1, 65517, 2, 1, 65516, 2, 1, 65515, 2, 2, 65515, 2, 3, 65515, 2, 3, 65516, 2, 2, 65516, 2, 3, 65517, 2, 65534, 65509, 2, 65535, 65509, 2, 0, 65509, 2, 1, 65509, 2, 1, 65508, 2, 0, 65508, 2, 65535, 65508, 2, 65534, 65508, 2, 65535, 65507, 2, 0, 65507, 2, 1, 65507, 2, 65534, 65507, 2, 65538, 65528, 2, 65538, 65527, 2, 65537, 65527, 2, 65537, 65528, 2, 131071, 65524, 2, 131071, 65525, 2, 131070, 65523, 2, 131069, 65524, 2, 131069, 65525, 2, 131070, 65525, 2, 131070, 65524, 2, 131071, 65523, 2, 131069, 65523, 2, 196607, 65524, 2, 196606, 65523, 2, 196606, 65524, 2, 196605, 65523, 2, 196605, 65524, 2, 196605, 65525, 2, 196606, 65525, 2, 196607, 65525, 2, 196607, 65523, 2, 65537, 65508, 2, 65537, 65509, 2, 131071, 65508, 2, 131070, 65509, 2, 131070, 65508, 2, 131070, 65507, 2, 131071, 65507, 2, 65536, 65507, 2, 65537, 65507, 2, 65536, 65509, 2, 131071, 65509, 2, 65536, 65508, 2, 65551, 65521, 3, 65550, 65521, 3, 65549, 65521, 3, 65549, 65520, 3, 65549, 65519, 3, 65550, 65519, 3, 65551, 65519, 3, 65550, 65520, 3, 65551, 65520, 3, 131085, 65520, 3, 131085, 65519, 3, 131087, 65519, 3, 131087, 65520, 3, 131087, 65521, 3, 131086, 65521, 3, 131086, 65520, 3, 131086, 65519, 3, 131085, 65521, 3, 196622, 65521, 3, 196623, 65521, 3, 196623, 65519, 3, 196623, 65520, 3, 196621, 65519, 3, 196621, 65521, 3, 196621, 65520, 3, 196622, 65519, 3, 196622, 65520, 3, 1, 65535, 4, 2, 65535, 4, 3, 65535, 4, 1, 65534, 4, 2, 65534, 4, 3, 65534, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4, 4, 65535, 4, 4, 65534, 4, 4, 65533, 4, 3, 65533, 4, 5, 65534, 4, 5, 65535, 4, 5, 0, 4)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
 light_color = Color(0.205117, 0.205117, 0.205117, 1)
 light_energy = 0.1
 shadow_enabled = true
@@ -92,10 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00733, 2.50365, -1.56688)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.449847, 1, 1.29999)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
-script = ExtResource("6_ew0sj")
-player_path = NodePath("../Character")
-offset = Vector3(2.7, 3.6, 2.7)
+transform = Transform3D(0.866025, -0.25, 0.433013, 1.11895e-08, 0.866025, 0.5, -0.5, -0.433013, 0.75, 1, 2, 4)
 
 [node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
@@ -107,13 +99,8 @@ respawn_point = NodePath("../PlayerAnchor")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")
 
-[node name="TestRoom" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.344, -11.4665, 0)
-script = ExtResource("8_wjhgj")
-dungeon = "test_playground"
-
 [node name="Cloud" parent="." instance=ExtResource("10_3xffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84437, 4.63058, -14.149)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15563, 0.63058, -14.149)
 
 [node name="RoomAnchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
@@ -121,26 +108,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
 [node name="room2" parent="RoomAnchor" instance=ExtResource("15_thm64")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.13163, 1.99216, -0.563526)
 
+[node name="ROOM" parent="RoomAnchor/room2" index="0"]
+transform = Transform3D(0.0280987, 0, 4.67998, 0, 4.056, 0, -9.42696, 0, 0.0139495, -0.703453, 2.49017, -1.07698)
+
 [node name="Bed" parent="RoomAnchor" instance=ExtResource("9_trrfu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.6484, 2.02537, 0.937793)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.6484, 1.42537, 1.93779)
 
 [node name="table" parent="RoomAnchor" instance=ExtResource("11_wjhgj")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.56458, 2.00961, -1.80286)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.56458, 1.30961, -1.80286)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor/table"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/table/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19848, -0.205993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99848, -0.205993)
 shape = SubResource("CylinderShape3D_wjhgj")
 
 [node name="teddy" parent="RoomAnchor" instance=ExtResource("12_bb3j3")]
 transform = Transform3D(0.220472, 0, -0.333755, 0.0530965, 0.394906, 0.0350746, 0.329504, -0.0636354, 0.217664, 3.10022, 2.08497, -0.747538)
 
 [node name="carpet" parent="RoomAnchor" instance=ExtResource("13_w4r0u")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.51272, 1.94533, -0.74188)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.51272, 1.34533, -0.24188)
 
 [node name="dresser" parent="RoomAnchor" instance=ExtResource("14_vrnav")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.97343, 2.00154, -0.090237)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.97343, 1.40154, -0.090237)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor/dresser"]
 
@@ -152,6 +142,7 @@ shape = SubResource("BoxShape3D_6ug08")
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RoomAnchor"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomAnchor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02349, 3.42434, -1.91938)
@@ -183,5 +174,13 @@ debug_color = Color(0.779042, 0.287459, 0.825109, 0.42)
 
 [node name="Intro" parent="." instance=ExtResource("17_w4r0u")]
 
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+flip_faces = true
+size = Vector3(100, 100, 100)
+material = SubResource("StandardMaterial3D_wjhgj")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
+
+[editable path="RoomAnchor/room2"]

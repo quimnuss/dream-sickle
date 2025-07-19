@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyjm6kspk3mb8" path="res://assets/models/player_model.blend" id="2_xslmj"]
 [ext_resource type="Script" uid="uid://7rl1fxh6pbw2" path="res://scripts/components/hit_box.gd" id="4_eb1dh"]
 [ext_resource type="Script" uid="uid://dl00xcvxjno8j" path="res://scripts/components/effects.gd" id="5_eb1dh"]
-[ext_resource type="Script" uid="uid://m2qbksujijd2" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
+[ext_resource type="Script" path="res://scripts/framework/floor_detector.gd" id="7_wmtbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l72tn"]
 radius = 0.242452
