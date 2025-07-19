@@ -8,8 +8,8 @@ var is_consumed : bool = false
 func _ready():
 	
 	var tween : Tween = create_tween().set_loops()
-	tween.tween_property(anchor, 'position:y', 0.4, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(anchor, 'position:y', 0, 1).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(anchor, 'position:y', 0.4, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(anchor, 'position:y', 0, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	var tween_rot : Tween = create_tween().set_loops()
 	tween_rot.tween_property(anchor, 'rotation:y', 2*PI, 5).from(0)
