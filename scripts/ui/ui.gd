@@ -4,6 +4,7 @@ extends Control
 @onready var alarm_anchor: Control = $AlarmAnchor
 @onready var menu_container: VBoxContainer = %MenuContainer
 @onready var panel_container: PanelContainer = $UpperRightAnchor/PanelContainer
+@onready var exit_button: Button = %ExitButton
 
 var last_time : float = Progress.base_time
 
@@ -16,6 +17,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_tree().quit(0)
 		else:
 			_on_hamburger_button_pressed()
+			exit_button.grab_focus()
 
 func _on_time_left_updated(new_time : float):
 	if new_time < 10:
