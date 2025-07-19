@@ -62,7 +62,7 @@ shape = SubResource("BoxShape3D_hk8qe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19609, 2.50365, -1.56688)
 
 [node name="Character" parent="PlayerAnchor" instance=ExtResource("5_lppbx")]
-transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, -18.8226, -4.32111, 19.706)
+transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, -23.6089, -2.86643, 19.706)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
