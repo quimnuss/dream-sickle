@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_enm5y"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_irfsc"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
-[ext_resource type="PackedScene" uid="uid://dxwuhchtmtu3n" path="res://assets/world/models/levels/level1_tutorial.blend" id="9_k7wcj"]
+[ext_resource type="PackedScene" uid="uid://bhujmolv4oe7o" path="res://assets/world/models/levels/level_lastlevel_ascend.blend" id="9_k7wcj"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
 [ext_resource type="PackedScene" uid="uid://bvijgj1661rqm" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
 
@@ -86,8 +86,8 @@ transform = Transform3D(0.282659, 0, 0.246432, 0, 0.375, 0, -0.246432, 0, 0.2826
 [node name="grass_tufts3" parent="." instance=ExtResource("11_colnj")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -24.6256, -1.65622, 17.6614)
 
-[node name="level1_tutorial" parent="." instance=ExtResource("9_k7wcj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078722, 0, -0.0830793)
+[node name="level_lastlevel_ascend" parent="." instance=ExtResource("9_k7wcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277777, 9.53674e-07, -1.60385)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
