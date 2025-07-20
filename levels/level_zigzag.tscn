@@ -12,6 +12,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.33995, 0)
 [node name="Pickup" parent="." instance=ExtResource("2_lj78x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 1.09097, -21.117)
 
+[node name="Pickup2" parent="." instance=ExtResource("2_lj78x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04165, 1.09097, 5.21501)
+
+[node name="Pickup3" parent="." instance=ExtResource("2_lj78x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37493, 1.09097, 5.21501)
+
 [node name="TeleportLevel" parent="." instance=ExtResource("3_0sjqh")]
 transform = Transform3D(-0.0182551, 0, -0.999833, 0, 1, 0, 0.999833, 0, -0.0182551, 84.5801, 2.27034, -17.5779)
 dungeon = "level_gettrolling"
+
+[node name="TeleportLevelBack" parent="." instance=ExtResource("3_0sjqh")]
+transform = Transform3D(-0.998278, 0, -0.0586618, 0, 1, 0, 0.0586618, 0, -0.998278, 0.618225, 0.358028, 5.69252)
+is_back_door = true

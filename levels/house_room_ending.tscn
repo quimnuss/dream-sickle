@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://w0lxr0ogg6eo"]
+[gd_scene load_steps=25 format=3 uid="uid://w0lxr0ogg6eo"]
 
 [ext_resource type="Script" uid="uid://da7ogxshvntsy" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_3k01w"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_p4d2t"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="7_amycg"]
 [ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_flc58"]
+[ext_resource type="PackedScene" uid="uid://b4i15yabrjy50" path="res://assets/world/models/house_model/alarmclock_day.blend" id="9_ubfn3"]
 [ext_resource type="Texture2D" uid="uid://b0353dwgsvuhd" path="res://assets/ui/ui_snooze.png" id="10_wcqgs"]
 [ext_resource type="StyleBox" uid="uid://cv8mqiakuppxd" path="res://assets/ui/credit_style.tres" id="11_5a77u"]
 [ext_resource type="Texture2D" uid="uid://bo6gt0hiasfnu" path="res://assets/ui/title.png" id="12_ww2gf"]
 [ext_resource type="Script" uid="uid://c8plasod13qpb" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
+[ext_resource type="Script" uid="uid://3lgwmo0e67ht" path="res://scripts/ui/welcome.gd" id="14_r4vnn"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="15_1wucs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
@@ -144,6 +146,17 @@ _data = {
 &"end_flyby": SubResource("Animation_flc58")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4vnn"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.850565, 0.4762, 0.476694, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="HouseRoom2" type="Node3D"]
 script = ExtResource("1_bxhyf")
 
@@ -232,6 +245,12 @@ speed_multiplier = 0.855
 
 [node name="RoomAnchor" parent="." instance=ExtResource("8_flc58")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
+
+[node name="alarmclock_day" parent="RoomAnchor" instance=ExtResource("9_ubfn3")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.6, 2.862, -0.3)
+
+[node name="Light" parent="RoomAnchor/alarmclock_day" index="0"]
+visible = false
 
 [node name="EndGame" type="Node3D" parent="RoomAnchor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3427, 3.2866, -2.27873)
@@ -425,6 +444,64 @@ text = "You woke up rested "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Welcome" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_r4vnn")
+
+[node name="ColorRect" type="ColorRect" parent="Welcome"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Welcome"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -347.0
+offset_top = -164.0
+offset_right = 252.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4vnn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Welcome/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "Finally a [color=darkgreen][pulse]good night sleep![/pulse][/color]"
+vertical_alignment = 1
+
+[node name="FrontColorRect" type="ColorRect" parent="Welcome"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="area_entered" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_entered"]
 [connection signal="area_exited" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_exited"]
+
+[editable path="RoomAnchor/alarmclock_day"]

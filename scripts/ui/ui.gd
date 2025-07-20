@@ -39,7 +39,7 @@ func _on_time_left_updated(new_time : float):
 			tween.tween_property(alarm_anchor, "scale", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 		color_rect.color = Color.RED
 	else:
-		color_rect.color = Color.WEB_GREEN
+		color_rect.color = Color.GREEN_YELLOW
 	alarm_text.text = "%02dx%02d" % [int(floor(new_time)) / 60, int(floor(new_time)) % 60]
 	
 	if new_time > last_time:

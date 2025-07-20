@@ -9,8 +9,16 @@
 [node name="level_getrolling" parent="." instance=ExtResource("1_5hixy")]
 
 [node name="Pickup" parent="." instance=ExtResource("2_i2m8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, -0.778873, -21.117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09513, 4.53836, 4.29357)
+
+[node name="Pickup2" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.766, 3.868, -11.6685)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_ckujm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.836, 7.48089, -123.17)
 dungeon = "level_lastlevel_ascend"
+
+[node name="TeleportLevelBack" parent="." instance=ExtResource("3_ckujm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74675, 3.72393, 5.2084)
+dungeon = "level_zigzag"
+is_back_door = true
