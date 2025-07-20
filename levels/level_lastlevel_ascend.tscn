@@ -24,3 +24,6 @@ is_back_door = true
 
 [node name="WakeUpGoal" parent="." instance=ExtResource("4_gq3ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.097, 7.31017, -169.169)
+
+[node name="WakeUpGoalDebug" parent="." instance=ExtResource("4_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92078, 0, 5.49972)
