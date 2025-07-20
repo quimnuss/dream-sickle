@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://or1gfdmtqjg3"]
+[gd_scene load_steps=19 format=3 uid="uid://or1gfdmtqjg3"]
 
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_sp577"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_wqkk1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://cvqm1uotdr4js" path="res://materials/reflective_water.gdshader" id="5_wqkk1"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_argrr"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="7_luok5"]
+[ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="9_wqkk1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("2_wqkk1")
@@ -106,7 +107,11 @@ shape = SubResource("WorldBoundaryShape3D_3wmay")
 [node name="TestRoom" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5004, 1.23639, 0)
 script = ExtResource("7_luok5")
-dungeon = "dungeon_room_1"
+dungeon = "level_2"
+
+[node name="TeleportLevel" parent="." instance=ExtResource("9_wqkk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08372, -7.49903)
+dungeon = "level_2"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

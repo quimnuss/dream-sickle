@@ -15,6 +15,7 @@ var last_time : float = Progress.base_time
 func _ready():
 	Progress.time_left_changed.connect(_on_time_left_updated)
 	Progress.speed_changed.connect(_on_speed_changed)
+	Progress.entered_the_dungeon.connect(_on_entered_the_dungeon)
 	ui_top_anchor.visible = not Progress.is_in_house
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -27,6 +28,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func toggle_alarm(new_visible : bool):
 	ui_top_anchor.visible = new_visible
+
+func _on_entered_the_dungeon():
+	ui_top_anchor.visible = not Progress.is_in_house 
 
 func _on_time_left_updated(new_time : float):
 	if new_time < 10:

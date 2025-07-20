@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4qjy8tqa6ruf"]
+[gd_scene load_steps=4 format=3 uid="uid://dequst2kwj4bb"]
 
-[ext_resource type="Script" uid="uid://b2gp43io1y0vm" path="res://scripts/atrezzo/teleport_door.gd" id="1_gkqo2"]
+[ext_resource type="Script" uid="uid://cdkv7f8oqmsl8" path="res://scripts/atrezzo/teleport_level.gd" id="1_03kv5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y046l"]
 points = PackedVector3Array(-0.5, -0.75, -0.125, -0.5, -0.75, 0.125, -0.5, 0.75, -0.125, 0.5, -0.75, -0.125, 0.5, -0.75, 0.125, -0.5, 0.75, 0.125, 0.5, 0.75, -0.125, 0.5, 0.75, 0.125)
@@ -8,8 +8,8 @@ points = PackedVector3Array(-0.5, -0.75, -0.125, -0.5, -0.75, 0.125, -0.5, 0.75,
 [sub_resource type="BoxMesh" id="BoxMesh_gkqo2"]
 size = Vector3(1, 1.5, 0.25)
 
-[node name="TeleportDoor" type="Node3D"]
-script = ExtResource("1_gkqo2")
+[node name="TeleportLevel" type="Node3D"]
+script = ExtResource("1_03kv5")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -31,5 +31,4 @@ disabled = true
 mesh = SubResource("BoxMesh_gkqo2")
 skeleton = NodePath("../..")
 
-[connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_body_entered"]
 [connection signal="body_entered" from="StaticBody3D2/DoorTeleportSensor" to="." method="_on_door_teleport_sensor_body_entered"]

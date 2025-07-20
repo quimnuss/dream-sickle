@@ -255,6 +255,8 @@ func rotate_skin(delta):
 
 func reset():
 	self.scale.y = 1
+	self.current_speed = 0
+	self.velocity = Vector3.ZERO
 	self.global_position = respawn_position
 
 func die():

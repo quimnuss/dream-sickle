@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_k1u2m"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_gvw1f"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
-[ext_resource type="PackedScene" path="res://scenes/room_anchor.tscn" id="8_3xffa"]
+[ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_3xffa"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="16_bb3j3"]
 [ext_resource type="PackedScene" uid="uid://b6ma3vj8q45kp" path="res://scenes/intro.tscn" id="17_w4r0u"]
