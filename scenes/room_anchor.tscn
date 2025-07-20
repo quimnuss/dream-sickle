@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqph8vk8h34u3"]
+[gd_scene load_steps=13 format=3 uid="uid://p2ulc3803myw"]
 
 [ext_resource type="PackedScene" uid="uid://cn1r1cw26fjat" path="res://assets/world/models/house_model/room.blend" id="1_6s1xw"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="2_f2bl1"]
@@ -37,7 +37,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.497084, -0.0539216, 0, 0.0539216, 0.4970
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.44453, 2.02537, 0.937793)
 
 [node name="table" parent="." instance=ExtResource("3_2ucjq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.56458, 2.00961, -1.80286)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.02071, 2.00961, -1.68676)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="table"]
 
@@ -46,10 +46,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19848, -0.205993)
 shape = SubResource("CylinderShape3D_wjhgj")
 
 [node name="teddy" parent="." instance=ExtResource("4_e8ypl")]
-transform = Transform3D(0.220472, 0, -0.333755, 0.0530965, 0.394906, 0.0350746, 0.329504, -0.0636354, 0.217664, 3.10022, 2.08497, -0.747538)
+transform = Transform3D(0.207711, -0.155602, 0.160216, 0.186083, 0.241566, -0.00663732, -0.123508, 0.102269, 0.259445, 2.90718, 2.50745, 1.26969)
 
 [node name="carpet" parent="." instance=ExtResource("5_uauec")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.51272, 1.94533, -0.74188)
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 6.35108, 1.94533, -0.285413)
 
 [node name="dresser" parent="." instance=ExtResource("6_spjco")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.66159, 2.00154, -0.090237)
