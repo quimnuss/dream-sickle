@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xpwagbbkxbx3"]
+[gd_scene load_steps=18 format=3 uid="uid://xpwagbbkxbx3"]
 
 [ext_resource type="Script" uid="uid://cu860h2fx348e" path="res://scripts/world/house_room.gd" id="1_4o67w"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_trrfu"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_k1u2m"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_gvw1f"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_8l8db"]
-[ext_resource type="PackedScene" path="res://scenes/room_anchor.tscn" id="8_3xffa"]
+[ext_resource type="PackedScene" uid="uid://p2ulc3803myw" path="res://scenes/room_anchor.tscn" id="8_3xffa"]
 [ext_resource type="PackedScene" uid="uid://bdktwvwhljnhl" path="res://assets/world/models/house_model/alarmclock_night.blend" id="9_k1u2m"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="10_3xffa"]
 [ext_resource type="Texture2D" uid="uid://dwl3gl7qylu23" path="res://assets/world/images/house_bg.png" id="10_gvw1f"]
+[ext_resource type="PackedScene" uid="uid://c3oinqvbcil2j" path="res://assets/world/models/shovel.blend" id="13_ew0sj"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="16_bb3j3"]
 [ext_resource type="PackedScene" uid="uid://b6ma3vj8q45kp" path="res://scenes/intro.tscn" id="17_w4r0u"]
 
@@ -70,18 +71,18 @@ shape = SubResource("WorldBoundaryShape3D_3wmay")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.69094, 6.67101)
 
 [node name="Cloud" parent="Clouds" instance=ExtResource("10_3xffa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84437, 4.63058, -14.149)
+transform = Transform3D(-0.695464, 0, 0.385169, 0, 0.795, 0, -0.385169, 0, -0.695464, 3.84437, 7.86921, -16.3717)
 
 [node name="Cloud2" parent="Clouds" instance=ExtResource("10_3xffa")]
 transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 3.84437, 8.1752, -20.8531)
 speed_multiplier = 0.5
 
 [node name="Cloud3" parent="Clouds" instance=ExtResource("10_3xffa")]
-transform = Transform3D(-0.72213, 0, 0.0644484, 0, 0.725, 0, -0.0644484, 0, -0.72213, -7.21231, 7.43401, -14.149)
+transform = Transform3D(0.652439, 0, 0.316146, 0, 0.725, 0, -0.316146, 0, 0.652439, -7.21231, 7.43401, -14.149)
 speed_multiplier = 0.6
 
 [node name="Cloud4" parent="Clouds" instance=ExtResource("10_3xffa")]
-transform = Transform3D(0.765, 0, 1.33757e-07, 0, 0.765, 0, -1.33757e-07, 0, 0.765, 10.0034, 7.43401, -17.77)
+transform = Transform3D(0.761929, 0, -0.0684827, 0, 0.765, 0, 0.0684827, 0, 0.761929, 10.0034, 7.43401, -17.77)
 speed_multiplier = 0.8
 
 [node name="RoomAnchor" parent="." instance=ExtResource("8_3xffa")]
@@ -93,7 +94,7 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.6, 2.862, -0.3)
 visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="RoomAnchor"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0669856, 2.67705, -15.9239)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0750585, 2.67705, -17.0642)
 texture = ExtResource("10_gvw1f")
 
 [node name="UI" parent="." instance=ExtResource("16_bb3j3")]
@@ -111,6 +112,15 @@ shadow_enabled = true
 transform = Transform3D(-0.999583, -0.00261599, -0.0287448, -0.0287994, 0.0239933, 0.999297, -0.00192447, 0.999709, -0.0240587, 6.65249, 4.27553, -0.380266)
 light_color = Color(1, 1, 0.435294, 1)
 light_energy = 0.638
+spot_range = 5.165
+spot_attenuation = 1.65
+spot_angle = 52.33
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-0.829864, 0.208407, -0.517583, -0.0136879, 0.919742, 0.392285, 0.557798, 0.332628, -0.760408, 3.35562, 4.28709, -3.54483)
+light_color = Color(0.182989, 0.39759, 0.652416, 1)
+light_energy = 11.98
+light_size = 1.82
 spot_range = 5.165
 spot_attenuation = 1.65
 spot_angle = 52.33
@@ -135,6 +145,9 @@ spot_angle = 68.78
 transform = Transform3D(-0.999583, -0.00261599, -0.0287448, -0.0288636, 0.0905949, 0.99547, 0, 0.995884, -0.0906326, 2.64061, 2.96476, 0.145587)
 light_color = Color(1, 1, 0.435294, 1)
 spot_angle = 62.92
+
+[node name="shovel" parent="." instance=ExtResource("13_ew0sj")]
+transform = Transform3D(0.545, 0, 0, 0, 0.538366, 0.0847776, 0, -0.0847776, 0.538366, 6.66724, 2.26806, -1.8912)
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 
