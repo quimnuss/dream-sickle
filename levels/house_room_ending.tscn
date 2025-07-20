@@ -278,8 +278,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ww2gf")
 }
 
-[node name="UI" parent="." instance=ExtResource("15_1wucs")]
-
 [node name="Credits" type="Control" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -499,6 +497,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="UI" parent="." instance=ExtResource("15_1wucs")]
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
 [connection signal="area_entered" from="RoomAnchor/EndGame/Interactable" to="RoomAnchor/EndGame" method="_on_interactable_area_entered"]

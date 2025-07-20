@@ -15,6 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 11.6717, -21.117)
 [node name="TeleportLevel" parent="." instance=ExtResource("3_2hi1j")]
 transform = Transform3D(0.0402364, 0, -0.99919, 0, 1, 0, 0.99919, 0, 0.0402364, 15.5021, 13.51, -28.5643)
 dungeon = "level_lastlevel_ascend"
+is_back_door = true
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_2hi1j")]
 transform = Transform3D(-0.999704, 0, -0.02431, 0, 1, 0, 0.02431, 0, -0.999704, 0.96962, 3.95202, 6.29855)

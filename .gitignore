@@ -20,6 +20,9 @@ assets/models/Player_model.blend1
 build/linux
 build/windows
 build/html
+build/dream_sickle_web/
+build/dream_sickle_web.zip
+
 !build/linux/.gitkeep
 !build/windows/.gitkeep
 !build/html/.gitkeep
