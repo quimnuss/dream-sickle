@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dph3v0cifdhdf"]
+[gd_scene load_steps=8 format=3 uid="uid://dph3v0cifdhdf"]
 
 [ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_vbsbw"]
+[ext_resource type="Texture2D" uid="uid://dnu3rtuf54beo" path="res://assets/world/images/tutorial2.png" id="4_3eydx"]
 [ext_resource type="PackedScene" uid="uid://dxwuhchtmtu3n" path="res://assets/world/models/levels/level1_tutorial.blend" id="4_drb04"]
+[ext_resource type="Texture2D" uid="uid://b5wwlmwnrq4sd" path="res://assets/world/images/tutorial1.png" id="5_3eydx"]
+[ext_resource type="Texture2D" uid="uid://dqdl5am6kp3f1" path="res://assets/world/images/tutorial4.png" id="6_wt7er"]
+[ext_resource type="Texture2D" uid="uid://del6qhgnna8ms" path="res://assets/world/images/tutorial5.png" id="7_v5f2i"]
 [ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="10_bnkde"]
 
 [node name="TutorialLevel" type="Node3D"]
@@ -14,3 +18,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
 [node name="TeleportLevel" parent="." instance=ExtResource("3_vbsbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2946, 3.26501, -297.136)
 dungeon = "level_zigzag"
+
+[node name="TutorialImage" type="Sprite3D" parent="."]
+transform = Transform3D(0.641358, -0.176103, 0.746758, 0.0131331, 0.975679, 0.218808, -0.767129, -0.130527, 0.628073, -2.28998, 5.92059, -19.5562)
+texture = ExtResource("4_3eydx")
+
+[node name="TutorialImage2" type="Sprite3D" parent="."]
+transform = Transform3D(0.280332, -0.152733, 0.38482, 0, 0.464735, 0.18445, -0.414022, -0.103414, 0.26056, -3.99263, 6.36164, -42.4753)
+texture = ExtResource("5_3eydx")
+
+[node name="TutorialImage3" type="Sprite3D" parent="."]
+transform = Transform3D(0.367722, -0.124981, 0.314898, 6.16941e-09, 0.464735, 0.18445, -0.338793, -0.135653, 0.341786, -6.9596, 10.0182, -96.5679)
+texture = ExtResource("6_wt7er")
+
+[node name="TutorialImage4" type="Sprite3D" parent="."]
+transform = Transform3D(0.363268, -0.126741, 0.319333, 6.16941e-09, 0.464735, 0.18445, -0.343565, -0.134009, 0.337646, -8.03019, 4.87196, -123.875)
+texture = ExtResource("7_v5f2i")
+
+[node name="TutorialImage5" type="Sprite3D" parent="."]
+transform = Transform3D(0.330733, -0.138333, 0.34854, 2.18215e-08, 0.464735, 0.18445, -0.374988, -0.122007, 0.307406, -46.4267, 17.6026, -147.597)
+texture = ExtResource("7_v5f2i")
