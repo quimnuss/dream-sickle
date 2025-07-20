@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cov0hy665h2y3"]
+[gd_scene load_steps=9 format=3 uid="uid://cov0hy665h2y3"]
 
 [ext_resource type="Script" uid="uid://cgj034llgitl2" path="res://scripts/atrezzo/bed.gd" id="1_wb21i"]
 [ext_resource type="PackedScene" uid="uid://b2nucab0lbh6r" path="res://assets/world/models/house_model/bed.blend" id="2_n6107"]
+[ext_resource type="Texture2D" uid="uid://b0353dwgsvuhd" path="res://assets/ui/ui_snooze.png" id="3_w4it1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6107"]
 size = Vector3(1, 1, 1.73926)
@@ -45,12 +46,14 @@ visible = false
 mesh = SubResource("CapsuleMesh_trrfu")
 skeleton = NodePath("")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03692, 0)
+[node name="InteractionHint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
+
+[node name="InteractionSprite" type="Sprite3D" parent="InteractionHint"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 billboard = 1
-text = "F"
-font_size = 60
+texture = ExtResource("3_w4it1")
 
 [node name="Interactable" type="Area3D" parent="."]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w0lxr0ogg6eo"]
+[gd_scene load_steps=22 format=3 uid="uid://w0lxr0ogg6eo"]
 
 [ext_resource type="Script" uid="uid://da7ogxshvntsy" path="res://scripts/world/house_room_end_game.gd" id="1_bxhyf"]
 [ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_3k01w"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_p4d2t"]
 [ext_resource type="PackedScene" uid="uid://bammk1yn3818b" path="res://scenes/atrezzo/cloud.tscn" id="7_amycg"]
 [ext_resource type="PackedScene" uid="uid://cqph8vk8h34u3" path="res://scenes/room_anchor.tscn" id="8_flc58"]
+[ext_resource type="Texture2D" uid="uid://b0353dwgsvuhd" path="res://assets/ui/ui_snooze.png" id="10_wcqgs"]
 [ext_resource type="StyleBox" uid="uid://cv8mqiakuppxd" path="res://assets/ui/credit_style.tres" id="11_5a77u"]
 [ext_resource type="Texture2D" uid="uid://bo6gt0hiasfnu" path="res://assets/ui/title.png" id="12_ww2gf"]
 [ext_resource type="Script" uid="uid://c8plasod13qpb" path="res://scripts/world/end_game.gd" id="14_qq1kk"]
@@ -236,12 +237,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0540223, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3427, 3.2866, -2.27873)
 script = ExtResource("14_qq1kk")
 
-[node name="Label3D" type="Label3D" parent="RoomAnchor/EndGame"]
+[node name="InteractionHint" type="Node3D" parent="RoomAnchor/EndGame"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.103742, 0)
 visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="RoomAnchor/EndGame/InteractionHint"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 billboard = 1
-text = "F"
-font_size = 60
+texture = ExtResource("10_wcqgs")
 
 [node name="Interactable" type="Area3D" parent="RoomAnchor/EndGame"]
 collision_layer = 0

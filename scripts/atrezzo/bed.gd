@@ -6,7 +6,7 @@ extends Node3D
 @export var go_to_debug_scene : bool = false
 @onready var interactable_collision_shape_3d: CollisionShape3D = $Interactable/CollisionShape3D
 
-@onready var label_3d: Label3D = $Label3D
+@onready var interaction_hint: Node3D = $InteractionHint
 
 var debug_dungeon_scene : PackedScene
 
@@ -34,9 +34,9 @@ func disable_interaction():
 
 
 func _on_interactable_area_entered(_area: Area3D) -> void:
-	label_3d.visible = true
+	interaction_hint.visible = true
 	is_in_range = true
 
 func _on_interactable_area_exited(_area: Area3D) -> void:
-	label_3d.visible = false
+	interaction_hint.visible = false
 	is_in_range = false
