@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://wx0cv5toa5v5"]
+
+[ext_resource type="PackedScene" uid="uid://bxt8ng4mnorra" path="res://assets/world/models/levels/level_speed.blend" id="1_4tren"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_8fbhv"]
+[ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_5dmmh"]
+
+[node name="Level" type="Node3D"]
+
+[node name="level_speed" parent="." instance=ExtResource("1_4tren")]
+
+[node name="Pickup" parent="." instance=ExtResource("2_8fbhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
+
+[node name="TeleportLevel" parent="." instance=ExtResource("3_5dmmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33805, 3.265, -11.9964)
+dungeon = "level_precision"
+
+[node name="TeleportLevelBack" parent="." instance=ExtResource("3_5dmmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33805, 3.265, 4.47714)
+dungeon = "level_gettrolling"
+is_back_door = true

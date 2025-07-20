@@ -15,10 +15,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09513, 4.53836, 4.29357)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.766, 3.868, -11.6685)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_ckujm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.836, 7.48089, -123.17)
-dungeon = "level_lastlevel_ascend"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04868, -18.6034)
+dungeon = "level_speed"
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_ckujm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74675, 3.72393, 5.2084)
-dungeon = "level_zigzag"
 is_back_door = true

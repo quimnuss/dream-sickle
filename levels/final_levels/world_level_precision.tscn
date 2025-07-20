@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl0jey37ogw6a"]
+
+[ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_s2yrp"]
+[ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_mdrxy"]
+[ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="3_46xmy"]
+[ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_cb4kb"]
+[ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_iys68"]
+[ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_b8m2o"]
+[ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="7_wxts1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
+shader = ExtResource("2_mdrxy")
+shader_parameter/Top_Color = Color(0.529412, 0.839216, 0.905882, 1)
+shader_parameter/Horizon_Color = Color(0.65098, 0.917647, 0.94902, 1)
+shader_parameter/skye_cloudes = ExtResource("3_46xmy")
+shader_parameter/Bottom_Color = Color(0.537122, 0.767685, 0.682518, 1)
+
+[sub_resource type="Sky" id="Sky_210xl"]
+sky_material = SubResource("ShaderMaterial_soh3a")
+
+[sub_resource type="Environment" id="Environment_w1t30"]
+background_mode = 2
+sky = SubResource("Sky_210xl")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
+
+[node name="LevelWorld" type="Node3D"]
+script = ExtResource("1_s2yrp")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_w1t30")
+
+[node name="PlayerAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89398, 0)
+
+[node name="Character" parent="PlayerAnchor" instance=ExtResource("4_cb4kb")]
+transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
+script = ExtResource("5_iys68")
+player_path = NodePath("../Character")
+
+[node name="KillZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("6_b8m2o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape3D_3wmay")
+
+[node name="LevelAnchor" type="Node3D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("7_wxts1")]
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

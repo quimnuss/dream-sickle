@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p2ulc3803myw"]
+[gd_scene load_steps=13 format=3 uid="uid://cqph8vk8h34u3"]
 
 [ext_resource type="PackedScene" uid="uid://cn1r1cw26fjat" path="res://assets/world/models/house_model/room.blend" id="1_6s1xw"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="2_f2bl1"]

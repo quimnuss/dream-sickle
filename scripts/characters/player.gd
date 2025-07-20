@@ -152,6 +152,9 @@ func get_input_3d():
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer
 	
+	if Input.is_action_just_pressed("respawn"):
+		get_tree().call_deferred('reload_current_scene')
+	
 	if camera:
 		# Get camera's forward and right directions (ignore Y component for ground movement)
 		var cam_forward = -camera.global_basis.z
@@ -247,6 +250,8 @@ func handle_movement(delta):
 
 # ———————— JUMP ————————
 func handle_jump(_delta):
+	if Progress.is_in_house:
+		return
 	# Can jump if: on floor, in coyote time, or have buffered jump
 	var can_first_jump = is_on_floor() or coyote_timer > 0
 	var can_double_jump = jump_count < 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://42tguq3fskn1"]
+[gd_scene load_steps=22 format=3 uid="uid://42tguq3fskn1"]
 
 [ext_resource type="FontFile" uid="uid://c5j88v50gv3ql" path="res://assets/ui/fonts/14SegmentLEDRegular.ttf" id="1_c4byt"]
 [ext_resource type="Script" uid="uid://cqi1oss1sfujq" path="res://scripts/ui/ui.gd" id="1_pi2vm"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://covtp1cljg5ep" path="res://assets/ui/images/ui_portrait_panic2.png" id="14_o5ifv"]
 [ext_resource type="Texture2D" uid="uid://c4772gbmp1dnt" path="res://assets/ui/images/ui_portrait_stressed1.png" id="15_s2vcx"]
 [ext_resource type="Texture2D" uid="uid://bgjdq27ksixvc" path="res://assets/ui/images/ui_portrait_stressed2.png" id="16_38m54"]
+[ext_resource type="Script" uid="uid://tkmqwh4ksayk" path="res://scripts/postprocessing.gd" id="17_4dthu"]
+[ext_resource type="Shader" uid="uid://cc37skq8cd52j" path="res://materials/alarm_screen_postprocessing.gdshader" id="18_hu0pd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpksx"]
 bg_color = Color(0.329412, 0.6, 0.917647, 1)
@@ -71,6 +73,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5ifv"]
+shader = ExtResource("18_hu0pd")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.0
+shader_parameter/interference_amount = 0.0
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 3.8e-07
+shader_parameter/scan_line_strength = -1.0
+shader_parameter/pixel_strength = 0.0
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -82,23 +101,32 @@ script = ExtResource("1_pi2vm")
 
 [node name="UITopAnchor" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
-grow_horizontal = 2
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="SpeedAnchor" type="Control" parent="UITopAnchor"]
 layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="SpeedLabel" type="Label" parent="UITopAnchor/SpeedAnchor"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 43.0
-offset_top = 31.0
-offset_right = 98.0
-offset_bottom = 55.0
+offset_left = -217.0
+offset_top = -102.0
+offset_right = -101.0
+offset_bottom = -65.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
@@ -242,6 +270,19 @@ sprite_frames = SubResource("SpriteFrames_h3f0y")
 animation = &"worried"
 autoplay = "default"
 frame_progress = 0.9803
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("17_4dthu")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_o5ifv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="UpperRightAnchor/PanelContainer/VBoxContainer/HamburgerButton" to="." method="_on_hamburger_button_pressed"]
 [connection signal="value_changed" from="UpperRightAnchor/PanelContainer/VBoxContainer/MenuContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
