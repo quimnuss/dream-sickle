@@ -1,14 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://d20vyoi1aiunm"]
+[gd_scene load_steps=14 format=3 uid="uid://d20vyoi1aiunm"]
 
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_fg07l"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_csoab"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_lppbx"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_enm5y"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_irfsc"]
-[ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
-[ext_resource type="PackedScene" uid="uid://bhujmolv4oe7o" path="res://assets/world/models/levels/level_lastlevel_ascend.blend" id="9_k7wcj"]
+[ext_resource type="PackedScene" uid="uid://dc43ir7s1y4ce" path="res://assets/world/models/levels/level_getrolling.blend" id="9_k7wcj"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
-[ext_resource type="PackedScene" uid="uid://d1r1kmjqqxpl6" path="res://assets/world/models/cloud_door.blend" id="10_sagrc"]
 [ext_resource type="PackedScene" uid="uid://bvijgj1661rqm" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
@@ -70,11 +68,6 @@ script = ExtResource("7_irfsc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")
 
-[node name="TestRoom" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.344, -11.4665, 0)
-script = ExtResource("8_bdvfn")
-dungeon = "test_playground"
-
 [node name="Bed" parent="." instance=ExtResource("9_x5whj")]
 transform = Transform3D(0.810226, 0, -0.586118, 0, 1, 0, 0.586118, 0, 0.810226, 4.08462, 3.83868, 0)
 
@@ -87,11 +80,8 @@ transform = Transform3D(0.282659, 0, 0.246432, 0, 0.375, 0, -0.246432, 0, 0.2826
 [node name="grass_tufts3" parent="." instance=ExtResource("11_colnj")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -24.6256, -1.65622, 17.6614)
 
-[node name="level_lastlevel_ascend" parent="." instance=ExtResource("9_k7wcj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.277777, 9.53674e-07, -1.60385)
-
-[node name="cloud_door" parent="." instance=ExtResource("10_sagrc")]
-transform = Transform3D(0.173769, 0, -0.984787, 0, 1, 0, 0.984787, 0, 0.173769, 2.52053, 7.13524, -13.1838)
+[node name="level_getrolling" parent="." instance=ExtResource("9_k7wcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46207, 0.19682, 0.729276)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
