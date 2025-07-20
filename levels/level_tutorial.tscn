@@ -15,8 +15,80 @@
 [node name="Pickup" parent="." instance=ExtResource("10_bnkde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
 
+[node name="Pickup4" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0594, 2.4931, -47.5939)
+
+[node name="Pickup14" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 2.4931, -123.651)
+
+[node name="Pickup15" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 2.4931, -118.114)
+
+[node name="Pickup17" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 2.4931, -106.087)
+
+[node name="Pickup16" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 2.4931, -127.875)
+
+[node name="Pickup18" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 2.4931, -147.952)
+
+[node name="Pickup19" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5514, 6.37564, -172.74)
+
+[node name="Pickup20" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.606, 6.37564, -172.74)
+
+[node name="Pickup21" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9943, 8.1104, -172.74)
+
+[node name="Pickup22" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9943, 8.1104, -189.609)
+
+[node name="Pickup23" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9943, 8.1104, -212.886)
+
+[node name="Pickup24" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9943, 8.1104, -226.049)
+
+[node name="Pickup25" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9943, 8.1104, -250.235)
+
+[node name="Pickup5" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.909, 2.20105, -47.5939)
+
+[node name="Pickup6" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8333, 2.20105, -47.5939)
+
+[node name="Pickup7" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2926, 2.20105, -47.5939)
+
+[node name="Pickup8" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2926, 2.20105, -46.1235)
+
+[node name="Pickup9" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2926, 2.20105, -49.1438)
+
+[node name="Pickup10" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9328, 2.20105, -49.1438)
+
+[node name="Pickup11" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8558, 2.20105, -49.1438)
+
+[node name="Pickup12" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8558, 2.20105, -46.1655)
+
+[node name="Pickup13" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8294, 2.20105, -46.1655)
+
+[node name="Pickup2" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -20.2118)
+
+[node name="Pickup3" parent="." instance=ExtResource("10_bnkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -15.2315)
+
 [node name="TeleportLevel" parent="." instance=ExtResource("3_vbsbw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33805, 3.265, -12.5926)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -41.4424, 3.43809, -280.531)
 dungeon = "level_gettrolling"
 
 [node name="TutorialImage" type="Sprite3D" parent="."]

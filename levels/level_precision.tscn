@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://l2ywcjn8xc82"]
+[gd_scene load_steps=4 format=3 uid="uid://j4licse37c8e"]
 
 [ext_resource type="PackedScene" uid="uid://cqaj32uywhv8e" path="res://assets/world/models/levels/level_precision.blend" id="1_yrbdt"]
 [ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_7nmam"]
