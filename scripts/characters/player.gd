@@ -152,6 +152,9 @@ func get_input_3d():
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer
 	
+	if Input.is_action_just_pressed("respawn"):
+		get_tree().call_deferred('reload_current_scene')
+	
 	if camera:
 		# Get camera's forward and right directions (ignore Y component for ground movement)
 		var cam_forward = -camera.global_basis.z

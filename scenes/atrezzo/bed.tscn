@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b0353dwgsvuhd" path="res://assets/ui/ui_snooze.png" id="3_w4it1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n6107"]
-size = Vector3(1, 1, 1.73926)
+size = Vector3(1, 1.99902, 1.73926)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trrfu"]
 albedo_color = Color(1, 1, 0.388235, 1)
@@ -31,7 +31,7 @@ transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.246599, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bed/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101876, 0)
+transform = Transform3D(1, 0, 1.14397e-12, 0, 1, 0, -1.14397e-12, 0, 1, 0, 0.601388, 0)
 shape = SubResource("BoxShape3D_n6107")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
