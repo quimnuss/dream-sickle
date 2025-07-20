@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dph3v0cifdhdf"]
+[gd_scene load_steps=5 format=3 uid="uid://dph3v0cifdhdf"]
 
 [ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_vbsbw"]
+[ext_resource type="PackedScene" uid="uid://dxwuhchtmtu3n" path="res://assets/world/models/levels/level1_tutorial.blend" id="4_drb04"]
 [ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="7_7q8fw"]
 [ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="10_bnkde"]
 
@@ -15,3 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, -0.778873, -21.117)
 [node name="TeleportLevel" parent="." instance=ExtResource("3_vbsbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7705, -1.69903, -154.666)
 dungeon = "level_zigzag"
+
+[node name="level1_tutorial" parent="." instance=ExtResource("4_drb04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7873, -11.8383, 71.4603)

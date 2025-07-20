@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bhujmolv4oe7o" path="res://assets/world/models/levels/level_lastlevel_ascend.blend" id="1_ng3kk"]
 [ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_gq3ue"]
 [ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_2hi1j"]
-[ext_resource type="PackedScene" path="res://scenes/wake_up_goal.tscn" id="4_gq3ue"]
+[ext_resource type="PackedScene" uid="uid://dfyirglm0cvn5" path="res://scenes/wake_up_goal.tscn" id="4_gq3ue"]
 
 [node name="LastLevelAscend" type="Node3D"]
 

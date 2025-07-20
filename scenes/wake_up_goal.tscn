@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfyirglm0cvn5"]
 
-[ext_resource type="Script" uid="uid://bm2o1uhb82o24" path="res://scripts/atrezzo/wake_up_goal.gd" id="1_yid3y"]
+[ext_resource type="Script" path="res://scripts/atrezzo/wake_up_goal.gd" id="1_yid3y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bagey"]
 radius = 0.80408
