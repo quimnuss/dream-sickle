@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bbg2b8lowrpuc"]
 
-[ext_resource type="Script" path="res://scripts/world/level_world.gd" id="1_1eyaf"]
+[ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_1eyaf"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_x8wqo"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="3_02kjg"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_1hxq3"]
@@ -48,12 +48,11 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 script = ExtResource("5_f05jm")
 player_path = NodePath("../Character")
 
-[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+[node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("6_rv6r3")
-respawn_point = NodePath("../PlayerAnchor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")

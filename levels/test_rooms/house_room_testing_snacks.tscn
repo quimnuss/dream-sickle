@@ -1,14 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://d20vyoi1aiunm"]
+[gd_scene load_steps=15 format=3 uid="uid://d20vyoi1aiunm"]
 
-[ext_resource type="MeshLibrary" uid="uid://klt1tp7bm4uy" path="res://assets/world/mesh_library.tres" id="2_268cf"]
 [ext_resource type="Shader" uid="uid://diq7wrux1adn8" path="res://materials/outside_skye.tres" id="3_fg07l"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="4_csoab"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="5_lppbx"]
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="6_enm5y"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="7_irfsc"]
 [ext_resource type="Script" uid="uid://cspwo5sloxaas" path="res://scripts/world/test_room.gd" id="8_bdvfn"]
+[ext_resource type="PackedScene" uid="uid://dxwuhchtmtu3n" path="res://assets/world/models/levels/level1_tutorial.blend" id="9_k7wcj"]
 [ext_resource type="PackedScene" uid="uid://cov0hy665h2y3" path="res://scenes/atrezzo/bed.tscn" id="9_x5whj"]
-[ext_resource type="PackedScene" uid="uid://dr0phfx4oev0w" path="res://assets/world/models/levels/level_tutorial_test.blend" id="10_sagrc"]
 [ext_resource type="PackedScene" uid="uid://bvijgj1661rqm" path="res://assets/world/models/grass_tufts.blend" id="11_colnj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
@@ -33,17 +32,10 @@ size = Vector3(2, 2, 2)
 
 [node name="HouseRoom" type="Node3D"]
 
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_268cf")
-data = {
-"cells": PackedInt32Array(0, 65535, 4, 0, 65534, 3, 0, 65533, 2, 0, 65532, 2, 65535, 65532, 3, 65535, 65533, 3, 65535, 65534, 4, 65535, 65535, 4, 65535, 0, 2, 0, 0, 2, 65534, 65530, 2, 65533, 65530, 2, 65533, 65529, 2, 65534, 65529, 2, 1, 65528, 2, 2, 65528, 2, 2, 65527, 2, 1, 65527, 2, 65535, 65525, 2, 65533, 65525, 2, 65533, 65524, 2, 65533, 65523, 2, 65534, 65523, 2, 65535, 65523, 2, 65535, 65524, 2, 65534, 65525, 2, 65534, 65524, 2, 13, 65519, 3, 13, 65520, 3, 14, 65520, 3, 14, 65519, 3, 15, 65519, 3, 15, 65520, 3, 15, 65521, 3, 14, 65521, 3, 13, 65521, 3, 2, 65517, 2, 1, 65517, 2, 1, 65516, 2, 1, 65515, 2, 2, 65515, 2, 3, 65515, 2, 3, 65516, 2, 2, 65516, 2, 3, 65517, 2, 65534, 65509, 2, 65535, 65509, 2, 0, 65509, 2, 1, 65509, 2, 1, 65508, 2, 0, 65508, 2, 65535, 65508, 2, 65534, 65508, 2, 65535, 65507, 2, 0, 65507, 2, 1, 65507, 2, 65534, 65507, 2, 65538, 65528, 2, 65538, 65527, 2, 65537, 65527, 2, 65537, 65528, 2, 131071, 65524, 2, 131071, 65525, 2, 131070, 65523, 2, 131069, 65524, 2, 131069, 65525, 2, 131070, 65525, 2, 131070, 65524, 2, 131071, 65523, 2, 131069, 65523, 2, 196607, 65524, 2, 196606, 65523, 2, 196606, 65524, 2, 196605, 65523, 2, 196605, 65524, 2, 196605, 65525, 2, 196606, 65525, 2, 196607, 65525, 2, 196607, 65523, 2, 65537, 65508, 2, 65537, 65509, 2, 131071, 65508, 2, 131070, 65509, 2, 131070, 65508, 2, 131070, 65507, 2, 131071, 65507, 2, 65536, 65507, 2, 65537, 65507, 2, 65536, 65509, 2, 131071, 65509, 2, 65536, 65508, 2, 65551, 65521, 3, 65550, 65521, 3, 65549, 65521, 3, 65549, 65520, 3, 65549, 65519, 3, 65550, 65519, 3, 65551, 65519, 3, 65550, 65520, 3, 65551, 65520, 3, 131085, 65520, 3, 131085, 65519, 3, 131087, 65519, 3, 131087, 65520, 3, 131087, 65521, 3, 131086, 65521, 3, 131086, 65520, 3, 131086, 65519, 3, 131085, 65521, 3, 196622, 65521, 3, 196623, 65521, 3, 196623, 65519, 3, 196623, 65520, 3, 196621, 65519, 3, 196621, 65521, 3, 196621, 65520, 3, 196622, 65519, 3, 196622, 65520, 3, 1, 65535, 4, 2, 65535, 4, 3, 65535, 4, 1, 65534, 4, 2, 65534, 4, 3, 65534, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0, 4, 4, 65535, 4, 4, 65534, 4, 4, 65533, 4, 3, 65533, 4, 5, 65534, 4, 5, 65535, 4, 5, 0, 4)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0.133805, 0.281056, 0.950318, -0.481767, 0.856449, -0.185461, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
@@ -61,19 +53,18 @@ shape = SubResource("BoxShape3D_hk8qe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19609, 2.50365, -1.56688)
 
 [node name="Character" parent="PlayerAnchor" instance=ExtResource("5_lppbx")]
-transform = Transform3D(0.999107, 0, 0.0422418, 0, 1, 0, -0.0422418, 0, 0.999107, -18.8226, -4.32111, 19.706)
+transform = Transform3D(0.999757, 0, 0.0220242, 0, 1, 0, -0.0220242, 0, 0.999757, 1.41409, 2.19968, 1.64068)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnchor"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 6, 4.74839)
 script = ExtResource("6_enm5y")
 player_path = NodePath("../Character")
 
-[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+[node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("7_irfsc")
-respawn_point = NodePath("../PlayerAnchor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")
@@ -84,10 +75,7 @@ script = ExtResource("8_bdvfn")
 dungeon = "test_playground"
 
 [node name="Bed" parent="." instance=ExtResource("9_x5whj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.91107, 1.99693, 0)
-
-[node name="level_tutorial_test" parent="." instance=ExtResource("10_sagrc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.2266, -5.27111, 19.0449)
+transform = Transform3D(0.810226, 0, -0.586118, 0, 1, 0, 0.586118, 0, 0.810226, 4.08462, 3.83868, 0)
 
 [node name="grass_tufts" parent="." instance=ExtResource("11_colnj")]
 transform = Transform3D(-0.52243, -0.0117681, 0.227658, -0.0107883, 0.569879, 0.00470118, -0.227706, 0, -0.522542, -30.6123, -1.65622, 24.8446)
@@ -97,6 +85,9 @@ transform = Transform3D(0.282659, 0, 0.246432, 0, 0.375, 0, -0.246432, 0, 0.2826
 
 [node name="grass_tufts3" parent="." instance=ExtResource("11_colnj")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -24.6256, -1.65622, 17.6614)
+
+[node name="level1_tutorial" parent="." instance=ExtResource("9_k7wcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078722, 0, -0.0830793)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
