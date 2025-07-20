@@ -49,12 +49,11 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 script = ExtResource("5_ilxj7")
 player_path = NodePath("../Character")
 
-[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("respawn_point")]
+[node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.9223, 0)
 collision_layer = 0
 collision_mask = 6
 script = ExtResource("6_l0lxu")
-respawn_point = NodePath("../PlayerAnchor")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape3D_3wmay")
