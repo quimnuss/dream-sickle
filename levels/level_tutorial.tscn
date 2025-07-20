@@ -14,4 +14,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, -0.778873, -21.117)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_vbsbw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7705, -1.69903, -154.666)
-dungeon = "level_2"
+dungeon = "level_zigzag"

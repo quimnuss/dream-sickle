@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bugqomsffle6p"]
+
+[ext_resource type="PackedScene" uid="uid://dc43ir7s1y4ce" path="res://assets/world/models/levels/level_getrolling.blend" id="1_5hixy"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_i2m8v"]
+[ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_ckujm"]
+
+[node name="LevelGetTrolling" type="Node3D"]
+
+[node name="level_getrolling" parent="." instance=ExtResource("1_5hixy")]
+
+[node name="Pickup" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, -0.778873, -21.117)
+
+[node name="TeleportLevel" parent="." instance=ExtResource("3_ckujm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.836, 7.48089, -123.17)
+dungeon = "level_lastlevel_ascend"

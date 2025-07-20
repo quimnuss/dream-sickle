@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu0o3sg5ue0k6"]
+
+[ext_resource type="PackedScene" uid="uid://bhujmolv4oe7o" path="res://assets/world/models/levels/level_lastlevel_ascend.blend" id="1_ng3kk"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_gq3ue"]
+[ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_2hi1j"]
+[ext_resource type="PackedScene" path="res://scenes/wake_up_goal.tscn" id="4_gq3ue"]
+
+[node name="LastLevelAscend" type="Node3D"]
+
+[node name="level_lastlevel_ascend" parent="." instance=ExtResource("1_ng3kk")]
+
+[node name="Pickup" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 11.6717, -21.117)
+
+[node name="TeleportLevel" parent="." instance=ExtResource("3_2hi1j")]
+transform = Transform3D(0.0402364, 0, -0.99919, 0, 1, 0, 0.99919, 0, 0.0402364, 15.5021, 13.51, -28.5643)
+dungeon = "level_lastlevel_ascend"
+
+[node name="WakeUpGoal" parent="." instance=ExtResource("4_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.097, 7.31017, -169.169)

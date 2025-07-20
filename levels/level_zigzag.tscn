@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://22wnv7281r5v"]
+
+[ext_resource type="PackedScene" uid="uid://dxampndmq1y7n" path="res://assets/world/models/levels/level_zigzag.blend" id="1_prnjm"]
+[ext_resource type="PackedScene" uid="uid://iax2ppk3a2ah" path="res://scenes/atrezzo/pickup.tscn" id="2_lj78x"]
+[ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="3_0sjqh"]
+
+[node name="LevelZigZag" type="Node3D"]
+
+[node name="level_zigzag" parent="." instance=ExtResource("1_prnjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.33995, 0)
+
+[node name="Pickup" parent="." instance=ExtResource("2_lj78x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 1.09097, -21.117)
+
+[node name="TeleportLevel" parent="." instance=ExtResource("3_0sjqh")]
+transform = Transform3D(-0.0182551, 0, -0.999833, 0, 1, 0, 0.999833, 0, -0.0182551, 84.5801, 2.27034, -17.5779)
+dungeon = "level_gettrolling"
