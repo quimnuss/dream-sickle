@@ -27,6 +27,7 @@ tonemap_mode = 2
 
 [node name="LevelWorld" type="Node3D"]
 script = ExtResource("1_s2yrp")
+dungeon = "level_precision"
 
 [node name="Environment" type="Node3D" parent="."]
 

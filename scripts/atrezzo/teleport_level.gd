@@ -17,6 +17,7 @@ func _ready():
 		path = 'res://levels/dungeons/' + dungeon + '.tscn'
 
 func change_to_level():
+	prints('Changing to level',path)
 	get_tree().change_scene_to_file(path)
 
 func _on_door_teleport_sensor_body_entered(body: Node3D) -> void:
