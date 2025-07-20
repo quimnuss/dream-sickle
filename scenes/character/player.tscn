@@ -275,20 +275,20 @@ shape = SubResource("BoxShape3D_xslmj")
 [node name="Player_model" parent="Skin" instance=ExtResource("2_xslmj")]
 
 [node name="Skeleton3D" parent="Skin/Player_model/Armature_001" index="1"]
-bones/0/position = Vector3(0.000664109, 0.621539, -0.0207842)
+bones/0/position = Vector3(0.000664109, 0.622164, -0.0209374)
 bones/0/rotation = Quaternion(0.0470813, 0.0122431, -0.00107483, 0.998815)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/rotation = Quaternion(0.0385158, -0.0668316, 0.0292834, 0.996591)
-bones/1/scale = Vector3(1, 1.00441, 1.00003)
-bones/2/position = Vector3(0.139772, 0.232382, 0.0259314)
-bones/2/rotation = Quaternion(-0.0158846, 0.0363103, -0.994122, 0.100752)
+bones/1/rotation = Quaternion(0.0375911, -0.0668148, 0.0293259, 0.996626)
+bones/1/scale = Vector3(1, 1.00588, 1.00004)
+bones/2/position = Vector3(0.13968, 0.232263, 0.0262347)
+bones/2/rotation = Quaternion(-0.0158914, 0.0383733, -0.993976, 0.101427)
 bones/3/rotation = Quaternion(0.122424, -0.0303331, -0.0190735, 0.991831)
-bones/4/rotation = Quaternion(0.0315021, -0.0145582, 0.00283288, 0.999394)
+bones/4/rotation = Quaternion(0.0302812, -0.0144139, 0.00287638, 0.999433)
 bones/4/scale = Vector3(0.878784, 0.878784, 0.878784)
-bones/5/position = Vector3(-0.152309, 0.227993, 0.0244795)
-bones/5/rotation = Quaternion(-0.0160578, -0.0286281, 0.996128, 0.0815535)
+bones/5/position = Vector3(-0.152203, 0.227886, 0.0248032)
+bones/5/rotation = Quaternion(-0.0160148, -0.0305273, 0.996019, 0.0822001)
 bones/6/rotation = Quaternion(0.0583951, 0.0375059, 0.0117454, 0.99752)
-bones/7/rotation = Quaternion(-0.0185939, -0.0681145, 0.0326686, 0.996969)
+bones/7/rotation = Quaternion(-0.0199397, -0.0679895, 0.0324668, 0.996958)
 bones/7/scale = Vector3(0.878784, 0.878784, 0.878784)
 bones/8/position = Vector3(0.00106828, 0.631646, 0.0111888)
 bones/8/rotation = Quaternion(-0.702192, -0.0198795, 0.71161, 0.0119441)
@@ -354,6 +354,25 @@ script = ExtResource("7_wmtbp")
 [node name="Marker" type="MeshInstance3D" parent="FloorDetector"]
 mesh = SubResource("SphereMesh_5y66v")
 skeleton = NodePath("../..")
+
+[node name="RespawnPositionSensor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.800244, 0)
+
+[node name="FloorDetector2" type="RayCast3D" parent="RespawnPositionSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+target_position = Vector3(0, -2, 0)
+
+[node name="FloorDetector3" type="RayCast3D" parent="RespawnPositionSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+target_position = Vector3(0, -2, 0)
+
+[node name="FloorDetector4" type="RayCast3D" parent="RespawnPositionSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+target_position = Vector3(0, -2, 0)
+
+[node name="FloorDetector5" type="RayCast3D" parent="RespawnPositionSensor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+target_position = Vector3(0, -2, 0)
 
 [connection signal="animation_changed" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="Skin/Player_model/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c8cr7pyluwj4t"]
 
-[ext_resource type="Script" path="res://scripts/world/level_world.gd" id="1_l66kg"]
+[ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_l66kg"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_62vx3"]
 [ext_resource type="Texture2D" uid="uid://dd2poklr8a4ia" path="res://materials/skye_clouds.png" id="3_b54s3"]
 [ext_resource type="PackedScene" uid="uid://drggevhvr6isq" path="res://scenes/character/player.tscn" id="4_002qq"]

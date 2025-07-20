@@ -4,7 +4,7 @@ class_name Player extends CharacterBody3D
 @export var max_speed       := 10.0
 var current_max_speed		:= max_speed
 @export var current_speed : float = 0
-@export var roll_max_speed_delta := 10.0
+@export var roll_max_speed_delta := 6.0
 @export var accel           := 4.0
 @export var decel           := 12.0
 # — Jump & gravity —
@@ -37,6 +37,7 @@ var jump_buffer_timer := 0.0
 var was_on_floor := false
 var elapsed : float = 0
 var jump_count : int = 0
+var last_floor_location : Vector3
 
 var respawn_position : Vector3
 
@@ -52,6 +53,7 @@ var states_names = {
 @export var state: States = States.IDLE
 
 func _ready():
+	last_floor_location = respawn_position
 	respawn_position = global_position + Vector3(0,1,0)
 	Progress.time_up.connect(_on_time_up)
 
@@ -75,11 +77,12 @@ func travel(new_state : States):
 	#prints('from', states_names[state],' --> ', states_names[new_state])
 	if new_state == States.ROLL:
 		current_max_speed = max_speed + roll_max_speed_delta
-		# a bit hacky :P roll instantly puts the player to max_speed plus some
-		current_speed = max_speed + 2
+		# roll instantly puts the player to nitro
+		current_speed = current_max_speed + 4.0
 		var horizontal_velocity := Vector3(velocity.x, 0, velocity.z)
-		var target_velocity := horizontal_velocity.normalized()*current_speed
+		var target_velocity := horizontal_velocity.normalized() * current_speed
 		velocity.x = target_velocity.x
+		#velocity.y = 10 # infinite up velocity!
 		velocity.z = target_velocity.z
 		state_machine.travel("Roll")
 		elapsed = 0
@@ -165,12 +168,23 @@ func get_input_3d():
 	else:
 		# Fallback to world space if no camera
 		input_dir = Vector3(in2d.x, 0, in2d.y)
+		
+@onready var respawn_position_sensor: Node3D = $RespawnPositionSensor
+
+func is_safe_respawn_spot() -> bool:
+	for floor_detector : RayCast3D in respawn_position_sensor.get_children():
+			if not floor_detector.is_colliding():
+				return false
+	return true
 
 # ———————— TIMERS ————————
 func update_timers(delta):
 	# Coyote time - can jump for short time after leaving ground
 	if is_on_floor():
 		coyote_timer = coyote_time
+		jump_count = 0
+		if is_safe_respawn_spot():
+			last_floor_location = self.global_position
 	elif was_on_floor and not is_on_floor():
 		# Just left ground, start coyote timer
 		coyote_timer = coyote_time
@@ -234,14 +248,15 @@ func handle_movement(delta):
 # ———————— JUMP ————————
 func handle_jump(_delta):
 	# Can jump if: on floor, in coyote time, or have buffered jump
-	var can_jump = is_on_floor() or coyote_timer > 0 or jump_count == 1
+	var can_first_jump = is_on_floor() or coyote_timer > 0
+	var can_double_jump = jump_count < 2
 	var wants_to_jump = jump_buffer_timer > 0
 	
-	if can_jump and wants_to_jump:
+	if (can_first_jump or can_double_jump) and wants_to_jump:
 		velocity.y = jump_velocity
 		jump_buffer_timer = 0  # Consume the buffered jump
 		coyote_timer = 0       # Consume coyote time
-		jump_count = 1 if jump_count == 0 else 0
+		jump_count = 1 if can_first_jump else 2
 		travel(States.JUMPING)
 
 # ———————— ROTATION ————————
@@ -257,7 +272,7 @@ func reset():
 	self.scale.y = 1
 	self.current_speed = 0
 	self.velocity = Vector3.ZERO
-	self.global_position = respawn_position
+	self.global_position = last_floor_location + Vector3(0, 1, 0)
 
 func die():
 	var tween := get_tree().create_tween()
