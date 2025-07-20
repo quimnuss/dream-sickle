@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3mg2ssb21dgf"]
+[gd_scene load_steps=14 format=3 uid="uid://3mg2ssb21dgf"]
 
 [ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_f6bpp"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_0x84o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://q1mviu4spuqb" path="res://scripts/camera/camera_3d.gd" id="5_w8onp"]
 [ext_resource type="Script" uid="uid://n4q62jj6svii" path="res://scripts/world/kill_zone.gd" id="6_gna2m"]
 [ext_resource type="PackedScene" uid="uid://42tguq3fskn1" path="res://scenes/UI.tscn" id="7_1meco"]
+[ext_resource type="Shader" uid="uid://cc37skq8cd52j" path="res://materials/alarm_screen_postprocessing.gdshader" id="7_j1nqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soh3a"]
 shader = ExtResource("2_0x84o")
@@ -24,6 +25,12 @@ sky = SubResource("Sky_210xl")
 tonemap_mode = 2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3wmay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6ana"]
+shader = ExtResource("7_j1nqv")
+shader_parameter/screen_resolution = Vector2(480, 270)
+shader_parameter/scanline_intensity = 1.0
+shader_parameter/color_bleed_weight = 0.275
 
 [node name="LevelWorld" type="Node3D"]
 script = ExtResource("1_f6bpp")
@@ -61,5 +68,17 @@ shape = SubResource("WorldBoundaryShape3D_3wmay")
 [node name="LevelAnchor" type="Node3D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("7_1meco")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_j6ana")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
