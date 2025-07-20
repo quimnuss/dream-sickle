@@ -16,8 +16,8 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_vbsbw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2946, 3.26501, -297.136)
-dungeon = "level_zigzag"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33805, 3.265, -12.5926)
+dungeon = "level_gettrolling"
 
 [node name="TutorialImage" type="Sprite3D" parent="."]
 transform = Transform3D(0.641358, -0.176103, 0.746758, 0.0131331, 0.975679, 0.218808, -0.767129, -0.130527, 0.628073, -2.28998, 5.92059, -19.5562)

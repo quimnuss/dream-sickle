@@ -1,6 +1,6 @@
 extends Node3D
 
-@export_enum ('level_tutorial', 'level_2', 'level_zigzag', 'level_gettrolling', 'level_lastlevel_ascend') var dungeon : String = 'level_tutorial'
+@export_enum ('level_tutorial', 'level_2', 'level_zigzag', 'level_gettrolling', 'level_speed', 'level_precision', 'level_lastlevel_ascend') var dungeon : String = 'level_tutorial'
 
 var path : String
 

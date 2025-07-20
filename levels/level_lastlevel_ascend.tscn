@@ -19,7 +19,7 @@ is_back_door = true
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_2hi1j")]
 transform = Transform3D(-0.999704, 0, -0.02431, 0, 1, 0, 0.02431, 0, -0.999704, 0.96962, 3.95202, 6.29855)
-dungeon = "level_gettrolling"
+dungeon = "level_precision"
 is_back_door = true
 
 [node name="WakeUpGoal" parent="." instance=ExtResource("4_gq3ue")]
