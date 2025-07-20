@@ -250,8 +250,6 @@ func handle_movement(delta):
 
 # ———————— JUMP ————————
 func handle_jump(_delta):
-	if Progress.is_in_house:
-		return
 	# Can jump if: on floor, in coyote time, or have buffered jump
 	var can_first_jump = is_on_floor() or coyote_timer > 0
 	var can_double_jump = jump_count < 2
