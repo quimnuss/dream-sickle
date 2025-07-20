@@ -2,10 +2,12 @@ extends Control
 @onready var text_label: RichTextLabel = $RichTextLabel
 @onready var front_color_rect: ColorRect = $FrontColorRect
 @onready var color_rect: ColorRect = $ColorRect
+@onready var skip_button: Button = $SkipButton
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	skip_button.grab_focus()
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(text_label, 'visible_ratio', 1, 2).from(0)
 	tween.tween_callback(next_text).set_delay(3)
