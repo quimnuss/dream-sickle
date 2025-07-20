@@ -13,7 +13,8 @@ var debug_dungeon_scene : PackedScene
 var is_in_range : bool = false
 
 func _ready():
-	var path : String = 'res://levels/dungeons/' + debug_dungeon + '.tscn' if not debug_dungeon.begins_with('test_') else 'res://levels/test_rooms/' + debug_dungeon + '.tscn'
+	
+	var path : String = Progress.current_level
 	
 	if not OS.is_debug_build():
 		go_to_debug_scene = false

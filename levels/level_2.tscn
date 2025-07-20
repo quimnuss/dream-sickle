@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=4 uid="uid://y8plar2op3v4"]
+[gd_scene load_steps=42 format=4 uid="uid://y8plar2op3v4"]
 
 [ext_resource type="PackedScene" uid="uid://dequst2kwj4bb" path="res://scenes/atrezzo/teleport_level.tscn" id="1_5722l"]
+[ext_resource type="PackedScene" path="res://scenes/wake_up_goal.tscn" id="1_ilhis"]
 [ext_resource type="Texture2D" uid="uid://djvcugv42i2xs" path="res://assets/world/tilesets/block_3_tex.png" id="1_v5uil"]
 [ext_resource type="Texture2D" uid="uid://cb2jmwpylom5i" path="res://assets/world/tilesets/block_1_tex.png" id="2_5722l"]
 [ext_resource type="Texture2D" uid="uid://8r2r2b2wnhy3" path="res://assets/world/tilesets/block_2_tex.png" id="3_ilhis"]
@@ -452,8 +453,11 @@ shadow_mesh = SubResource("ArrayMesh_xd60p")
 [node name="level1_tutorial" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
+[node name="WakeUpGoal" parent="level1_tutorial" instance=ExtResource("1_ilhis")]
+transform = Transform3D(0.89766, -0.0529269, 0.4375, 0, 0.992762, 0.1201, -0.44069, -0.107809, 0.891162, 103.017, 5.34937, -25.516)
+
 [node name="TeleportLevel" parent="level1_tutorial" instance=ExtResource("1_5722l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.931, 3.26335, -142.609)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.9115, 3.26335, -1.1685)
 
 [node name="1" type="MeshInstance3D" parent="level1_tutorial"]
 transform = Transform3D(6, 0, 0, 0, 1.8, 0, 0, 0, 6, -0.100708, 1.76978, 0.167766)

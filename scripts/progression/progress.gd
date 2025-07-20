@@ -14,6 +14,8 @@ extends Node
 var is_game_won : bool = false
 var level : int = 0
 
+var current_level : String = 'res://levels/final_levels/world_level_tutorial.tscn'
+
 signal time_left_changed(time_left_value : float)
 signal time_up
 

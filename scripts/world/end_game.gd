@@ -6,9 +6,11 @@ extends Node3D
 
 var is_in_range : bool = false
 
+var is_consumed : bool = false
 
 func _input(event: InputEvent) -> void:
-	if is_in_range and event.is_action_pressed("interact"):
+	if is_in_range and event.is_action_pressed("interact") and not is_consumed:
+		is_consumed = true
 		animation_player.play("end_flyby")
 		
 		

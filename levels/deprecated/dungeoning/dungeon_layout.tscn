@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cknr0d418iibx"]
 
 [ext_resource type="Script" uid="uid://lemv1cqr3f38" path="res://scripts/world/dungeon_layout.gd" id="1_aengs"]
-[ext_resource type="PackedScene" uid="uid://ba4ahhg2befhr" path="res://levels/dungeons/dungeon_start.tscn" id="2_1i78i"]
-[ext_resource type="PackedScene" uid="uid://prac2vrlm0hl" path="res://levels/dungeons/dungeon_room_1.tscn" id="4_mjqqb"]
-[ext_resource type="PackedScene" uid="uid://cxi1rx4agc66x" path="res://levels/dungeons/dungeon_room_2.tscn" id="5_jbdyk"]
+[ext_resource type="PackedScene" uid="uid://ba4ahhg2befhr" path="res://levels/deprecated/dungeons/dungeon_start.tscn" id="2_1i78i"]
+[ext_resource type="PackedScene" uid="uid://prac2vrlm0hl" path="res://levels/deprecated/dungeons/dungeon_room_1.tscn" id="4_mjqqb"]
+[ext_resource type="PackedScene" uid="uid://cxi1rx4agc66x" path="res://levels/deprecated/dungeons/dungeon_room_2.tscn" id="5_jbdyk"]
 
 [node name="DungeonLayout" type="Node3D"]
 script = ExtResource("1_aengs")
