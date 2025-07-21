@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ok7v435ot3pr"]
+[gd_scene load_steps=12 format=3 uid="uid://bfm1rmtkhp1qk"]
 
 [ext_resource type="Script" uid="uid://krxhoj46w75y" path="res://scripts/world/level_world.gd" id="1_6gwbd"]
 [ext_resource type="Shader" uid="uid://c242krejqw50w" path="res://materials/outside_skye_day.tres" id="2_wnrf4"]

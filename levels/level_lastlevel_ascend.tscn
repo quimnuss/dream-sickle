@@ -23,7 +23,7 @@ dungeon = "level_precision"
 is_back_door = true
 
 [node name="WakeUpGoal" parent="." instance=ExtResource("4_gq3ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -187.097, 7.31017, -169.169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.982992, 4.67218, 0.874978)
 
 [node name="WakeUpGoalDebug" parent="." instance=ExtResource("4_gq3ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08329, 4.08946, 6.11506)

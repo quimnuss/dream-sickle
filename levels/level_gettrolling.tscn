@@ -12,16 +12,36 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09513, 4.53836, 4.29357)
 
 [node name="Pickup2" parent="." instance=ExtResource("2_i2m8v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.766, 3.868, -11.6685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37917, 5.07831, -9.36174)
 
-[node name="TeleportLevel" parent="." instance=ExtResource("3_ckujm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1286, -17.6553)
-dungeon = "level_speed"
+[node name="Pickup3" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37917, 4.2728, -23.4539)
+
+[node name="Pickup4" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37917, 4.04414, -36.325)
+
+[node name="Pickup5" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.86594, 4.04414, -59.4133)
+
+[node name="Pickup9" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8263, 7.33177, -67.8845)
+
+[node name="Pickup10" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.9927, -5.98204, -108.93)
+
+[node name="Pickup6" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8678, -6.93354, -87.9004)
+
+[node name="Pickup7" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8678, -6.93354, -93.4263)
+
+[node name="Pickup8" parent="." instance=ExtResource("2_i2m8v")]
+transform = Transform3D(0.998684, 0, -0.0512902, 0, 1, 0, 0.0512902, 0, 0.998684, -18.5659, -1.79475, -123.148)
 
 [node name="TeleportLevel2" parent="." instance=ExtResource("3_ckujm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6909, -6.1752, -166.51)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.6386, -6.1752, -185.436)
 dungeon = "level_speed"
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_ckujm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74675, 3.72393, 5.2084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.239147, 2.23331, 11.024)
 is_back_door = true
