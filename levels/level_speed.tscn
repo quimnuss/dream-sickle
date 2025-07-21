@@ -12,7 +12,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_5dmmh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33805, 3.265, -11.9964)
+transform = Transform3D(0.193533, 0, 1.99061, 0, 2, 0, -1.99061, 0, 0.193533, -174.19, -6.95777, -172.596)
 dungeon = "level_precision"
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_5dmmh")]
