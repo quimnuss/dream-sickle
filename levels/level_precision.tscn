@@ -9,7 +9,88 @@
 [node name="level_precision" parent="." instance=ExtResource("1_yrbdt")]
 
 [node name="Pickup" parent="." instance=ExtResource("2_7nmam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 4.55296, -28.8988)
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 4.55296, -30.5471)
+
+[node name="Pickup2" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 4.55296, -14.9403)
+
+[node name="Pickup3" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 4.55296, -46.8764)
+
+[node name="Pickup4" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 4.55296, -63.9849)
+
+[node name="Pickup5" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 6.65718, -63.9849)
+
+[node name="Pickup6" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 0.499616, 3.59933, -79.6958)
+
+[node name="Pickup7" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 6.26679, 4.70313, -114.142)
+
+[node name="Pickup26" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 18.3851, 4.70313, -106.198)
+
+[node name="Pickup27" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 18.3851, 4.70313, -107.562)
+
+[node name="Pickup28" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, 18.3851, 4.70313, -105.028)
+
+[node name="Pickup8" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999907, 0.0136481, 0, -0.0136481, 0.999907, 0, 0, 0, 1, -2.15258, 4.70313, -127.263)
+
+[node name="Pickup9" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.99986, 0.0167544, 0, -0.0167544, 0.99986, 0, 0, 0, 1, -37.9558, 6.23453, -119.738)
+
+[node name="Pickup10" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.99986, 0.0167544, 0, -0.0167544, 0.99986, 0, 0, 0, 1, -47.5945, 5.01599, -130.603)
+
+[node name="Pickup11" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.99986, 0.0167544, 0, -0.0167544, 0.99986, 0, 0, 0, 1, -57.8746, 5.01599, -138.989)
+
+[node name="Pickup12" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.99986, 0.0167544, 0, -0.0167544, 0.99986, 0, 0, 0, 1, -67.8594, 5.01599, -148.715)
+
+[node name="Pickup13" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.99986, 0.0167544, 0, -0.0167544, 0.99986, 0, 0, 0, 1, -72.8759, 4.6361, -160.108)
+
+[node name="Pickup14" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -83.5475, 1.85414, -188.872)
+
+[node name="Pickup15" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -83.5475, 1.85414, -191.491)
+
+[node name="Pickup16" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -83.5475, 1.85414, -194.389)
+
+[node name="Pickup17" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -83.5475, 1.85414, -204.927)
+
+[node name="Pickup18" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -93.7079, 6.00542, -222.564)
+
+[node name="Pickup19" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -93.7079, 6.00542, -221.253)
+
+[node name="Pickup20" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -93.7079, 6.00542, -220.158)
+
+[node name="Pickup21" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -61.7198, 11.694, -226.954)
+
+[node name="Pickup22" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -38.9692, 11.694, -217.346)
+
+[node name="Pickup23" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -28.3096, 11.694, -212.322)
+
+[node name="Pickup24" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -19.3644, 10.9748, -200.345)
+
+[node name="Pickup25" parent="." instance=ExtResource("2_7nmam")]
+transform = Transform3D(0.999489, 0.031969, 0, -0.031969, 0.999489, 0, 0, 0, 1, -0.745515, 8.75375, -182.931)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_hoq71")]
 transform = Transform3D(0.191414, 0, 1.99082, 0, 2, 0, -1.99082, 0, 0.191414, -113.711, -27.8131, -265.799)
