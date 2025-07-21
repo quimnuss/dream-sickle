@@ -267,9 +267,7 @@ script = ExtResource("7_mhjpf")
 position = Vector2(119, -73)
 scale = Vector2(0.405, 0.405)
 sprite_frames = SubResource("SpriteFrames_h3f0y")
-animation = &"worried"
 autoplay = "default"
-frame_progress = 0.9803
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

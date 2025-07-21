@@ -30,4 +30,4 @@ func _on_time_left_changed(time_left):
 			2:
 				animated_sprite_2d.play('worried')
 			_:
-				animated_sprite_2d.play('default')
+				animated_sprite_2d.play('worried')
