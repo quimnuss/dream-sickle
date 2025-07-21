@@ -10,7 +10,58 @@
 [node name="level_lastlevel_ascend" parent="." instance=ExtResource("1_ng3kk")]
 
 [node name="Pickup" parent="." instance=ExtResource("2_gq3ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93833, 11.6717, -21.117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705496, 7.50331, -3.2873)
+
+[node name="Pickup2" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705496, 7.80177, -8.89373)
+
+[node name="Pickup3" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705496, 7.80177, -16.7783)
+
+[node name="Pickup4" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705496, 7.80177, -23.9809)
+
+[node name="Pickup5" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705496, 10.7106, -40.4542)
+
+[node name="Pickup6" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.49747, 14.0347, -50.9098)
+
+[node name="Pickup7" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0653, 14.0347, -50.9098)
+
+[node name="Pickup8" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0653, 14.0347, -48.7398)
+
+[node name="Pickup9" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0653, 14.0347, -53.2295)
+
+[node name="Pickup10" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01246, 18.9782, -53.2295)
+
+[node name="Pickup11" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01246, 18.9782, -48.5527)
+
+[node name="Pickup12" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5155, 18.9782, -48.5527)
+
+[node name="Pickup13" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5155, 18.9782, -53.7711)
+
+[node name="Pickup14" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.293809, 16.7398, -61.5008)
+
+[node name="Pickup15" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.293809, 18.9414, -61.5008)
+
+[node name="Pickup16" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.50474, 20.248, -61.5008)
+
+[node name="Pickup17" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.7566, 18.4618, -62.2831)
+
+[node name="Pickup18" parent="." instance=ExtResource("2_gq3ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.1029, 30.643, -85.0756)
 
 [node name="TeleportLevel" parent="." instance=ExtResource("3_2hi1j")]
 transform = Transform3D(0.0402364, 0, -0.99919, 0, 1, 0, 0.99919, 0, 0.0402364, 15.5021, 13.51, -28.5643)
@@ -18,12 +69,12 @@ dungeon = "level_lastlevel_ascend"
 is_back_door = true
 
 [node name="TeleportLevelBack" parent="." instance=ExtResource("3_2hi1j")]
-transform = Transform3D(-0.999704, 0, -0.02431, 0, 1, 0, 0.02431, 0, -0.999704, 0.96962, 3.95202, 6.29855)
+transform = Transform3D(-0.0560306, 0, 0.998429, 0, 1, 0, -0.998429, 0, -0.0560306, -4.92716, 3.95202, 4.84162)
 dungeon = "level_precision"
 is_back_door = true
 
 [node name="WakeUpGoal" parent="." instance=ExtResource("4_gq3ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.982992, 4.67218, 0.874978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -312.873, 89.5033, -248.17)
 
 [node name="WakeUpGoalDebug" parent="." instance=ExtResource("4_gq3ue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08329, 4.08946, 6.11506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08329, 4.08946, 16.3801)
